@@ -27,6 +27,33 @@ export async function dbAlumniGetAllCardsInfo() {
   }));
 }
 
+export async function dbAlumniGetAllReviews() {
+  const alumniReviews = await db.alumni.findMany({
+    select: {
+      id: true,
+      firstName: true,
+      lastName: true,
+      review: true,
+    },
+    where: {
+      review: {
+        not: null, 
+      },
+    },
+  });
+
+  return alumniReviews.map((alumni) => ({
+    id: alumni.id,
+    firstName: alumni.firstName,
+    lastName: alumni.lastName,
+    review: alumni.review,
+  }));
+}
+
 export type AlumniCardInfo = Awaited<
   ReturnType<typeof dbAlumniGetAllCardsInfo>
+>[number];
+
+export type AlumniReviewInfo = Awaited<
+  ReturnType<typeof dbAlumniGetAllReviews>
 >[number];

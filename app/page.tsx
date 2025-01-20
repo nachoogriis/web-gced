@@ -7,11 +7,11 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { dbAlumniGetAllCardsInfo } from "@/lib/db/alumni";
-import { reviewsData } from "./fake_data";
+import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni";
 
 export default async function Home() {
   const alumniData = await dbAlumniGetAllCardsInfo();
+  const alumniReviews = await dbAlumniGetAllReviews();
 
   return (
     <main>
@@ -66,9 +66,13 @@ export default async function Home() {
           </h2>
           <Carousel>
             <CarouselContent>
-              {reviewsData.map((review, index) => (
+              {alumniReviews.map((review, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <AlumniReview {...review} />
+                  <AlumniReview
+                    firstName={review.firstName}
+                    lastName={review.lastName}
+                    review={review.review}
+                  />
                 </CarouselItem>
               ))}
             </CarouselContent>
