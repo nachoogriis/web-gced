@@ -14,7 +14,7 @@ export default function AlumniReview({
   review,
 }: AlumniReviewProps) {
   return (
-    <div className="border border-[#B0DAED] bg-white overflow-hidden w-[590px] h-[228px] flex-shrink-0 flex flex-col rounded-tl-[15px] rounded-tr-[15px] rounded-br-[15px]">
+    <div className="border border-[#B0DAED] bg-white overflow-hidden h-[230px] flex flex-col rounded-tl-[15px] rounded-tr-[15px] rounded-br-[15px]">
       <div className="flex items-start scale-55">
         <AlumniTopPart name={firstName} surname={lastName} generation={generation} />
       </div>
