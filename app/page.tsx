@@ -43,13 +43,18 @@ export default async function Home() {
         </h2>
         <Carousel>
           <CarouselContent>
-            {/* <CarouselItem><div className="w-0"></div></CarouselItem> */}
             {alumniData.map((alumni, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <AlumniCard {...alumni} />
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
+                <AlumniCard
+                  firstName={alumni.firstName}
+                  lastName={alumni.lastName}
+                  generation={alumni.generation}
+                  internships={alumni.internships}
+                  tfgTitle={alumni.tfgTitle}
+                  masters={alumni.masters}
+                />
               </CarouselItem>
             ))}
-            {/* <CarouselItem></CarouselItem> */}
           </CarouselContent>
         </Carousel>
       </section>
@@ -71,29 +76,6 @@ export default async function Home() {
           <div className="flex flex-row gap-10 justify-center"></div>
         </div>
       </section>
-
-      {/* <section>
-        <Carousel>
-          <CarouselContent>
-            <CarouselItem className="basis-1/2 lg:basis-1/3">
-              <div className="debug h-[10em] flex flex-col justify-center items-center text-3xl">
-                1
-              </div>
-            </CarouselItem>
-            <CarouselItem className="basis-1/2 lg:basis-1/3">
-              <div className="debug h-[10em] flex flex-col justify-center items-center text-3xl">
-                2
-              </div>
-            </CarouselItem>
-            <CarouselItem className="basis-1/2 lg:basis-1/3">
-              <div className="debug h-[10em] flex flex-col justify-center items-center text-3xl">
-                3
-              </div>
-            </CarouselItem>
-          </CarouselContent>
-        </Carousel>
-      </section> */}
-
       <section className="h-20"></section>
     </main>
   );
