@@ -42,39 +42,39 @@ export default async function Home() {
 
       <BannerMainStats />
 
-      <section className="text-center text-xl font-semibold mb-6 py-4">
-        <h2>Els nostres estudiants treballen a :</h2>
-        <div className="relative overflow-hidden h-50">
+      <section className="text-center text-xl font-semibold py-10">
+        <h2 className="py-4">Els nostres estudiants treballen a</h2>
+        <div className="relative overflow-hidden">
           <div
             className="flex gap-4 justify-center animate-scroll mb-6"
             style={{
               width: "calc(200% + 1rem)",
             }}
           >
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
+            <CompanyLogo image="/google.png"/>
           </div>
 
           <div
@@ -111,9 +111,8 @@ export default async function Home() {
         </div>
       </section>
 
-
-      <section className="py-4 overflow-clip">
-        <h2 className="text-center text-xl font-semibold mb-6">
+      <section className="overflow-clip py-4">
+        <h2 className="text-center text-xl font-semibold py-4">
           Coneix als nostres estudiants
         </h2>
         <Carousel>
@@ -134,7 +133,7 @@ export default async function Home() {
         </Carousel>
       </section>
 
-      <section className="py-40">
+      <section className="py-10">
         <div className="bg-gray-100 py-4">
           <h2 className="text-center text-xl font-semibold mb-6">
             Opinions dels nostres estudiants
