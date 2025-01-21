@@ -7,11 +7,27 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { dbAlumniGetAllCardsInfo } from "@/lib/db/alumni";
-import { reviewsData } from "./fake_data";
+import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni";
 
 export default async function Home() {
   const alumniData = await dbAlumniGetAllCardsInfo();
+  const alumniReviews = await dbAlumniGetAllReviews();
+
+  // Duplica los datos para alumniData
+  const replicatedAlumniData = Array(5) 
+    .fill(alumniData[0]) 
+    .map((alumni, index) => ({
+      ...alumni,
+      id: `${alumni.id}-${index}`, 
+    }));
+
+  // Duplica los datos para alumniReviews
+  const replicatedReviews = Array(5) 
+    .fill(alumniReviews[0])
+    .map((review, index) => ({
+      ...review,
+      id: `${review.id}-${index}`, 
+    }));
 
   return (
     <main>
@@ -20,8 +36,7 @@ export default async function Home() {
           Grau en Ciència i Enginyeria de Dades
         </h1>
         <p className="py-2 text-lg text-[#007BC0]">
-          Converteixte en líder de l&apos;era digital on les dades creen
-          solucions
+          Les dades són l'inici, el camí és teu
         </p>
       </section>
 
@@ -29,13 +44,73 @@ export default async function Home() {
 
       <section className="text-center text-xl font-semibold mb-6 py-4">
         <h2>Els nostres estudiants treballen a :</h2>
-        <div className="flex flex-row gap-4 justify-center py-2">
-          <CompanyLogo image="/google.png" />
-          <CompanyLogo image="/google.png" />
-          <CompanyLogo image="/google.png" />
-          <CompanyLogo image="/google.png" />
+        <div className="relative overflow-hidden h-50">
+          <div
+            className="flex gap-4 justify-center animate-scroll mb-6"
+            style={{
+              width: "calc(200% + 1rem)",
+            }}
+          >
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+          </div>
+
+          <div
+            className="flex gap-4 justify-center animate-scroll1"
+            style={{
+              width: "calc(200% + 1rem)",
+            }}
+          >
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+            <CompanyLogo image="/google.png" />
+          </div>
         </div>
       </section>
+
 
       <section className="py-4 overflow-clip">
         <h2 className="text-center text-xl font-semibold mb-6">
@@ -43,13 +118,18 @@ export default async function Home() {
         </h2>
         <Carousel>
           <CarouselContent>
-            {/* <CarouselItem><div className="w-0"></div></CarouselItem> */}
-            {alumniData.map((alumni, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <AlumniCard {...alumni} />
+            {replicatedAlumniData.map((alumni, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
+                <AlumniCard
+                  firstName={alumni.firstName}
+                  lastName={alumni.lastName}
+                  generation={alumni.generation}
+                  internships={alumni.internships}
+                  tfgTitle={alumni.tfgTitle}
+                  masters={alumni.masters}
+                />
               </CarouselItem>
             ))}
-            {/* <CarouselItem></CarouselItem> */}
           </CarouselContent>
         </Carousel>
       </section>
@@ -61,9 +141,13 @@ export default async function Home() {
           </h2>
           <Carousel>
             <CarouselContent>
-              {reviewsData.map((review, index) => (
+              {replicatedReviews.map((review, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <AlumniReview {...review} />
+                  <AlumniReview
+                    firstName={review.firstName}
+                    lastName={review.lastName}
+                    review={review.review}
+                  />
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -71,30 +155,9 @@ export default async function Home() {
           <div className="flex flex-row gap-10 justify-center"></div>
         </div>
       </section>
-
-      {/* <section>
-        <Carousel>
-          <CarouselContent>
-            <CarouselItem className="basis-1/2 lg:basis-1/3">
-              <div className="debug h-[10em] flex flex-col justify-center items-center text-3xl">
-                1
-              </div>
-            </CarouselItem>
-            <CarouselItem className="basis-1/2 lg:basis-1/3">
-              <div className="debug h-[10em] flex flex-col justify-center items-center text-3xl">
-                2
-              </div>
-            </CarouselItem>
-            <CarouselItem className="basis-1/2 lg:basis-1/3">
-              <div className="debug h-[10em] flex flex-col justify-center items-center text-3xl">
-                3
-              </div>
-            </CarouselItem>
-          </CarouselContent>
-        </Carousel>
-      </section> */}
-
       <section className="h-20"></section>
     </main>
   );
 }
+
+
