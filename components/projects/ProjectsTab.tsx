@@ -3,7 +3,7 @@ import ProjectsList from "./ProjectsList"
 
 export default function ProjectsTab({}) {
     return (
-        <Tabs defaultValue="APs" className="w-[90%]">
+        <Tabs defaultValue="APs" className="w-[95%]">
             <TabsList className="grid w-full grid-cols-3 bg-slate-100 text-black">
                 <TabsTrigger value="APs" className="font-bold">
                     Algorismia i Programació
