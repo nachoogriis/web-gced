@@ -11,6 +11,7 @@ import {
   dbAlumniGetAllCardsInfo,
   dbAlumniGetAllReviews,
 } from "@/lib/db/alumni";
+import Link from "next/link";
 
 export default async function Home() {
   const alumniData = await dbAlumniGetAllCardsInfo();
@@ -45,12 +46,14 @@ export default async function Home() {
 
       <BannerMainStats />
 
-      <section className="text-center text-xl font-semibold py-10">
+      <section className="text-center font-semibold py-10">
         <CompanyCard />
+        <Link href="/estadistiques" className="text-l text-[#585b5d] hover:underline"> Veure més estadístiques...
+        </Link>
       </section>
 
-      <section className="overflow-clip py-4">
-        <h2 className="text-center text-xl font-semibold py-4">
+      <section className="flex flex-col gap-4 overflow-clip py-4 text-center ">
+        <h2 className="text-xl font-semibold">
           Coneix als nostres estudiants
         </h2>
         <Carousel>
@@ -69,6 +72,8 @@ export default async function Home() {
             ))}
           </CarouselContent>
         </Carousel>
+        <Link href="/estudiants" className="text-l font-semibold text-[#585b5d] hover:underline"> Veure més perfils d'estudiants...
+        </Link>
       </section>
 
       <section className="py-10">
