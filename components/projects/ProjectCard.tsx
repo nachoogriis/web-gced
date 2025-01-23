@@ -1,4 +1,4 @@
-import FullProjectDialog from "./FullProjectDialog";
+import FullProjectDialog from "./full_card/FullProjectDialog";
 import { InfoIcon } from "../icons/InfoIcon";
 
 interface ProjectInfo {
