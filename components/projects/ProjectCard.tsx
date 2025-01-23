@@ -1,4 +1,4 @@
-import GcedButton from "../GcedButton";
+import FullProjectDialog from "./FullProjectDialog";
 import { InfoIcon } from "../icons/InfoIcon";
 
 interface ProjectInfo {
@@ -21,12 +21,7 @@ export default function({
                     <h2 className="text-xl font-bold">{project.name}</h2>
                     <p className="text-gray-700">{project.description}</p>
                 </div>
-                <GcedButton width = "200px">
-                    <div className="flex flex-row items-center justify-center gap-2">
-                    <InfoIcon />
-                    <h1>Més informació</h1>
-                    </div>
-                </GcedButton>
+                <FullProjectDialog />
             </div>
         </div>
     )
