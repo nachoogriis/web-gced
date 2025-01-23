@@ -2,9 +2,9 @@ import GcedButton from "@/components/GcedButton";
 import AlumniTopPart from "@/components/alumni_card/AlumniTopPart";
 import InfoCardLine from "@/components/alumni_card/InfoCardLine";
 import MasterIcon from "@/components/icons/MasterIcon";
-import InternshipIcon from "@/components/icons/InternshipIcon"; // Icono para las prácticas
-import TfgIcon from "@/components/icons/TfgIcon"; // Icono para el TFG
-import CurrentJobIcon from "@/components/icons/CurrentJobIcon"; // Icono para el trabajo actual
+import InternshipIcon from "@/components/icons/InternshipIcon"; 
+import TfgIcon from "@/components/icons/TfgIcon"; 
+import CurrentJobIcon from "@/components/icons/CurrentJobIcon";
 import { AlumniCardInfo } from "@/lib/db/alumni";
 import { InfoIcon } from "../icons/InfoIcon";
 
