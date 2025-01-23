@@ -33,6 +33,7 @@ export async function dbAlumniGetAllReviews() {
       id: true,
       firstName: true,
       lastName: true,
+      generation: true,
       review: true,
     },
     where: {
@@ -46,6 +47,7 @@ export async function dbAlumniGetAllReviews() {
     id: alumni.id,
     firstName: alumni.firstName,
     lastName: alumni.lastName,
+    generation: alumni.generation,
     review: alumni.review,
   }));
 }
