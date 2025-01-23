@@ -84,7 +84,7 @@ const levenshteinDistance = (a, b) => {
             type="text"
             value={searchTerm}
             onChange={handleSearch}
-            placeholder="🔍 Busca per paraules clau..."
+            placeholder="🔍 Busca per paraules clau. Per exemple: Juan Perez Computer Vision..."
             className="w-full rounded-full border-gray-300"
           />
         </form>

@@ -7,6 +7,7 @@ export default function CompanyCard() {
         Els nostres estudiants treballen a
       </h2>
 
+      <div className="overflow-x-hidden">
       <div
         className="flex gap-4 justify-center animate-scroll"
         style={{
@@ -19,11 +20,13 @@ export default function CompanyCard() {
             <CompanyLogo key={`logo1-${index}`} image={src} />
           ))}
       </div>
+      </div>
 
       <h2 className="pt-4 text-center text-xl font-bold">
         Els nostres estudiants fan pràctiques a
       </h2>
 
+      <div className="overflow-x-hidden">
       <div
         className="flex gap-4 justify-center animate-scroll1 py-4"
         style={{
@@ -35,6 +38,7 @@ export default function CompanyCard() {
           .map((src, index) => (
             <CompanyLogo key={`logo2-${index}`} image={src} />
           ))}
+      </div>
       </div>
 
     </div>
