@@ -5,15 +5,16 @@ export default function ImageGallery({}) {
     { imagePath: "/projects-demo.png" },
     { imagePath: "/projects-demo-2.png" },
     { imagePath: "/projects-demo-3.png" },
+    { imagePath: "/projects-demo-4.png" },
   ];
 
   const [active, setActive] = useState("/projects-demo.png");
 
   return (
-    <div className="grid gap-6">
-      <div>
+    <div className="grid gap-6 w-[45%]">
+      <div className="flex items-center justify-center">
         <img
-          className="h-auto w-full rounded-lg object-cover object-center"
+          className="h-[350px] w-auto rounded-lg object-cover object-center"
           src={active}
           alt=""
         />
