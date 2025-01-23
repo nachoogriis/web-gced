@@ -6,11 +6,21 @@ import {
   Dialog,
   DialogTrigger,
   DialogContent,
-  DialogHeader,
   DialogTitle,
 } from "../../ui/dialog";
 
-export default function FullProjectDialog({}) {
+interface ProjectInfo {
+  imagePath: string;
+  topic: string;
+  name: string
+  description: string;
+}
+
+export default function FullProjectDialog({
+  project
+}: {
+  project: ProjectInfo
+}) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -25,7 +35,7 @@ export default function FullProjectDialog({}) {
         <VisuallyHidden>
           <DialogTitle>Full Project Card</DialogTitle>
         </VisuallyHidden>
-        <FullProjectCard />
+        <FullProjectCard project = {project}/>
       </DialogContent>
     </Dialog>
   );

@@ -1,5 +1,4 @@
 import FullProjectDialog from "./full_card/FullProjectDialog";
-import { InfoIcon } from "../icons/InfoIcon";
 
 interface ProjectInfo {
     imagePath: string;
@@ -8,7 +7,7 @@ interface ProjectInfo {
     description: string;
 }
 
-export default function({
+export default function ProjectCard({
     project
 }: {
     project: ProjectInfo
@@ -21,7 +20,7 @@ export default function({
                     <h2 className="text-xl font-bold">{project.name}</h2>
                     <p className="text-gray-700">{project.description}</p>
                 </div>
-                <FullProjectDialog />
+                <FullProjectDialog project = {project}/>
             </div>
         </div>
     )
