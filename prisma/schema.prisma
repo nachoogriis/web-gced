@@ -19,6 +19,7 @@ model Alumni {
     review         String?
     tfgTitle       String
     tfgDescription String
+    currentJob     String
     internships    InternshipAlumni[]
     masters        MasterAlumni[]
     projects       ProjectAlumni[]
@@ -29,7 +30,6 @@ model Organization {
     name        String
     country     String                @default("Spain")
     city        String                @default("Barcelona")
-    description String?
     internships Internship[]
     masters     MasterOrganizations[]
 }
@@ -93,4 +93,12 @@ model ProjectAlumni {
     projectId Int
 
     @@id([alumniId, projectId])
+}
+
+model UniversityProject {
+    id          Int             @id @default(autoincrement())
+    name        String
+    summary     String
+    description String
+    topic       String
 }
