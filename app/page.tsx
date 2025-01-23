@@ -83,6 +83,7 @@ export default async function Home() {
                   <AlumniReview
                     firstName={review.firstName}
                     lastName={review.lastName}
+                    generation={review.generation}
                     review={review.review}
                   />
                 </CarouselItem>
