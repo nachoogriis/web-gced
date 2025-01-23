@@ -17,7 +17,7 @@ export default function AlumniCard({
   masters,
 }: AlumniCardInfo) {
   return (
-    <div className="rounded-[15px] border border-[#B0DAED] bg-white overflow-hidden h-[360px]">
+    <div className="rounded-[15px] border border-[#B0DAED] bg-white overflow-hidden h-[380px]">
       <div className="flex flex-col items-start gap-[0.4em] p-4">
         {/* Parte superior con el nombre y generación */}
         <AlumniTopPart name={firstName} surname={lastName} generation={generation} />
