@@ -11,5 +11,7 @@ export default async function Home() {
       id: `${alumni.id}-${index}`,
     }));
 
-  return <AlumniPage initialAlumniData={replicatedAlumniData} />;
+  return( 
+    <AlumniPage initialAlumniData={replicatedAlumniData} />
+  )
 }
