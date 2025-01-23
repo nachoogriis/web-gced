@@ -1,32 +1,35 @@
 import AlumniCard from "@/components/alumni_card/AlumniCard";
 import AlumniReview from "@/components/AlumniReview";
 import BannerMainStats from "@/components/BannerMainStats";
-import CompanyLogo from "@/components/CompanyLogo";
+import CompanyCard from "@/components/CompanyCard";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni";
+import {
+  dbAlumniGetAllCardsInfo,
+  dbAlumniGetAllReviews,
+} from "@/lib/db/alumni";
 
 export default async function Home() {
   const alumniData = await dbAlumniGetAllCardsInfo();
   const alumniReviews = await dbAlumniGetAllReviews();
 
   // Duplica los datos para alumniData
-  const replicatedAlumniData = Array(5) 
-    .fill(alumniData[0]) 
+  const replicatedAlumniData = Array(5)
+    .fill(alumniData[0])
     .map((alumni, index) => ({
       ...alumni,
-      id: `${alumni.id}-${index}`, 
+      id: `${alumni.id}-${index}`,
     }));
 
   // Duplica los datos para alumniReviews
-  const replicatedReviews = Array(5) 
+  const replicatedReviews = Array(5)
     .fill(alumniReviews[0])
     .map((review, index) => ({
       ...review,
-      id: `${review.id}-${index}`, 
+      id: `${review.id}-${index}`,
     }));
 
   return (
@@ -43,72 +46,7 @@ export default async function Home() {
       <BannerMainStats />
 
       <section className="text-center text-xl font-semibold py-10">
-        <h2 className="py-4">Els nostres estudiants treballen a</h2>
-        <div className="relative overflow-hidden">
-          <div
-            className="flex gap-4 justify-center animate-scroll mb-6"
-            style={{
-              width: "calc(200% + 1rem)",
-            }}
-          >
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-            <CompanyLogo image="/google.png"/>
-          </div>
-
-          <div
-            className="flex gap-4 justify-center animate-scroll1"
-            style={{
-              width: "calc(200% + 1rem)",
-            }}
-          >
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-            <CompanyLogo image="/google.png" />
-          </div>
-        </div>
+        <CompanyCard />
       </section>
 
       <section className="overflow-clip py-4">
@@ -158,5 +96,3 @@ export default async function Home() {
     </main>
   );
 }
-
-
