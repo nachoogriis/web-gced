@@ -1,11 +1,12 @@
-import GcedButton from "@/components/GcedButton"
+"use client"
+
 import AlumniTopPart from "@/components/alumni_card/AlumniTopPart"
 import InfoCardLine from "@/components/alumni_card/InfoCardLine"
 import InternshipIcon from "@/components/icons/InternshipIcon"
 import MasterIcon from "@/components/icons/MasterIcon"
 import TfgIcon from "@/components/icons/TfgIcon"
 import { AlumniCardInfo } from "@/lib/db/alumni"
-import { InfoIcon } from "../icons/InfoIcon"
+import FullAlumniCard from "./FullAlumniCard"
 
 type Props = {
   alumni: AlumniCardInfo
@@ -52,10 +53,7 @@ export default function AlumniCard({ alumni }: Props) {
 
       {/* Botón de "Més informació" */}
       <div className="flex w-full justify-center items-center mt-[10px]">
-        <GcedButton>
-          <InfoIcon className="text-lg" />
-          Més informació
-        </GcedButton>
+        <FullAlumniCard alumni={alumni} />
       </div>
     </div>
   )
