@@ -1,43 +1,23 @@
 "use client"
 
-import { useState } from "react"
 import AlumniCard from "@/components/alumni_card/AlumniCard"
 import { Input } from "@/components/ui/input"
+import { AlumniCardInfo } from "@/lib/db/alumni"
+import { levenshteinDistance } from "@/lib/utils"
+import { ChangeEventHandler, useState } from "react"
 
-export default function AlumniPage({ initialAlumniData }) {
+type Props = {
+    initialAlumniData: AlumniCardInfo[]
+}
+export default function AlumniPage({ initialAlumniData }: Props) {
   const [searchTerm, setSearchTerm] = useState("")
   const [filteredAlumni, setFilteredAlumni] = useState(initialAlumniData)
 
-  const handleSearch = (e) => {
+  const handleSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
     const search = e.target.value.toLowerCase()
     setSearchTerm(e.target.value)
 
-    const levenshteinDistance = (a, b) => {
-      const matrix = Array.from({ length: a.length + 1 }, () =>
-        Array(b.length + 1).fill(0)
-      )
-
-      for (let i = 0; i <= a.length; i++) matrix[i][0] = i
-      for (let j = 0; j <= b.length; j++) matrix[0][j] = j
-
-      for (let i = 1; i <= a.length; i++) {
-        for (let j = 1; j <= b.length; j++) {
-          if (a[i - 1] === b[j - 1]) {
-            matrix[i][j] = matrix[i - 1][j - 1]
-          } else {
-            matrix[i][j] = Math.min(
-              matrix[i - 1][j] + 1,
-              matrix[i][j - 1] + 1,
-              matrix[i - 1][j - 1] + 1
-            )
-          }
-        }
-      }
-
-      return matrix[a.length][b.length]
-    }
-
-    const isSimilar = (word1, word2, threshold = 2) => {
+    const isSimilar = (word1: string, word2: string, threshold = 2) => {
       return levenshteinDistance(word1, word2) <= threshold
     }
 
@@ -58,7 +38,7 @@ export default function AlumniPage({ initialAlumniData }) {
       return search
         .toLowerCase()
         .split(" ")
-        .every((term) =>
+        .every((term: string) =>
           combinedData.split(" ").some((dataWord) => isSimilar(term, dataWord))
         )
     })

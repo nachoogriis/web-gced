@@ -1,17 +1,15 @@
-import AlumniPage from "../../components/AlumniPage";
-import { dbAlumniGetAllCardsInfo } from "@/lib/db/alumni";
+import AlumniPage from "../../components/AlumniPage"
+import { dbAlumniGetAllCardsInfo } from "@/lib/db/alumni"
 
 export default async function Home() {
-  const alumniData = await dbAlumniGetAllCardsInfo();
+  const alumniData = await dbAlumniGetAllCardsInfo()
 
   const replicatedAlumniData = Array(20)
     .fill(alumniData[0])
     .map((alumni, index) => ({
       ...alumni,
       id: `${alumni.id}-${index}`,
-    }));
+    }))
 
-  return( 
-    <AlumniPage initialAlumniData={replicatedAlumniData} />
-  )
+  return <AlumniPage initialAlumniData={replicatedAlumniData} />
 }

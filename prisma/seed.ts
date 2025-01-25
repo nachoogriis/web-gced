@@ -21,8 +21,6 @@ const google = await db.organization.create({
         name: "Google",
         city: "Mountain View",
         country: "USA",
-        description:
-            "Google is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware.",
     },
 })
 
