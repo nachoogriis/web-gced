@@ -32,13 +32,12 @@ export default async function Home() {
 
   return (
     <main>
-
       <section className="text-center py-10">
         <h1 className="text-5xl font-bold text-[#007BC0]">
           Grau en Ciència i Enginyeria de Dades
         </h1>
         <p className="py-2 text-lg text-[#007BC0]">
-          Les dades són l&pos;inici, el camí és teu
+          Les dades són l&apos;inici, el camí és teu
         </p>
       </section>
 

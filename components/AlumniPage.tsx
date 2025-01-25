@@ -97,7 +97,7 @@ export default function AlumniPage({ initialAlumniData }) {
       {/* Mensaje si no hay resultados */}
       {filteredAlumni.length === 0 && (
         <p className="text-center text-gray-500 mt-6">
-          No s'han trobat resultats per a &quot;{searchTerm}&quot;.
+          No s&apos;han trobat resultats per a &quot;{searchTerm}&quot;.
         </p>
       )}
     </main>
