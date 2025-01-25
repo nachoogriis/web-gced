@@ -1,21 +1,18 @@
-import AlumniCard from "@/components/alumni_card/AlumniCard";
-import AlumniReview from "@/components/AlumniReview";
-import BannerMainStats from "@/components/BannerMainStats";
-import CompanyCard from "@/components/CompanyCard";
+import AlumniCard from "@/components/alumni_card/AlumniCard"
+import AlumniReview from "@/components/AlumniReview"
+import BannerMainStats from "@/components/BannerMainStats"
+import CompanyCard from "@/components/CompanyCard"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/carousel";
-import {
-  dbAlumniGetAllCardsInfo,
-  dbAlumniGetAllReviews,
-} from "@/lib/db/alumni";
-import Link from "next/link";
+} from "@/components/ui/carousel"
+import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni"
+import Link from "next/link"
 
 export default async function Home() {
-  const alumniData = await dbAlumniGetAllCardsInfo();
-  const alumniReviews = await dbAlumniGetAllReviews();
+  const alumniData = await dbAlumniGetAllCardsInfo()
+  const alumniReviews = await dbAlumniGetAllReviews()
 
   // Duplica los datos para alumniData
   const replicatedAlumniData = Array(5)
@@ -23,7 +20,7 @@ export default async function Home() {
     .map((alumni, index) => ({
       ...alumni,
       id: `${alumni.id}-${index}`,
-    }));
+    }))
 
   // Duplica los datos para alumniReviews
   const replicatedReviews = Array(5)
@@ -31,16 +28,17 @@ export default async function Home() {
     .map((review, index) => ({
       ...review,
       id: `${review.id}-${index}`,
-    }));
+    }))
 
   return (
     <main>
+
       <section className="text-center py-10">
         <h1 className="text-5xl font-bold text-[#007BC0]">
           Grau en Ciència i Enginyeria de Dades
         </h1>
         <p className="py-2 text-lg text-[#007BC0]">
-          Les dades són l'inici, el camí és teu
+          Les dades són l&pos;inici, el camí és teu
         </p>
       </section>
 
@@ -48,31 +46,32 @@ export default async function Home() {
 
       <section className="text-center font-semibold py-10">
         <CompanyCard />
-        <Link href="/estadistiques" className="text-l text-[#585b5d] hover:underline"> Veure més estadístiques...
+        <Link
+          href="/estadistiques"
+          className="text-l text-[#585b5d] hover:underline"
+        >
+          {" "}
+          Veure més estadístiques...
         </Link>
       </section>
 
       <section className="flex flex-col gap-4 overflow-clip py-4 text-center ">
-        <h2 className="text-xl font-semibold">
-          Coneix als nostres estudiants
-        </h2>
+        <h2 className="text-xl font-semibold">Coneix als nostres estudiants</h2>
         <Carousel>
           <CarouselContent>
             {replicatedAlumniData.map((alumni, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
-                <AlumniCard
-                  firstName={alumni.firstName}
-                  lastName={alumni.lastName}
-                  generation={alumni.generation}
-                  internships={alumni.internships}
-                  tfgTitle={alumni.tfgTitle}
-                  masters={alumni.masters}
-                />
+                <AlumniCard alumni={alumni} />
               </CarouselItem>
             ))}
           </CarouselContent>
         </Carousel>
-        <Link href="/estudiants" className="text-l font-semibold text-[#585b5d] hover:underline"> Veure més perfils d'estudiants...
+        <Link
+          href="/estudiants"
+          className="text-l font-semibold text-[#585b5d] hover:underline"
+        >
+          {" "}
+          Veure més perfils d&apos;estudiants...
         </Link>
       </section>
 
@@ -100,5 +99,5 @@ export default async function Home() {
       </section>
       <section className="h-20"></section>
     </main>
-  );
+  )
 }

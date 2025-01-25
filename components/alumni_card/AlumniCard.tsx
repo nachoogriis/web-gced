@@ -1,26 +1,27 @@
-import GcedButton from "@/components/GcedButton";
-import AlumniTopPart from "@/components/alumni_card/AlumniTopPart";
-import InfoCardLine from "@/components/alumni_card/InfoCardLine";
-import MasterIcon from "@/components/icons/MasterIcon";
-import InternshipIcon from "@/components/icons/InternshipIcon"; 
-import TfgIcon from "@/components/icons/TfgIcon"; 
-import CurrentJobIcon from "@/components/icons/CurrentJobIcon";
-import { AlumniCardInfo } from "@/lib/db/alumni";
-import { InfoIcon } from "../icons/InfoIcon";
+import GcedButton from "@/components/GcedButton"
+import AlumniTopPart from "@/components/alumni_card/AlumniTopPart"
+import InfoCardLine from "@/components/alumni_card/InfoCardLine"
+import InternshipIcon from "@/components/icons/InternshipIcon"
+import MasterIcon from "@/components/icons/MasterIcon"
+import TfgIcon from "@/components/icons/TfgIcon"
+import { AlumniCardInfo } from "@/lib/db/alumni"
+import { InfoIcon } from "../icons/InfoIcon"
 
-export default function AlumniCard({
-  firstName,
-  lastName,
-  generation,
-  internships,
-  tfgTitle,
-  masters,
-}: AlumniCardInfo) {
+type Props = {
+  alumni: AlumniCardInfo
+}
+export default function AlumniCard({ alumni }: Props) {
+  const { firstName, lastName, generation, internships, tfgTitle, masters } =
+    alumni
   return (
     <div className="rounded-[15px] border border-[#B0DAED] bg-white overflow-hidden h-[380px]">
       <div className="flex flex-col items-start gap-[0.4em] p-4">
         {/* Parte superior con el nombre y generación */}
-        <AlumniTopPart name={firstName} surname={lastName} generation={generation} />
+        <AlumniTopPart
+          name={firstName}
+          surname={lastName}
+          generation={generation}
+        />
 
         {/* Información adicional */}
         <div className="flex flex-col justify-center items-start gap-2 mt-4">
@@ -42,9 +43,10 @@ export default function AlumniCard({
           <InfoCardLine
             icon={<MasterIcon />}
             title="Màster"
-            description={masters && masters.length > 0 ? masters[0].name : "No especificat"}
+            description={
+              masters && masters.length > 0 ? masters[0].name : "No especificat"
+            }
           />
-
         </div>
       </div>
 
@@ -56,5 +58,5 @@ export default function AlumniCard({
         </GcedButton>
       </div>
     </div>
-  );
+  )
 }
