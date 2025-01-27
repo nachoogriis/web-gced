@@ -2,6 +2,7 @@ import Image from "next/image"
 import { useState } from "react"
 
 export default function ImageGallery({}) {
+  
     const data = [
         { imagePath: "/projects-demo.png" },
         { imagePath: "/projects-demo-2.png" },
