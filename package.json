@@ -37,5 +37,9 @@
   },
   "prisma": {
     "seed": "bun run prisma/seed.ts"
+  },
+  "prettier": {
+    "semi": false,
+    "tabWidth": 2
   }
 }

@@ -1,23 +1,23 @@
-import GcedButton from "../../GcedButton";
-import { InfoIcon } from "../../icons/InfoIcon";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import FullProjectCard from "./FullProjectCard";
+import GcedButton from "../../GcedButton"
+import { InfoIcon } from "../../icons/InfoIcon"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
+import FullProjectCard from "./FullProjectCard"
 import {
   Dialog,
   DialogTrigger,
   DialogContent,
   DialogTitle,
-} from "../../ui/dialog";
+} from "../../ui/dialog"
 
 interface ProjectInfo {
-  imagePath: string;
-  topic: string;
+  imagePath: string
+  topic: string
   name: string
-  description: string;
+  description: string
 }
 
 export default function FullProjectDialog({
-  project
+  project,
 }: {
   project: ProjectInfo
 }) {
@@ -32,11 +32,11 @@ export default function FullProjectDialog({
         </GcedButton>
       </DialogTrigger>
       <DialogContent className="w-[90%] h-[90%] max-w-none">
-        <VisuallyHidden>
           <DialogTitle>Full Project Card</DialogTitle>
-        </VisuallyHidden>
-        <FullProjectCard project = {project}/>
+        {/* <VisuallyHidden>
+        </VisuallyHidden> */}
+        <FullProjectCard project={project} />
       </DialogContent>
     </Dialog>
-  );
+  )
 }
