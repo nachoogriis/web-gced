@@ -1,0 +1,153 @@
+import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { AlumniCardInfo } from "@/lib/db/alumni";
+import AlumniTopPart from "@/components/alumni_card/AlumniTopPart";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+
+type Props = {
+  alumni: AlumniCardInfo;
+};
+
+export default function FullAlumniCard({ alumni }: Props) {
+  return (
+    <>
+      <DialogHeader>
+        <VisuallyHidden>
+          <DialogTitle>Información Completa</DialogTitle>
+        </VisuallyHidden>
+
+        <div className="transform scale-[1.3] origin-left">
+          <AlumniTopPart
+            name={alumni.firstName}
+            surname={alumni.lastName}
+            generation={alumni.generation}
+          />
+        </div>
+      </DialogHeader>
+
+      <div className="gap-4 overflow-y-auto">
+        {/* Enlace de LinkedIn */}
+        {alumni.linkedInURL && (
+          <section>
+            <h2 className="text-m font-semibold border-b pt-4 mt-6 mb-2">
+              Perfil de LinkedIn
+            </h2>
+            <p className="text-sm pb-4">
+            <span className="font-bold">Enllaç:</span> <a
+                href={alumni.linkedInURL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                {alumni.linkedInURL}
+              </a>
+            </p>
+          </section>
+        )}
+        
+        {/* Prácticas en empresa */}
+        {alumni.internships.length > 0 && (
+          <section>
+            <h2 className="text-m font-semibold border-b pb-2 mt-6 mb-2">
+              Prácticas en empresa
+            </h2>
+            {alumni.internships.map((internship, index) => (
+              <div key={index} className="mb-4">
+                <p className="text-sm">
+                  <span className="font-bold">Empresa:</span> {internship.organization}
+                </p>
+                <p className="text-sm">
+                  <span className="font-bold">País:</span> {internship.country}
+                </p>
+                <p className="text-sm">
+                  <span className="font-bold">Puesto:</span> {internship.position}
+                </p>
+                <p className="text-sm">
+                  <span className="font-bold">Descripción:</span> {internship.description}
+                </p>
+              </div>
+            ))}
+          </section>
+        )}
+
+        {/* Trabajo de final de grado */}
+        <section>
+          <h2 className="text-m font-semibold border-b pb-2 mt-6 mb-2">
+            Trabajo de final de grado
+          </h2>
+          <div className="mb-4">
+            <p className="text-sm">
+              <span className="font-bold">Título:</span> {alumni.tfgTitle || "No especificado"}
+            </p>
+            <p className="text-sm">
+              <span className="font-bold">Descripción:</span> {alumni.tfgDescription || "No especificado"}
+            </p>
+            <p className="text-sm">
+              <span className="font-bold">Universidad:</span> {alumni.tfgUniversity || "No especificado"}
+            </p>
+            <p className="text-sm">
+              <span className="font-bold">País:</span> {alumni.tfgCountry || "No especificado"}
+            </p>
+          </div>
+        </section>
+
+        {/* Máster */}
+        {alumni.masters.length > 0 && (
+          <section>
+            <h2 className="text-m font-semibold border-b pb-2 mt-6 mb-2">
+              Máster
+            </h2>
+            {alumni.masters.map((master, index) => (
+              <div key={index} className="mb-4">
+                <p className="text-sm">
+                  <span className="font-bold">Título del máster:</span> {master.name}
+                </p>
+                <p className="text-sm">
+                  <span className="font-bold">País:</span> {master.country}
+                </p>
+                <p className="text-sm">
+                  <span className="font-bold">Universidades:</span> {master.universities}
+                </p>
+                <p className="text-sm">
+                  <span className="font-bold">Descripción:</span> {master.description}
+                </p>
+              </div>
+            ))}
+          </section>
+        )}
+
+        {/* Trabajo actual */}
+        {alumni.currentJob && (
+          <section>
+            <h2 className="text-m font-semibold border-b pb-2 mt-6 mb-2">
+              Feina Actual
+            </h2>
+            <div className="mb-4">
+              <p className="text-sm">
+                <span className="font-bold">Puesto:</span> {alumni.currentJob}
+              </p>
+            </div>
+          </section>
+        )}
+
+        {/* Proyectos personales */}
+        {alumni.projects.length > 0 && (
+          <section>
+            <h2 className="text-m font-semibold border-b pb-2 mt-6 mb-2">
+              Projectes Personals
+            </h2>
+            {alumni.projects.map((project, index) => (
+              <div key={index} className="mb-4">
+                <p className="text-sm">
+                  <span className="font-bold">Nombre:</span> {project.name}
+                </p>
+                <p className="text-sm">
+                  <span className="font-bold">Descripción:</span> {project.description}
+                </p>
+              </div>
+            ))}
+          </section>
+        )}
+      </div>
+    </>
+  );
+}

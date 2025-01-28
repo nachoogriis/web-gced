@@ -6,14 +6,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { AlumniCardInfo } from "@/lib/db/alumni"
-import GcedButton from "../GcedButton"
 import { InfoIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
+import FullAlumniCard from "./FullAlumniCard"
 
 type Props = {
   alumni: AlumniCardInfo
 }
-export default function FullAlumniCard({ alumni }: Props) {
+export default function FullAlumniDialog({ alumni }: Props) {
   return (
     <Dialog>
       <DialogTrigger>
@@ -33,12 +33,7 @@ export default function FullAlumniCard({ alumni }: Props) {
         </div>
       </DialogTrigger>
       <DialogContent className="w-[40%] h-[90%] max-w-none">
-        <DialogHeader>
-          <DialogTitle>
-            {alumni.firstName} {alumni.lastName}
-          </DialogTitle>
-        </DialogHeader>
-        {alumni.tfgTitle}
+        <FullAlumniCard alumni={alumni} />
       </DialogContent>
     </Dialog>
   )

@@ -6,7 +6,7 @@ import InternshipIcon from "@/components/icons/InternshipIcon"
 import MasterIcon from "@/components/icons/MasterIcon"
 import TfgIcon from "@/components/icons/TfgIcon"
 import { AlumniCardInfo } from "@/lib/db/alumni"
-import FullAlumniCard from "./FullAlumniCard"
+import FullAlumniCard from "./full_card/FullAlumniDialog"
 
 type Props = {
   alumni: AlumniCardInfo
