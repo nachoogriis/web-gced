@@ -63,9 +63,6 @@ export async function dbAlumniGetAllCardsInfo() {
   }));
 }
 
-
-
-
 export async function dbAlumniGetAllReviews() {
   const alumniReviews = await db.alumni.findMany({
     select: {

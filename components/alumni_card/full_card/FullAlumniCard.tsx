@@ -12,7 +12,7 @@ export default function FullAlumniCard({ alumni }: Props) {
     <>
       <DialogHeader>
         <VisuallyHidden>
-          <DialogTitle>Información Completa</DialogTitle>
+          <DialogTitle>Informació Completa</DialogTitle>
         </VisuallyHidden>
 
         <div className="transform scale-[1.3] origin-left">
@@ -48,7 +48,7 @@ export default function FullAlumniCard({ alumni }: Props) {
         {alumni.internships.length > 0 && (
           <section>
             <h2 className="text-m font-semibold border-b pb-2 mt-6 mb-2">
-              Prácticas en empresa
+              Pràctiques a empresa
             </h2>
             {alumni.internships.map((internship, index) => (
               <div key={index} className="mb-4">
@@ -59,10 +59,10 @@ export default function FullAlumniCard({ alumni }: Props) {
                   <span className="font-bold">País:</span> {internship.country}
                 </p>
                 <p className="text-sm">
-                  <span className="font-bold">Puesto:</span> {internship.position}
+                  <span className="font-bold">Tema:</span> {internship.position}
                 </p>
                 <p className="text-sm">
-                  <span className="font-bold">Descripción:</span> {internship.description}
+                  <span className="font-bold">Descripció:</span> {internship.description}
                 </p>
               </div>
             ))}
@@ -72,17 +72,17 @@ export default function FullAlumniCard({ alumni }: Props) {
         {/* Trabajo de final de grado */}
         <section>
           <h2 className="text-m font-semibold border-b pb-2 mt-6 mb-2">
-            Trabajo de final de grado
+            Treball de final de grau
           </h2>
           <div className="mb-4">
             <p className="text-sm">
-              <span className="font-bold">Título:</span> {alumni.tfgTitle || "No especificado"}
+              <span className="font-bold">Títol:</span> {alumni.tfgTitle || "No especificado"}
             </p>
             <p className="text-sm">
-              <span className="font-bold">Descripción:</span> {alumni.tfgDescription || "No especificado"}
+              <span className="font-bold">Descripció:</span> {alumni.tfgDescription || "No especificado"}
             </p>
             <p className="text-sm">
-              <span className="font-bold">Universidad:</span> {alumni.tfgUniversity || "No especificado"}
+              <span className="font-bold">Universitat:</span> {alumni.tfgUniversity || "No especificado"}
             </p>
             <p className="text-sm">
               <span className="font-bold">País:</span> {alumni.tfgCountry || "No especificado"}
@@ -94,21 +94,21 @@ export default function FullAlumniCard({ alumni }: Props) {
         {alumni.masters.length > 0 && (
           <section>
             <h2 className="text-m font-semibold border-b pb-2 mt-6 mb-2">
-              Máster
+              Màster
             </h2>
             {alumni.masters.map((master, index) => (
               <div key={index} className="mb-4">
                 <p className="text-sm">
-                  <span className="font-bold">Título del máster:</span> {master.name}
+                  <span className="font-bold">Títol del màster:</span> {master.name}
                 </p>
                 <p className="text-sm">
                   <span className="font-bold">País:</span> {master.country}
                 </p>
                 <p className="text-sm">
-                  <span className="font-bold">Universidades:</span> {master.universities}
+                  <span className="font-bold">Universitats:</span> {master.universities}
                 </p>
                 <p className="text-sm">
-                  <span className="font-bold">Descripción:</span> {master.description}
+                  <span className="font-bold">Descripció:</span> {master.description}
                 </p>
               </div>
             ))}
@@ -123,7 +123,7 @@ export default function FullAlumniCard({ alumni }: Props) {
             </h2>
             <div className="mb-4">
               <p className="text-sm">
-                <span className="font-bold">Puesto:</span> {alumni.currentJob}
+                <span className="font-bold">Lloc de treball:</span> {alumni.currentJob}
               </p>
             </div>
           </section>
@@ -138,10 +138,10 @@ export default function FullAlumniCard({ alumni }: Props) {
             {alumni.projects.map((project, index) => (
               <div key={index} className="mb-4">
                 <p className="text-sm">
-                  <span className="font-bold">Nombre:</span> {project.name}
+                  <span className="font-bold">Nom:</span> {project.name}
                 </p>
                 <p className="text-sm">
-                  <span className="font-bold">Descripción:</span> {project.description}
+                  <span className="font-bold">Descripció:</span> {project.description}
                 </p>
               </div>
             ))}
