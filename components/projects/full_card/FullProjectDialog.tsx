@@ -32,9 +32,9 @@ export default function FullProjectDialog({
         </GcedButton>
       </DialogTrigger>
       <DialogContent className="w-[90%] h-[90%] max-w-none">
+        <VisuallyHidden>
           <DialogTitle>Full Project Card</DialogTitle>
-        {/* <VisuallyHidden>
-        </VisuallyHidden> */}
+        </VisuallyHidden>
         <FullProjectCard project={project} />
       </DialogContent>
     </Dialog>
