@@ -2,6 +2,7 @@ import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { AlumniCardInfo } from "@/lib/db/alumni";
 import AlumniTopPart from "@/components/alumni_card/AlumniTopPart";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import Image from "next/image"
 
 type Props = {
   alumni: AlumniCardInfo;
@@ -15,35 +16,25 @@ export default function FullAlumniCard({ alumni }: Props) {
           <DialogTitle>Informació Completa</DialogTitle>
         </VisuallyHidden>
 
-        <div className="transform scale-[1.3] origin-left">
+        <div className="flex flex-row items-center justify-center transform scale-[1.3] pr-[20px]">
           <AlumniTopPart
             name={alumni.firstName}
             surname={alumni.lastName}
             generation={alumni.generation}
           />
+
+          {alumni.linkedInURL !== "No especificat" && (
+            <button
+            className="pt-[20px]"
+            onClick={() => window.open(alumni.linkedInURL, "_blank")}
+          >
+            <Image src="linkedin-icon.svg" alt="Open Link" width={40} height={40} />
+          </button>
+          )}
         </div>
       </DialogHeader>
 
       <div className="gap-4 overflow-y-auto">
-        {/* Enlace de LinkedIn */}
-        {alumni.linkedInURL && (
-          <section>
-            <h2 className="text-m font-semibold border-b pt-4 mt-6 mb-2">
-              Perfil de LinkedIn
-            </h2>
-            <p className="text-sm pb-4">
-            <span className="font-bold">Enllaç:</span> <a
-                href={alumni.linkedInURL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 underline"
-              >
-                {alumni.linkedInURL}
-              </a>
-            </p>
-          </section>
-        )}
-        
         {/* Prácticas en empresa */}
         {alumni.internships.length > 0 && (
           <section>
