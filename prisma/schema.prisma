@@ -20,6 +20,7 @@ model Alumni {
     tfgTitle       String
     tfgDescription String
     tfgUniversity  String             @default("Universitat Politècnica de Catalunya")
+    tfgCountry     String             @default("Spain")
     currentJob     String?
     internships    InternshipAlumni[]
     masters        MasterAlumni[]
