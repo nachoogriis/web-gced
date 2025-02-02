@@ -76,16 +76,16 @@ export default function FullAlumniCard({ alumni }: Props) {
           </h2>
           <div className="mb-4">
             <p className="text-sm">
-              <span className="font-bold">Títol:</span> {alumni.tfgTitle || "No especificado"}
+              <span className="font-bold">Títol:</span> {alumni.tfgTitle || "No especificat"}
             </p>
             <p className="text-sm">
-              <span className="font-bold">Descripció:</span> {alumni.tfgDescription || "No especificado"}
+              <span className="font-bold">Descripció:</span> {alumni.tfgDescription || "No especificat"}
             </p>
             <p className="text-sm">
-              <span className="font-bold">Universitat:</span> {alumni.tfgUniversity || "No especificado"}
+              <span className="font-bold">Universitat:</span> {alumni.tfgUniversity || "No especificat"}
             </p>
             <p className="text-sm">
-              <span className="font-bold">País:</span> {alumni.tfgCountry || "No especificado"}
+              <span className="font-bold">País:</span> {alumni.tfgCountry || "No especificat"}
             </p>
           </div>
         </section>
