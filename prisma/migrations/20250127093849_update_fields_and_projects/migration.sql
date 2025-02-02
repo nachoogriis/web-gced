@@ -5,9 +5,11 @@
   - You are about to drop the column `alumniId` on the `Master` table. All the data in the column will be lost.
   - You are about to drop the column `organizationId` on the `Master` table. All the data in the column will be lost.
   - You are about to drop the column `description` on the `Organization` table. All the data in the column will be lost.
-  - Added the required column `currentJob` to the `Alumni` table without a default value. This is not possible if the table is not empty.
 
 */
+-- AlterTable
+ALTER TABLE "Alumni" ADD COLUMN "currentJob" TEXT;
+
 -- CreateTable
 CREATE TABLE "InternshipAlumni" (
     "alumniId" INTEGER NOT NULL,
@@ -60,20 +62,6 @@ CREATE TABLE "UniversityProject" (
 -- RedefineTables
 PRAGMA defer_foreign_keys=ON;
 PRAGMA foreign_keys=OFF;
-CREATE TABLE "new_Alumni" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "firstName" TEXT NOT NULL,
-    "lastName" TEXT NOT NULL,
-    "linkedInURL" TEXT,
-    "generation" INTEGER NOT NULL,
-    "review" TEXT,
-    "tfgTitle" TEXT NOT NULL,
-    "tfgDescription" TEXT NOT NULL,
-    "currentJob" TEXT NOT NULL
-);
-INSERT INTO "new_Alumni" ("firstName", "generation", "id", "lastName", "linkedInURL", "review", "tfgDescription", "tfgTitle") SELECT "firstName", "generation", "id", "lastName", "linkedInURL", "review", "tfgDescription", "tfgTitle" FROM "Alumni";
-DROP TABLE "Alumni";
-ALTER TABLE "new_Alumni" RENAME TO "Alumni";
 CREATE TABLE "new_Internship" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "organizationId" INTEGER NOT NULL,

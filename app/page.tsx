@@ -33,7 +33,6 @@ export default async function Home() {
 
   return (
     <main>
-      <ActionButton />
       <section className="text-center py-10">
         <h1 className="text-5xl font-bold text-[#007BC0]">
           Grau en Ciència i Enginyeria de Dades
