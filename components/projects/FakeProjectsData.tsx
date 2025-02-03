@@ -50,19 +50,19 @@ const fakeProjectsData: ProjectInfo[] = [
     },
     {
         imagePath: "/projects-demo.png",
-        topic: "PE",
+        topic: "Others",
         description: "Creating engaging and interactive video games.",
         name: "Video Game Development"
     },
     {
         imagePath: "/projects-demo.png",
-        topic: "PE",
+        topic: "Others",
         description: "Developing augmented and virtual reality experiences.",
         name: "AR/VR Development"
     },
     {
         imagePath: "/projects-demo.png",
-        topic: "PE",
+        topic: "Others",
         description: "Building robots for various applications and industries.",
         name: "Robotics"
     }
