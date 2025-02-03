@@ -1,30 +1,72 @@
-import { db } from "./db";
+import { db } from "./db"
 
 export async function dbAlumniGetAllCardsInfo() {
-  // TODO: Sort by date
   const alumni = await db.alumni.findMany({
     include: {
       internships: {
-        include: { internship: { select: { position: true, organization: { select: { name: true } } } } },
+        include: {
+          internship: {
+            include: {
+              organization: true, // Detalles de la organización
+            },
+          },
+        },
       },
       masters: {
-        include: { master: { select: { name: true } } },
+        include: {
+          master: {
+            include: {
+              organizations: {
+                include: {
+                  organization: true, // Detalles de las organizaciones
+                },
+              },
+            },
+          },
+        },
+      },
+      projects: {
+        include: {
+          project: true, // Detalles de los proyectos personales
+        },
       },
     },
-  });
+  })
 
-  return alumni.map((alumni) => ({
-    id: alumni.id,
-    firstName: alumni.firstName,
-    lastName: alumni.lastName,
-    generation: alumni.generation,
-    tfgTitle: alumni.tfgTitle,
-    internships: alumni.internships.map((internship) => ({
-      position: internship.internship.position,
-      organization: internship.internship.organization.name,
+  return alumni.map((alumnus) => ({
+    id: alumnus.id,
+    firstName: alumnus.firstName,
+    lastName: alumnus.lastName,
+    generation: alumnus.generation,
+    linkedInURL: alumnus.linkedInURL || "No especificat",
+    tfgTitle: alumnus.tfgTitle || "No especificat",
+    tfgDescription: alumnus.tfgDescription || "No especificat",
+    tfgUniversity: alumnus.tfgUniversity || "No especificat",
+    tfgCountry: alumnus.tfgCountry || "No especificat",
+    currentJob: alumnus.currentJob || "No especificat",
+    internships: alumnus.internships.map((internshipAlumnus) => ({
+      position: internshipAlumnus.internship.position || "No especificat",
+      description: internshipAlumnus.internship.description || "No especificat",
+      organization:
+        internshipAlumnus.internship.organization.name || "No especificat",
+      country:
+        internshipAlumnus.internship.organization.country || "No especificat",
     })),
-    masters: alumni.masters.map((master) => ({ name: master.master.name })),
-  }));
+    masters: alumnus.masters.map((masterAlumnus) => ({
+      name: masterAlumnus.master.name || "No especificat",
+      description: masterAlumnus.master.description || "No especificat",
+      universities: masterAlumnus.master.organizations
+        .map((org) => org.organization.name || "No especificat")
+        .join(", "),
+      country:
+        masterAlumnus.master.organizations[0]?.organization.country ||
+        "No especificat",
+    })),
+    projects: alumnus.projects.map((projectAlumnus) => ({
+      name: projectAlumnus.project.name || "No especificat",
+      description: projectAlumnus.project.description || "No especificat",
+    })),
+  }))
 }
 
 export async function dbAlumniGetAllReviews() {
@@ -38,10 +80,10 @@ export async function dbAlumniGetAllReviews() {
     },
     where: {
       review: {
-        not: null, 
+        not: null,
       },
     },
-  });
+  })
 
   return alumniReviews.map((alumni) => ({
     id: alumni.id,
@@ -49,13 +91,13 @@ export async function dbAlumniGetAllReviews() {
     lastName: alumni.lastName,
     generation: alumni.generation,
     review: alumni.review,
-  }));
+  }))
 }
 
 export type AlumniCardInfo = Awaited<
   ReturnType<typeof dbAlumniGetAllCardsInfo>
->[number];
+>[number]
 
 export type AlumniReviewInfo = Awaited<
   ReturnType<typeof dbAlumniGetAllReviews>
->[number];
+>[number]

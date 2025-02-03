@@ -6,13 +6,14 @@ import InternshipIcon from "@/components/icons/InternshipIcon"
 import MasterIcon from "@/components/icons/MasterIcon"
 import TfgIcon from "@/components/icons/TfgIcon"
 import { AlumniCardInfo } from "@/lib/db/alumni"
-import FullAlumniCard from "./FullAlumniCard"
+import FullAlumniCard from "./full_card/FullAlumniDialog"
+import CurrentJobIcon from "../icons/CurrentJobIcon"
 
 type Props = {
   alumni: AlumniCardInfo
 }
 export default function AlumniCard({ alumni }: Props) {
-  const { firstName, lastName, generation, internships, tfgTitle, masters } =
+  const { firstName, lastName, generation, internships, tfgTitle, masters, currentJob } =
     alumni
   return (
     <div className="rounded-[15px] border border-[#B0DAED] bg-white overflow-hidden h-[380px]">
@@ -25,7 +26,7 @@ export default function AlumniCard({ alumni }: Props) {
         />
 
         {/* Información adicional */}
-        <div className="flex flex-col justify-center items-start gap-2 mt-4">
+        <div className="flex flex-col justify-center items-start mt-4">
           {/* Línea de prácticas */}
           <InfoCardLine
             icon={<InternshipIcon />}
@@ -46,6 +47,15 @@ export default function AlumniCard({ alumni }: Props) {
             title="Màster"
             description={
               masters && masters.length > 0 ? masters[0].name : "No especificat"
+            }
+          />
+
+          {/* Línea de la feina actual */}
+          <InfoCardLine 
+            icon={<CurrentJobIcon />}
+            title="Feina Actual"
+            description={
+              currentJob ? currentJob : "No especificat"
             }
           />
         </div>

@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
         alt={project.topic}
         className="h-[200px] w-auto rounded-tl-[10px] rounded-bl-[10px]"
       />
-      <div className="flex flex-col items-center justify-center gap-5 mr-4 debug">
+      <div className="flex flex-col items-center justify-center gap-5 mr-4">
         <div className="text-center">
           <h2 className="text-xl font-bold">{project.name}</h2>
           <p className="text-gray-700">{project.description}</p>
