@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import ProjectTitle from "./ProjectTitle";
-import ImageGallery from "./ImageGallery";
+import ProjectTitle from "./ProjectTitle"
+import ImageGallery from "./ImageGallery"
 
 interface ProjectInfo {
-  id: number,
-  name: string,
-  summary: string,
-  description: string,
-  topic: string,
+  id: number
+  name: string
+  summary: string
+  description: string
+  topic: string
   tags: string
 }
 
@@ -20,12 +20,10 @@ export default function FullProjectCard({ project }: { project: ProjectInfo }) {
         <div className="flex flex-row gap-10 items-center justify-center">
           <ImageGallery />
           <div className="w-[45%] flex flex-col items-center justify-center gap-5">
-            <p className="text-lg text-center">
-              {project.description}
-            </p>
+            <p className="text-lg text-center">{project.description}</p>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }

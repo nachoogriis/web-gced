@@ -2,17 +2,17 @@ import Image from "next/image"
 import FullProjectDialog from "./full_card/FullProjectDialog"
 
 interface ProjectInfo {
-  id: number,
-  name: string,
-  summary: string,
-  description: string,
-  topic: string,
+  id: number
+  name: string
+  summary: string
+  description: string
+  topic: string
   tags: string
 }
 
 export default function ProjectCard({ project }: { project: ProjectInfo }) {
   const image_path = "/projects-demo.png"
-  
+
   return (
     <div className="relative flex flex-row items-center w-[100%] bg-white group rounded-[10px] border border-[#B0DAED] gap-4">
       <Image
