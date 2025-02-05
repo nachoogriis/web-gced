@@ -10,10 +10,12 @@ import {
 } from "../../ui/dialog"
 
 interface ProjectInfo {
-  imagePath: string
-  topic: string
-  name: string
-  description: string
+  id: number,
+  name: string,
+  summary: string,
+  description: string,
+  topic: string,
+  tags: string
 }
 
 export default function FullProjectDialog({
