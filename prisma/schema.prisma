@@ -104,4 +104,5 @@ model UniversityProject {
     description String
     topic       String
     tags        String
+    images      String
 }

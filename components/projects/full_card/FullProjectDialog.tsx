@@ -16,6 +16,7 @@ interface ProjectInfo {
   description: string,
   topic: string,
   tags: string
+  images: string,
 }
 
 export default function FullProjectDialog({

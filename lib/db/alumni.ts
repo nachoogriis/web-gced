@@ -104,6 +104,7 @@ export async function dbUniversityProjectsGetAll() {
     description: project.description,
     topic: project.topic,
     tags: project.tags,
+    images: project.images,
   }))
 }
 
