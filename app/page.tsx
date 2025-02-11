@@ -1,12 +1,11 @@
-import ActionButton from "@/components/ActionButton"
 import AlumniCard from "@/components/alumni_card/AlumniCard"
 import AlumniReview from "@/components/AlumniReview"
 import BannerMainStats from "@/components/BannerMainStats"
 import CompanyCard from "@/components/CompanyCard"
 import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
+	Carousel,
+	CarouselContent,
+	CarouselItem,
 } from "@/components/ui/carousel"
 import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni"
 import Link from "next/link"
