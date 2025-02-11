@@ -37,7 +37,7 @@ export default async function Home() {
           Grau en Ciència i Enginyeria de Dades
         </h1>
         <p className="py-2 text-lg text-[#007BC0]">
-          Les dades són l&apos;inici, el camí és teu
+          Aquest no és només un grau, és el teu passaport cap al futur
         </p>
       </section>
 
@@ -52,6 +52,22 @@ export default async function Home() {
           {" "}
           Veure més estadístiques...
         </Link>
+      </section>
+
+      <section className="flex flex-col items-center py-10">
+        <h2 className="text-xl font-semibold mb-4">
+          Coneix més sobre el nostre programa
+        </h2>
+        <div className="w-full max-w-3xl aspect-video">
+          <iframe
+            className="w-full h-full"
+            src="https://www.youtube.com/embed/54Yeq8OoKS8"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
       </section>
 
       <section className="flex flex-col gap-4 overflow-clip py-4 text-center ">
