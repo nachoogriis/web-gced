@@ -5,7 +5,7 @@ export default function ProjectsTab({}) {
   return (
     <Tabs defaultValue="APs" className="w-[95%]">
       <TabsList className="w-full grid grid-cols-3 bg-slate-100 text-black">
-        <TabsTrigger value="APs" className="font-bold">
+        <TabsTrigger value="APs" className="font-bold line-clamp-1 text-ellipsis">
           Algorismia i Programació
         </TabsTrigger>
         <TabsTrigger value="DL" className="font-bold">
