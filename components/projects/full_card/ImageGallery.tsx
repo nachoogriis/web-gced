@@ -1,23 +1,19 @@
 import Image from "next/image"
 import { useState } from "react"
 
-export default function ImageGallery({}) {
+export default function ImageGallery({projectImages}: {projectImages: string}) {
   
-    const data = [
-        { imagePath: "/projects-demo.png" },
-        { imagePath: "/projects-demo-2.png" },
-        { imagePath: "/projects-demo-3.png" },
-        { imagePath: "/projects-demo-4.png" },
-    ]
+    const imagePaths = projectImages.match(/\[([^\]]+)\]/g)?.map(str => str.slice(1, -1)) || [];
+    const data = imagePaths.map(s => ({ imagePath: `/projects/${s}` }));
 
-    const [active, setActive] = useState("/projects-demo.png")
+    const [active, setActive] = useState(data[0].imagePath)
 
     return (
         <div className="grid gap-6 w-[45%]">
             <div className="flex items-center justify-center">
                 <Image
-                    width={1302}
-                    height={732}
+                    width={651}
+                    height={465}
                     className="h-[350px] w-auto rounded-lg object-cover object-center"
                     src={active}
                     alt=""
@@ -27,11 +23,11 @@ export default function ImageGallery({}) {
                 {data.map(({ imagePath }, index) => (
                     <div key={index}>
                         <Image
-                            width={1302}
-                            height={732}
+                            width={651}
+                            height={465}
                             onClick={() => setActive(imagePath)}
                             src={imagePath}
-                            className={`h-20 cursor-pointer rounded-lg object-cover object-center ${
+                            className={`h-[100px] w-[140px] cursor-pointer rounded-lg object-cover object-center ${
                                 active === imagePath ? "border-2 border-black" : ""
                             }`}
                             alt="gallery-image"

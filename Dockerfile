@@ -17,6 +17,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # Overwrite .env.production.local with the correct one
 COPY .env .env
+COPY .env.production.local .env.production.local
 RUN npm run build
 
 # Run

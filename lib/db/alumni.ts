@@ -94,6 +94,20 @@ export async function dbAlumniGetAllReviews() {
   }))
 }
 
+export async function dbUniversityProjectsGetAll() {
+  const uniProjects = await db.universityProject.findMany()
+
+  return uniProjects.map((project) => ({
+    id: project.id,
+    name: project.name,
+    summary: project.summary,
+    description: project.description,
+    topic: project.topic,
+    tags: project.tags,
+    images: project.images,
+  }))
+}
+
 export type AlumniCardInfo = Awaited<
   ReturnType<typeof dbAlumniGetAllCardsInfo>
 >[number]
