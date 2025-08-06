@@ -1,19 +1,19 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import LogoUPC from "./LogoUPC.svg";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Image from "next/image"
+import LogoUPC from "./LogoUPC.svg"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 export default function Header() {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   const _Link = ({
     href,
     children,
   }: {
-    href: string;
-    children: React.ReactNode;
+    href: string
+    children: React.ReactNode
   }) => (
     <Link
       href={href}
@@ -23,7 +23,7 @@ export default function Header() {
     >
       {children}
     </Link>
-  );
+  )
 
   return (
     <header className="flex flex-row gap-2 items-end px-[1em] py-[0.8em] shadow overflow-clip">
@@ -38,5 +38,5 @@ export default function Header() {
         <_Link href="/projectes">PROJECTES</_Link>
       </div>
     </header>
-  );
+  )
 }

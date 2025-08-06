@@ -1,7 +1,7 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
 export default {
-  darkMode: ["class"],
+  /*darkMode: ["class"],*/
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -57,20 +57,20 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       animation: {
-        scroll: "scroll 60s linear infinite", 
-		scroll1: "scroll1 60s linear infinite"
+        scroll: "scroll 60s linear infinite",
+        scroll1: "scroll1 60s linear infinite",
       },
       keyframes: {
         scroll: {
-			"0%": { transform: "translateX(0)" },
-			"100%": { transform: "translateX(-50%)" }, // Mueve hacia la izquierda
-		  },
-		scroll1: {
-			"0%": { transform: "translateX(-50%)" },
-			"100%": { transform: "translateX(0)" }, // Mueve hacia la derecha
-		  },
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" }, // Mueve hacia la izquierda
+        },
+        scroll1: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" }, // Mueve hacia la derecha
+        },
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+} satisfies Config
