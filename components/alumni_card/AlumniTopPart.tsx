@@ -25,7 +25,7 @@ export default function AlumniTopPart({
                 {name} {surname}
             </p>
             <div className="flex p-[5px] justify-center items-center gap-[10px] rounded-[90px] bg-[#B0DAED]">
-                <p className="text-black font-poppins text-[12px] font-medium leading-normal">
+                <p className="px-2 text-black font-poppins text-[12px] font-medium leading-normal">
                     Generació {generation}
                 </p>
             </div>
