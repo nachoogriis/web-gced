@@ -4,7 +4,7 @@ import ProjectsList from "./ProjectsList"
 export default function ProjectsTab({}) {
   return (
     <Tabs defaultValue="APs" className="w-[95%]">
-      <TabsList className="w-full min-w-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-slate-100 text-black">
+      <TabsList className="w-full min-w-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-gray-100 text-black">
         <TabsTrigger value="APs" className="font-bold line-clamp-1 text-ellipsis">
           Algorismia i Programació
         </TabsTrigger>

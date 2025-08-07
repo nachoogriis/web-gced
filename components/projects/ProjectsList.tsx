@@ -8,7 +8,7 @@ export default async function ProjectsList({ topic }: { topic: string }) {
   )
 
   return filteredProjects.length > 0 ? (
-    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 bg-slate-100 rounded py-6 px-6 justify-center items-center">
+    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 bg-gray-100 rounded py-6 px-6 justify-center items-center">
       {filteredProjects.map((project, index) => (
         <ProjectCard key={index} project={project} />
       ))}
