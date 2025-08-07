@@ -56,7 +56,7 @@ export default function Header() {
         className={cn(
           "lg:flex lg:flex-1 lg:flex-row justify-end lg:static lg:p-0 lg:gap-10 text-[#007BC0] font-bold lg:shadow-none",
           "min-w-80 flex-col items-end absolute top-20 right-0 bg-white p-0 shadow",
-          visible ? "flex" : "hidden",
+          visible ? "flex z-50" : "hidden",
         )}
       >
         <MenuItem_ href="/"> PÀGINA PRINCIPAL</MenuItem_>
