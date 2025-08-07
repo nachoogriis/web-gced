@@ -40,7 +40,7 @@
     "typescript": "^5.9.2"
   },
   "prisma": {
-    "seed": "bun run prisma/seed.ts"
+    "seed": "bun run prisma/updated_seed.ts"
   },
   "prettier": {
     "semi": false,
