@@ -4,7 +4,7 @@ interface AlumniReviewProps {
   firstName: string;
   lastName: string;
   generation: number;
-  review: string;
+  review: string | null;
 }
 
 export default function AlumniReview({
