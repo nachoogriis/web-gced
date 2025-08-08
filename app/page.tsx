@@ -95,6 +95,7 @@ export default async function Home() {
                       lastName={review.lastName}
                       generation={review.generation}
                       review={review.review}
+                      id={review.id}
                     />
                   </CarouselItem>
                 ))}

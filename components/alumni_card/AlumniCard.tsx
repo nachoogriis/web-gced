@@ -13,7 +13,7 @@ type Props = {
   alumni: AlumniCardInfo
 }
 export default function AlumniCard({ alumni }: Props) {
-  const { firstName, lastName, generation, internships, tfgTitle, masters, currentJob } =
+  const { id, firstName, lastName, generation, internships, tfgTitle, masters, currentJob } =
     alumni
   return (
     <div className="rounded-[15px] border border-[#B0DAED] bg-white overflow-hidden h-[350px]">
@@ -23,6 +23,7 @@ export default function AlumniCard({ alumni }: Props) {
           name={firstName}
           surname={lastName}
           generation={generation}
+          id={id}
         />
 
         {/* Información adicional */}
