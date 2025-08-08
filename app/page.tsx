@@ -6,6 +6,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel"
 import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni"
 import Link from "next/link"
@@ -72,23 +74,27 @@ export default async function Home() {
 
       <section className="flex flex-col gap-4 overflow-clip py-4 text-center mx-3">
         <h2 className="text-xl font-semibold">Coneix als nostres estudiants</h2>
-        <Carousel>
-          <CarouselContent>
-            {replicatedAlumniData.map((alumni, index) => (
-              <CarouselItem
-                key={index}
-                className="sm:basis-1 md:basis-1/2 lg:basis-1/3"
-              >
-                <AlumniCard alumni={alumni} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+        <div className="relative">
+          <Carousel>
+            <CarouselPrevious className="absolute left-2 top-1/2 z-10 -translate-y-1/2" />
+            <CarouselContent>
+              {replicatedAlumniData.map((alumni, index) => (
+                <CarouselItem
+                  key={index}
+                  className="sm:basis-1 md:basis-1/2 lg:basis-1/3"
+                >
+                  <AlumniCard alumni={alumni} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselNext className="absolute right-2 top-1/2 z-10 -translate-y-1/2" />
+          </Carousel>
+        </div>
+
         <Link
           href="/estudiants"
           className="text-l font-semibold text-[#585b5d] hover:underline"
         >
-          {" "}
           Veure més perfils d&apos;estudiants...
         </Link>
       </section>
