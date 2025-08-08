@@ -45,7 +45,7 @@ export default async function Home() {
 
       <BannerMainStats />
 
-      <section className="text-center font-semibold py-10">
+      <section className="text-sm md:text-base lg:text-lg text-center font-semibold py-10">
         <CompanyCard />
         <Link
           href="/estadistiques"
@@ -56,8 +56,8 @@ export default async function Home() {
         </Link>
       </section>
 
-      <section className="flex flex-col items-center pb-10">
-        <h2 className="text-xl font-semibold mb-4">
+      <section className="text-sm md:text-base lg:text-lg flex flex-col items-center pb-10">
+        <h2 className="text-base md:text-lg lg:text-xl font-semibold mb-4">
           Coneix més sobre el nostre programa
         </h2>
         <div className="w-full max-w-3xl aspect-video">
@@ -72,8 +72,9 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-4 overflow-clip py-4 text-center mx-3">
-        <h2 className="text-xl font-semibold">Coneix als nostres estudiants</h2>
+      <section className="text-sm md:text-base lg:text-lg flex flex-col gap-4 overflow-clip py-4 text-center mx-3">
+        <h2 className="text-base md:text-lg lg:text-xl font-semibold">Coneix als nostres estudiants</h2>
+
         <div className="relative">
           <Carousel>
             <CarouselPrevious className="absolute left-2 top-1/2 z-10 -translate-y-1/2" />
@@ -99,13 +100,15 @@ export default async function Home() {
         </Link>
       </section>
 
-      <section className="py-10 bg-gray-100">
+
+      <section className="text-sm md:text-base lg:text-lg py-10 bg-gray-100">
         <div className="mx-3">
           <div className="py-4">
-            <h2 className="text-center text-xl font-semibold mb-6">
+            <h2 className="text-base md:text-lg lg:text-xl text-center font-semibold mb-6">
               Opinions dels nostres estudiants
             </h2>
             <Carousel>
+              <CarouselPrevious className="absolute left-2 top-1/2 z-10 -translate-y-1/2" />
               <CarouselContent>
                 {replicatedReviews.map((review, index) => (
                   <CarouselItem
@@ -121,6 +124,7 @@ export default async function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
+              <CarouselNext className="absolute right-2 top-1/2 z-10 -translate-y-1/2" />
             </Carousel>
             <div className="flex flex-row gap-10 justify-center"></div>
           </div>
