@@ -3,7 +3,7 @@ import CompanyLogo from "@/components/CompanyLogo";
 export default function CompanyCard() {
   return (
     <div className="w-full max-w-6xl mx-auto px-4">
-      <h2 className="py-4 text-center text-xl font-bold">
+      <h2 className="text-base md:text-lg lg:text-xl py-4 text-center font-bold">
         Els nostres estudiants treballen a
       </h2>
       <div className="overflow-x-hidden">
@@ -26,7 +26,7 @@ export default function CompanyCard() {
             ))}
         </div>
       </div>
-      <h2 className="pt-4 text-center text-xl font-bold">
+      <h2 className="text-base md:text-lg lg:text-xl pt-4 text-center font-bold">
         Els nostres estudiants fan pràctiques a
       </h2>
       <div className="overflow-x-hidden">

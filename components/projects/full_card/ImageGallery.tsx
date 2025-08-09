@@ -27,7 +27,7 @@ export default function ImageGallery({projectImages}: {projectImages: string}) {
                             height={465}
                             onClick={() => setActive(imagePath)}
                             src={imagePath}
-                            className={`h-[100px] w-[140px] cursor-pointer rounded-lg object-cover object-center ${
+                            className={`h-[100px] w-[108px] cursor-pointer rounded-lg object-cover object-center ${
                                 active === imagePath ? "border-2 border-black" : ""
                             }`}
                             alt="gallery-image"
