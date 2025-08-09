@@ -23,7 +23,7 @@ export default async function Home() {
           Grau en Ciència i Enginyeria de Dades
         </h1>
         <p className="py-2 text-sm md:text-base lg:text-lg text-[#007BC0] mx-5">
-          Aquest no és només un grau, és el teu passaport cap al futur
+          Quin és el teu somni?
         </p>
       </section>
 
