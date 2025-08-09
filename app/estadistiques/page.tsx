@@ -1,3 +1,5 @@
-export default function Home() {
-  return <main className="p-4">Estadístiques</main>;
+import StatsPage from "../../components/StatsPage"
+
+export default async function Home() {
+  return <StatsPage />
 }
