@@ -16,22 +16,6 @@ export default async function Home() {
   const alumniData = await dbAlumniGetAllCardsInfo()
   const alumniReviews = await dbAlumniGetAllReviews()
 
-  // Duplica los datos para alumniData
-  const replicatedAlumniData = Array(5)
-    .fill(alumniData[0])
-    .map((alumni, index) => ({
-      ...alumni,
-      id: `${alumni.id}-${index}`,
-    }))
-
-  // Duplica los datos para alumniReviews
-  const replicatedReviews = Array(5)
-    .fill(alumniReviews[0])
-    .map((review, index) => ({
-      ...review,
-      id: `${review.id}-${index}`,
-    }))
-
   return (
     <main>
       <section className="text-center py-10">
@@ -79,14 +63,14 @@ export default async function Home() {
           <Carousel>
             <CarouselPrevious className="absolute left-2 top-1/2 z-10 -translate-y-1/2" />
             <CarouselContent>
-              {replicatedAlumniData.map((alumni, index) => (
-                <CarouselItem
-                  key={index}
-                  className="sm:basis-1 md:basis-1/2 lg:basis-1/3"
-                >
-                  <AlumniCard alumni={alumni} />
-                </CarouselItem>
-              ))}
+              {alumniData.map((alumni, index) => (
+              <CarouselItem
+                key={index}
+                className="sm:basis-1 md:basis-1/2 lg:basis-1/3"
+              >
+                <AlumniCard alumni={alumni} />
+              </CarouselItem>
+            ))}
             </CarouselContent>
             <CarouselNext className="absolute right-2 top-1/2 z-10 -translate-y-1/2" />
           </Carousel>
@@ -110,7 +94,7 @@ export default async function Home() {
             <Carousel>
               <CarouselPrevious className="absolute left-2 top-1/2 z-10 -translate-y-1/2" />
               <CarouselContent>
-                {replicatedReviews.map((review, index) => (
+                {alumniReviews.map((review, index) => (
                   <CarouselItem
                     key={index}
                     className="md:basis-1/2 lg:basis-1/3"
@@ -120,6 +104,7 @@ export default async function Home() {
                       lastName={review.lastName}
                       generation={review.generation}
                       review={review.review}
+                      id={review.id}
                     />
                   </CarouselItem>
                 ))}
