@@ -9,20 +9,17 @@ interface AlumniTopPartProps {
 
 export default function AlumniTopPart({ name, surname, generation, id = 0 }: AlumniTopPartProps) {
   return (
-    <div className="flex items-center gap-[20px] p-[20px] pb-0">
-      <div
-        className="flex justify-center items-center flex-shrink-0 rounded-[90px] bg-[#B0DAED]"
-        style={{ width: `75px`, height: `75px` }}
-      >
+    <div className="flex flex-row w-full items-center gap-4 p-3 pb-1">
+      <div className="w-[75px] h-[75px] flex-shrink-0 rounded-full bg-[#B0DAED]">
         <PersonIcon id={id} />
       </div>
 
-      <div className="flex flex-col justify-center items-center gap-[9px]">
-        <p className="text-black text-[14px] font-bold leading-normal">
+      <div className="flex flex-col justify-center items-start gap-0">
+        <p className="text-black text-2xl font-bold leading-normal">
           {name} {surname}
         </p>
-        <div className="flex p-[5px] justify-center items-center gap-[10px] rounded-[90px] bg-[#B0DAED]">
-          <p className="px-2 text-black font-poppins text-[12px] font-medium leading-normal">Generació {generation}</p>
+        <div className="flex p-0.5 justify-center items-center rounded-full bg-[#B0DAED]">
+          <p className="px-2 text-black font-poppins text-[12px] font-medium leading-normal">{generation}</p>
         </div>
       </div>
     </div>

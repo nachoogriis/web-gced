@@ -13,10 +13,10 @@ export default async function Home() {
   return (
     <main>
       <section className="text-center py-10">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#007BC0] mx-5">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-upc mx-5">
           Grau en Ciència i Enginyeria de Dades
         </h1>
-        <p className="py-2 text-sm md:text-base lg:text-lg text-[#007BC0] mx-5">Quin és el teu somni?</p>
+        <p className="py-2 text-sm md:text-base lg:text-lg text-upc mx-5">Quin és el teu somni?</p>
       </section>
 
       <BannerMainStats />

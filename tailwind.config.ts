@@ -50,6 +50,11 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        upc: {
+          DEFAULT: "hsl(var(--upc-color))",
+          light: "hsl(var(--upc-color-light))",
+          muted: "hsl(var(--upc-color-muted))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
