@@ -13,11 +13,19 @@ type Props = {
   alumni: AlumniCardInfo
 }
 export default function AlumniCard({ alumni }: Props) {
-  const { id, firstName, lastName, generation, internships, tfgTitle, masters, currentJob } =
-    alumni
+  const {
+    id,
+    firstName,
+    lastName,
+    generation,
+    internships,
+    tfgTitle,
+    masters,
+    currentJob,
+  } = alumni
   return (
     <div className="rounded-[15px] border border-[#B0DAED] bg-white overflow-hidden h-[350px]">
-      <div className="flex flex-col items-start gap-[0.4em] p-4">
+      <div className="flex flex-col items-start gap-[0.4em] p-2">
         {/* Parte superior con el nombre y generación */}
         <AlumniTopPart
           name={firstName}
@@ -52,12 +60,10 @@ export default function AlumniCard({ alumni }: Props) {
           />
 
           {/* Línea de la feina actual */}
-          <InfoCardLine 
+          <InfoCardLine
             icon={<CurrentJobIcon />}
             title="Feina Actual"
-            description={
-              currentJob ? currentJob : "No especificat"
-            }
+            description={currentJob ? currentJob : "No especificat"}
           />
         </div>
       </div>
