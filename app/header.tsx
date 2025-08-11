@@ -35,21 +35,12 @@ export default function Header() {
     </Link>
   )
   return (
-    <header
-      className={cn(
-        "h-20 flex flex-row gap-2 items-end px-[1em] py-[0.8em]",
-        "shadow",
-        "relative",
-      )}
-    >
+    <header className={cn("h-20 flex flex-row gap-2 items-end px-[1em] py-[0.8em]", "shadow", "relative")}>
       <Link href="/">
         <Image src={LogoUPC_full} alt="Logo UPC" width={250} height={80} />
       </Link>
 
-      <div
-        onClick={toggleVisible}
-        className="lg:hidden flex-1 flex flex-row justify-end cursor-pointer"
-      >
+      <div onClick={toggleVisible} className="lg:hidden flex-1 flex flex-row justify-end cursor-pointer">
         <Menu className="text-[#007BC0] w-10 h-13" />
       </div>
       <div

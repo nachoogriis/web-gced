@@ -2,13 +2,7 @@ import AlumniCard from "@/components/alumni_card/AlumniCard"
 import AlumniReview from "@/components/AlumniReview"
 import BannerMainStats from "@/components/BannerMainStats"
 import CompanyCard from "@/components/CompanyCard"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni"
 import Link from "next/link"
 
@@ -22,28 +16,21 @@ export default async function Home() {
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#007BC0] mx-5">
           Grau en Ciència i Enginyeria de Dades
         </h1>
-        <p className="py-2 text-sm md:text-base lg:text-lg text-[#007BC0] mx-5">
-          Quin és el teu somni?
-        </p>
+        <p className="py-2 text-sm md:text-base lg:text-lg text-[#007BC0] mx-5">Quin és el teu somni?</p>
       </section>
 
       <BannerMainStats />
 
       <section className="text-sm md:text-base lg:text-lg text-center font-semibold py-10">
         <CompanyCard />
-        <Link
-          href="/estadistiques"
-          className="text-l text-[#585b5d] hover:underline"
-        >
+        <Link href="/estadistiques" className="text-l text-[#585b5d] hover:underline">
           {" "}
           Veure més estadístiques...
         </Link>
       </section>
 
       <section className="text-sm md:text-base lg:text-lg flex flex-col items-center pb-10">
-        <h2 className="text-base md:text-lg lg:text-xl font-semibold mb-4">
-          Coneix més sobre el nostre programa
-        </h2>
+        <h2 className="text-base md:text-lg lg:text-xl font-semibold mb-4">Coneix més sobre el nostre programa</h2>
         <div className="w-full max-w-3xl aspect-video">
           <iframe
             className="w-full h-full"
@@ -64,26 +51,19 @@ export default async function Home() {
             <CarouselPrevious className="absolute left-2 top-1/2 z-10 -translate-y-1/2" />
             <CarouselContent>
               {alumniData.map((alumni, index) => (
-              <CarouselItem
-                key={index}
-                className="sm:basis-1 md:basis-1/2 lg:basis-1/3"
-              >
-                <AlumniCard alumni={alumni} />
-              </CarouselItem>
-            ))}
+                <CarouselItem key={index} className="sm:basis-1 md:basis-1/2 lg:basis-1/3">
+                  <AlumniCard alumni={alumni} />
+                </CarouselItem>
+              ))}
             </CarouselContent>
             <CarouselNext className="absolute right-2 top-1/2 z-10 -translate-y-1/2" />
           </Carousel>
         </div>
 
-        <Link
-          href="/estudiants"
-          className="text-l font-semibold text-[#585b5d] hover:underline"
-        >
+        <Link href="/estudiants" className="text-l font-semibold text-[#585b5d] hover:underline">
           Veure més perfils d&apos;estudiants...
         </Link>
       </section>
-
 
       <section className="text-sm md:text-base lg:text-lg py-10 bg-gray-100">
         <div className="mx-3">
@@ -95,10 +75,7 @@ export default async function Home() {
               <CarouselPrevious className="absolute left-2 top-1/2 z-10 -translate-y-1/2" />
               <CarouselContent>
                 {alumniReviews.map((review, index) => (
-                  <CarouselItem
-                    key={index}
-                    className="md:basis-1/2 lg:basis-1/3"
-                  >
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                     <AlumniReview
                       firstName={review.firstName}
                       lastName={review.lastName}

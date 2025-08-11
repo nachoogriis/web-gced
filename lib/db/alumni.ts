@@ -50,10 +50,8 @@ export async function dbAlumniGetAllCardsInfo() {
     internships: alumnus.internships.map((internshipAlumnus) => ({
       position: internshipAlumnus.internship.position || "No especificat",
       description: internshipAlumnus.internship.description || "No especificat",
-      organization:
-        internshipAlumnus.internship.organization.name || "No especificat",
-      country:
-        internshipAlumnus.internship.organization.country || "No especificat",
+      organization: internshipAlumnus.internship.organization.name || "No especificat",
+      country: internshipAlumnus.internship.organization.country || "No especificat",
     })),
     masters: alumnus.masters.map((masterAlumnus) => ({
       name: masterAlumnus.master.name || "No especificat",
@@ -61,9 +59,7 @@ export async function dbAlumniGetAllCardsInfo() {
       universities: masterAlumnus.master.organizations
         .map((org) => org.organization.name || "No especificat")
         .join(", "),
-      country:
-        masterAlumnus.master.organizations[0]?.organization.country ||
-        "No especificat",
+      country: masterAlumnus.master.organizations[0]?.organization.country || "No especificat",
     })),
     projects: alumnus.projects.map((projectAlumnus) => ({
       name: projectAlumnus.project.name || "No especificat",
@@ -111,10 +107,6 @@ export async function dbUniversityProjectsGetAll() {
   }))
 }
 
-export type AlumniCardInfo = Awaited<
-  ReturnType<typeof dbAlumniGetAllCardsInfo>
->[number]
+export type AlumniCardInfo = Awaited<ReturnType<typeof dbAlumniGetAllCardsInfo>>[number]
 
-export type AlumniReviewInfo = Awaited<
-  ReturnType<typeof dbAlumniGetAllReviews>
->[number]
+export type AlumniReviewInfo = Awaited<ReturnType<typeof dbAlumniGetAllReviews>>[number]

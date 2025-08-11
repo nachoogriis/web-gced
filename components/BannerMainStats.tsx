@@ -18,5 +18,5 @@ export default function BannerMainStats() {
         <p className="text-3xl md:text-4xl lg:text-5xl">40%</p>
       </div>
     </section>
-  );
+  )
 }

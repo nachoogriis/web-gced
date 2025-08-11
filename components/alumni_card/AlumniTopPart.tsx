@@ -7,12 +7,7 @@ interface AlumniTopPartProps {
   id?: number
 }
 
-export default function AlumniTopPart({
-  name,
-  surname,
-  generation,
-  id = 0,
-}: AlumniTopPartProps) {
+export default function AlumniTopPart({ name, surname, generation, id = 0 }: AlumniTopPartProps) {
   return (
     <div className="flex items-center gap-[20px] p-[20px] pb-0">
       <div
@@ -27,9 +22,7 @@ export default function AlumniTopPart({
           {name} {surname}
         </p>
         <div className="flex p-[5px] justify-center items-center gap-[10px] rounded-[90px] bg-[#B0DAED]">
-          <p className="px-2 text-black font-poppins text-[12px] font-medium leading-normal">
-            Generació {generation}
-          </p>
+          <p className="px-2 text-black font-poppins text-[12px] font-medium leading-normal">Generació {generation}</p>
         </div>
       </div>
     </div>

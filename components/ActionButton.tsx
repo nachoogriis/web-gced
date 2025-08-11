@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import { actionSaveFile } from "@/actions/save-file";
-import { Button } from "./ui/button";
+import { actionSaveFile } from "@/actions/save-file"
+import { Button } from "./ui/button"
 
 export default function ActionButton() {
-    async function saveFile() {
-        await actionSaveFile("👉🏻 This will be the content of the file 😋");
-    }
+  async function saveFile() {
+    await actionSaveFile("👉🏻 This will be the content of the file 😋")
+  }
 
-    return <Button onClick={saveFile}>Click me!!!!!!!</Button>
+  return <Button onClick={saveFile}>Click me!!!!!!!</Button>
 }

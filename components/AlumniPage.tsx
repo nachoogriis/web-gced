@@ -7,7 +7,7 @@ import { levenshteinDistance } from "@/lib/utils"
 import { ChangeEventHandler, useState } from "react"
 
 type Props = {
-    initialAlumniData: AlumniCardInfo[]
+  initialAlumniData: AlumniCardInfo[]
 }
 export default function AlumniPage({ initialAlumniData }: Props) {
   const [searchTerm, setSearchTerm] = useState("")
@@ -38,9 +38,7 @@ export default function AlumniPage({ initialAlumniData }: Props) {
       return search
         .toLowerCase()
         .split(" ")
-        .every((term: string) =>
-          combinedData.split(" ").some((dataWord) => isSimilar(term, dataWord))
-        )
+        .every((term: string) => combinedData.split(" ").some((dataWord) => isSimilar(term, dataWord)))
     })
 
     setFilteredAlumni(results)
@@ -48,9 +46,7 @@ export default function AlumniPage({ initialAlumniData }: Props) {
 
   return (
     <main className="p-4">
-      <h1 className="text-4xl font-bold mb-4 text-center text-[#007BC0] pt-10">
-        Estudiants
-      </h1>
+      <h1 className="text-4xl font-bold mb-4 text-center text-[#007BC0] pt-10">Estudiants</h1>
 
       {/* Buscador con ShadCN UI */}
       <div className="flex flex-col items-center mb-6 py-10">
@@ -78,9 +74,7 @@ export default function AlumniPage({ initialAlumniData }: Props) {
 
       {/* Mensaje si no hay resultados */}
       {filteredAlumni.length === 0 && (
-        <p className="text-center text-gray-500 mt-6">
-          No s&apos;han trobat resultats per a &quot;{searchTerm}&quot;.
-        </p>
+        <p className="text-center text-gray-500 mt-6">No s&apos;han trobat resultats per a &quot;{searchTerm}&quot;.</p>
       )}
     </main>
   )

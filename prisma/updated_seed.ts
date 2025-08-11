@@ -23,7 +23,7 @@ for (let i = 0; i < NUM_SAMPLES; i++) {
       tfgTitle: faker.lorem.sentence({ min: 5, max: 12 }),
       tfgDescription: faker.lorem.sentence({ min: 20, max: 40 }),
       tfgUniversity: faker.company.name(),
-      currentJob: faker.lorem.sentence({ min: 5, max: 10 })
+      currentJob: faker.lorem.sentence({ min: 5, max: 10 }),
     },
   })
 

@@ -13,50 +13,26 @@ type Props = {
   alumni: AlumniCardInfo
 }
 export default function AlumniCard({ alumni }: Props) {
-  const {
-    id,
-    firstName,
-    lastName,
-    generation,
-    internships,
-    tfgTitle,
-    masters,
-    currentJob,
-  } = alumni
+  const { id, firstName, lastName, generation, internships, tfgTitle, masters, currentJob } = alumni
   return (
     <div className="rounded-[15px] border border-[#B0DAED] bg-white overflow-hidden h-[350px]">
       <div className="flex flex-col items-start gap-[0.4em] p-2">
         {/* Parte superior con el nombre y generación */}
-        <AlumniTopPart
-          name={firstName}
-          surname={lastName}
-          generation={generation}
-          id={id}
-        />
+        <AlumniTopPart name={firstName} surname={lastName} generation={generation} id={id} />
 
         {/* Información adicional */}
         <div className="flex flex-col justify-center items-start mt-4">
           {/* Línea de prácticas */}
-          <InfoCardLine
-            icon={<InternshipIcon />}
-            title="Pràctiques"
-            description={internships[0].organization}
-          />
+          <InfoCardLine icon={<InternshipIcon />} title="Pràctiques" description={internships[0].organization} />
 
           {/* Línea del TFG */}
-          <InfoCardLine
-            icon={<TfgIcon />}
-            title="TFG"
-            description={tfgTitle || "No especificat"}
-          />
+          <InfoCardLine icon={<TfgIcon />} title="TFG" description={tfgTitle || "No especificat"} />
 
           {/* Línea del máster */}
           <InfoCardLine
             icon={<MasterIcon />}
             title="Màster"
-            description={
-              masters && masters.length > 0 ? masters[0].name : "No especificat"
-            }
+            description={masters && masters.length > 0 ? masters[0].name : "No especificat"}
           />
 
           {/* Línea de la feina actual */}

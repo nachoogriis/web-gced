@@ -1,14 +1,10 @@
 interface InfoCardLineProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
+  icon: React.ReactNode
+  title: string
+  description: string
 }
 
-export default function InfoCardLine({
-  icon,
-  title,
-  description,
-}: InfoCardLineProps) {
+export default function InfoCardLine({ icon, title, description }: InfoCardLineProps) {
   return (
     <div className="flex items-center gap-[15px] px-[30px] py-[5px]">
       <div className="flex items-center justify-center text-[20px]">{icon}</div> {/* Icono */}
@@ -16,5 +12,5 @@ export default function InfoCardLine({
         <span className="font-bold">{title}:</span> {description}
       </p>
     </div>
-  );
+  )
 }

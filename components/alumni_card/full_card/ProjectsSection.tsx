@@ -10,9 +10,7 @@ type Props = {
 const ProjectsSection: React.FC<Props> = ({ projects }) => {
   return (
     <section>
-      <h2 className="text-m text-[#007BC0] font-bold border-b pb-1 mt-6 mb-2">
-        Projectes Personals
-      </h2>
+      <h2 className="text-m text-[#007BC0] font-bold border-b pb-1 mt-6 mb-2">Projectes Personals</h2>
       {projects.map((project, index) => (
         <div key={index} className="mb-4">
           <p className="text-sm">

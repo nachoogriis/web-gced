@@ -12,8 +12,8 @@ interface ProjectInfo {
 }
 
 export default function ProjectCard({ project }: { project: ProjectInfo }) {
-  const image_paths = project.images.match(/\[([^\]]+)\]/g)?.map(str => str.slice(1, -1)) || [];
-  const image_path = `/projects/${image_paths[0]}`;
+  const image_paths = project.images.match(/\[([^\]]+)\]/g)?.map((str) => str.slice(1, -1)) || []
+  const image_path = `/projects/${image_paths[0]}`
 
   return (
     <div className="relative flex flex-row items-center w-[100%] bg-white group rounded-[10px] border border-[#B0DAED] gap-4 p-6 pt-8">

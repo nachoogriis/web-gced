@@ -23,9 +23,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": [
-    "node_modules",
-    "./tailwind.config.ts",
-    "./prisma/updated_seed.ts"
-  ]
+  "exclude": ["node_modules", "./tailwind.config.ts", "./prisma/updated_seed.ts"]
 }

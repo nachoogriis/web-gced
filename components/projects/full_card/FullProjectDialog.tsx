@@ -2,28 +2,19 @@ import GcedButton from "../../GcedButton"
 import { InfoIcon } from "../../icons/InfoIcon"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 import FullProjectCard from "./FullProjectCard"
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogTitle,
-} from "../../ui/dialog"
+import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "../../ui/dialog"
 
 interface ProjectInfo {
-  id: number,
-  name: string,
-  summary: string,
-  description: string,
-  topic: string,
+  id: number
+  name: string
+  summary: string
+  description: string
+  topic: string
   tags: string
-  images: string,
+  images: string
 }
 
-export default function FullProjectDialog({
-  project,
-}: {
-  project: ProjectInfo
-}) {
+export default function FullProjectDialog({ project }: { project: ProjectInfo }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
