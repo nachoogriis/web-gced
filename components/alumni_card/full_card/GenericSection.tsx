@@ -12,23 +12,25 @@ export default function GenericSection({ title, itemLists }: Props) {
     return <></>
   }
 
-  const Title = ({ text }: { text: string }) => {
-    return <span className="font-bold inline-block min-w-[8em] text-foreground/80 ">{text}</span>
+  const Title = () => <div className="text-m text-upc font-bold border-b border-upc/30 mb-2 text-xl">{title}</div>
+
+  const Name = ({ name }: { name: string }) => {
+    return <span className="font-bold inline-block min-w-[8em] text-foreground/80 ">{name}</span>
   }
-  const Item = ({ title, explanation }: { title: string; explanation: string }) => (
+  const Item = ({ name, text }: { name: string; text: string }) => (
     <div className="text-sm flex flex-row">
-      <Title text={title} />
-      {explanation}
+      <Name name={name} />
+      <span className="text-black/80">{text}</span>
     </div>
   )
 
   return (
     <section>
-      <h2 className="text-m text-upc font-bold border-b border-upc/30 mb-2 text-xl">{title}</h2>
+      <Title />
       {itemLists.map((items, i) => (
         <div key={i} className="mb-6 flex flex-col gap-2.5">
           {items.map((item, j) => (
-            <Item key={j} title={item.name} explanation={item.text} />
+            <Item key={j} {...item} />
           ))}
         </div>
       ))}

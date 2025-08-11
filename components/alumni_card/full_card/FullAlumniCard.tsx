@@ -1,8 +1,7 @@
 import IconLinkedIn from "@/components/icons/IconLinkedIn"
 import PersonIcon from "@/components/icons/PersonIcon"
-import { DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { AlumniCardInfo } from "@/lib/db/alumni"
-import { DialogDescription } from "@radix-ui/react-dialog"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 import Link from "next/link"
 import GenerationBadge from "../GenerationBadge"
@@ -32,7 +31,7 @@ export default function FullAlumniCard({ alumni }: Props) {
   const tfg = { tfgTitle, tfgDescription, tfgCountry, tfgUniversity }
 
   return (
-    <DialogContent className="overflow-y-auto pointer-events-auto max-h-[60em]">
+    <DialogContent className="overflow-y-auto pointer-events-auto max-h-[60em] select-none">
       <DialogHeader>
         <VisuallyHidden>
           <DialogTitle>
