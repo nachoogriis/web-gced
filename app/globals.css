@@ -76,6 +76,6 @@ body {
   }
 
   .debug {
-    @apply border-red-500 border-2;
+    @apply outline-red-500 outline-2;
   }
 }

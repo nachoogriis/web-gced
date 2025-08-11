@@ -7,7 +7,8 @@ import { AlumniCardInfo } from "@/lib/db/alumni"
 import { cn } from "@/lib/utils"
 import CurrentJobIcon from "../icons/CurrentJobIcon"
 import PersonIcon from "../icons/PersonIcon"
-import FullAlumniDialog2 from "./full_card/FullAlumniDialog2"
+import FullAlumniDialogTrigger from "./full_card/FullAlumniDialogTrigger"
+import GenerationBadge from "./GenerationBadge"
 
 type Props = {
   alumni: AlumniCardInfo
@@ -23,7 +24,7 @@ export default function AlumniCard({ alumni }: Props) {
   ]
 
   return (
-    <FullAlumniDialog2 alumni={alumni}>
+    <FullAlumniDialogTrigger alumni={alumni}>
       <div
         className={cn(
           "rounded-xl bg-white overflow-hidden h-[24em] shadow-xl shadow-gray-300",
@@ -35,12 +36,10 @@ export default function AlumniCard({ alumni }: Props) {
         <div className="p-8 pb-0 flex flex-col gap-2">
           <div className="flex flex-row justify-between items-start gap-4">
             <PersonIcon id={id} className="w-24 h-24" />
-            <div className="flex p-0.5 justify-center items-center rounded-full bg-upc-light">
-              <p className="px-2 text-upc font-poppins text-[12px] font-medium leading-normal">{generation}</p>
-            </div>
+            <GenerationBadge year={generation} />
           </div>
 
-          <div className="text-black text-2xl leading-snug font-bold mb-2 line-clamp-2">
+          <div className="text-black text-2xl leading-none font-bold mb-2 line-clamp-2">
             {firstName} {lastName}
           </div>
         </div>
@@ -56,6 +55,6 @@ export default function AlumniCard({ alumni }: Props) {
           ))}
         </div>
       </div>
-    </FullAlumniDialog2>
+    </FullAlumniDialogTrigger>
   )
 }
