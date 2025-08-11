@@ -8,5 +8,5 @@ docker compose down -v
 docker image rm web-gced
 docker image rm web-gced-web-gced
 docker compose up -d
-docker image prune -f
+docker system prune -f
 EOF
