@@ -33,6 +33,9 @@ export async function dbAlumniGetAllCardsInfo() {
     },
   })
 
+  // FIXME: This looks a little too cumbersome...
+  // ... maybe solve it in the query?
+  // ... or walk the structure and subsitute all "undefined"s for "No especificat"?
   return alumni.map((alumnus) => ({
     id: alumnus.id,
     firstName: alumnus.firstName,
