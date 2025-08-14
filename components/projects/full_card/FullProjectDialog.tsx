@@ -14,18 +14,18 @@ interface ProjectInfo {
   images: string
 }
 
-export default function FullProjectDialog({ project }: { project: ProjectInfo }) {
+type Props = {
+  project: ProjectInfo
+  children: React.ReactNode
+}
+
+export default function FullProjectDialog({ project, children }: Props) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <GcedButton width="200px">
-          <div className="flex flex-row items-center justify-center gap-2">
-            <InfoIcon />
-            <h1>Més informació</h1>
-          </div>
-        </GcedButton>
+        {children}
       </DialogTrigger>
-      <DialogContent className="w-[90%] h-[90%] max-w-none">
+      <DialogContent className="w-[90%] h-[90%] max-w-none bg-gray-100">
         <VisuallyHidden>
           <DialogTitle>Full Project Card</DialogTitle>
         </VisuallyHidden>
