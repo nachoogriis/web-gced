@@ -8,12 +8,12 @@ export default function ImageGallery({ projectImages }: { projectImages: string 
   const [active, setActive] = useState(data[0].imagePath)
 
   return (
-    <div className="grid gap-6 w-[45%]">
+    <div className="grid gap-3">
       <div className="flex items-center justify-center">
         <Image
           width={651}
           height={465}
-          className="h-[350px] w-auto rounded-lg object-cover object-center"
+          className="h-[250px] w-auto rounded-lg object-cover object-center"
           src={active}
           alt=""
         />
@@ -26,7 +26,7 @@ export default function ImageGallery({ projectImages }: { projectImages: string 
               height={465}
               onClick={() => setActive(imagePath)}
               src={imagePath}
-              className={`h-[100px] w-[108px] cursor-pointer rounded-lg object-cover object-center ${
+              className={`h-[80px] w-[108px] cursor-pointer rounded-lg object-cover object-center ${
                 active === imagePath ? "border-2 border-black" : ""
               }`}
               alt="gallery-image"
