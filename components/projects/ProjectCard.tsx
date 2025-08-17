@@ -1,5 +1,7 @@
 import Image from "next/image"
 import FullProjectDialog from "./full_card/FullProjectDialog"
+import { cn } from "@/lib/utils"
+
 
 interface ProjectInfo {
   id: number
@@ -16,21 +18,45 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
   const image_path = `/projects/${image_paths[0]}`
 
   return (
-    <div className="relative flex flex-row items-center w-[100%] bg-white group rounded-[10px] border border-[#B0DAED] gap-4 p-6 pt-8">
-      <Image
-        width={651}
-        height={465}
-        src={image_path}
-        alt={project.topic}
-        className="hidden md:block h-[200px] w-auto rounded-tl-[10px] rounded-bl-[10px]"
-      />
-      <div className="flex flex-col items-center justify-center gap-5 mr-4 line-clamp-4">
-        <div className="text-center">
-          <h2 className="text-xl font-bold">{project.name}</h2>
-          <p className="text-gray-700 line-clamp-3">{project.summary}</p>
+    <FullProjectDialog project={project}>
+      <div
+        className={cn(
+          "rounded-xl bg-upc-muted overflow-hidden shadow-xl shadow-gray-300",
+          "flex flex-col items-stretch gap-[0.4em]",
+          "hover:outline-4 outline-[#B0DAED] cursor-pointer",
+          "select-none"
+        )}
+      >
+        {/* Parte superior: título, topic, botón */}
+        <div className="p-6 pb-1 flex flex-col gap-2 bg-white border-b">
+          <div className="flex flex-row justify-between items-start">
+            {/* Título y tópico */}
+            <div className="flex flex-col gap-1">
+              <div className="text-sm text-gray-600 font-semibold">{project.topic}</div>
+              <h2 className="text-2xl font-bold leading-snug text-black line-clamp-2 min-h-[4.5rem]">
+                {project.name}
+              </h2>
+            </div>
+
+            {/* Botón "Saber més" */}
+            <button className="text-sm text-[#4BADD9] hover:underline mt-1 whitespace-nowrap">
+              Saber més →
+            </button>
+          </div>
         </div>
-        <FullProjectDialog project={project} />
+
+        {/* Parte inferior: imagen y resumen */}
+        <div className="flex flex-row gap-4 justify-start items-center p-4 pt-2.5">
+          <Image
+            width={180}
+            height={140}
+            src={image_path}
+            alt={project.topic}
+            className="rounded-lg object-contain w-[180px] h-[140px] bg-white"
+          />
+          <p className="text-sm text-gray-700 line-clamp-4 pr-2">{project.summary}</p>
+        </div>
       </div>
-    </div>
+    </FullProjectDialog>
   )
 }
