@@ -1,13 +1,11 @@
-import { DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import IconLinkedIn from "@/components/icons/IconLinkedIn"
+import PersonIcon from "@/components/icons/PersonIcon"
+import { DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { AlumniCardInfo } from "@/lib/db/alumni"
-import AlumniTopPart from "@/components/alumni_card/AlumniTopPart"
-import InternshipSection from "./InternshipSection"
-import TfgSection from "./TfgSection"
-import MasterSection from "./MasterSection"
-import CurrentJobSection from "./CurrentJobSection"
-import ProjectsSection from "./ProjectsSection"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
-import Image from "next/image"
+import Link from "next/link"
+import GenerationBadge from "../GenerationBadge"
+import GenericSection from "./GenericSection"
 
 type Props = {
   alumni: AlumniCardInfo
@@ -15,6 +13,7 @@ type Props = {
 
 export default function FullAlumniCard({ alumni }: Props) {
   const {
+    id,
     firstName,
     lastName,
     generation,
@@ -28,45 +27,81 @@ export default function FullAlumniCard({ alumni }: Props) {
     currentJob,
     projects,
   } = alumni
+
+  const tfg = { tfgTitle, tfgDescription, tfgCountry, tfgUniversity }
+
   return (
-    <>
+    <DialogContent className="overflow-y-auto pointer-events-auto max-h-[60em] select-none">
       <DialogHeader>
         <VisuallyHidden>
-          <DialogTitle>Informació Completa</DialogTitle>
+          <DialogTitle>
+            Fitxa completa de {firstName} {lastName}
+          </DialogTitle>
         </VisuallyHidden>
 
-        <div className="flex flex-row items-center justify-center transform scale-[1.3] pr-[20px] pb-[10px]">
-          <AlumniTopPart name={firstName} surname={lastName} generation={generation} />
+        <div className="flex flex-col w-full items-stretch gap-0">
+          <PersonIcon id={id} className="w-32 h-32" />
 
-          {linkedInURL !== "No especificat" && (
-            <button className="pt-[20px]" onClick={() => window.open(linkedInURL, "_blank")}>
-              <Image src="linkedin-icon.svg" alt="Open Link" width={40} height={40} />
-            </button>
-          )}
+          <div className="flex flex-col justify-center items-stretch leading-none">
+            <div className="flex flex-row justify-between items-center">
+              <div className="flex flex-row gap-3 items-baseline">
+                <p className="text-black text-3xl md:text-5xl font-bold leading-normal">
+                  {firstName} {lastName}
+                </p>
+                {linkedInURL !== "No especificat" && (
+                  <div className="flex flex-row">
+                    <Link href={linkedInURL} target="_blank" className="text-upc">
+                      <IconLinkedIn className="w-8 h-8" />
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              <GenerationBadge year={generation} size="large" />
+            </div>
+          </div>
         </div>
       </DialogHeader>
 
-      <div className="gap-4 overflow-y-auto">
-        {/* Prácticas en empresa */}
-        {internships.length > 0 && <InternshipSection internships={internships} />}
-
-        {/* Trabajo de final de grado */}
-        <TfgSection
-          tfgTitle={tfgTitle}
-          tfgDescription={tfgDescription}
-          tfgUniversity={tfgUniversity}
-          tfgCountry={tfgCountry}
+      <DialogDescription className="mt-4">
+        <GenericSection
+          title="Pràctiques a empresa"
+          itemLists={internships.map((internship) => [
+            { name: "Empresa", text: internship.organization },
+            { name: "País", text: internship.country },
+            { name: "Tema", text: internship.position },
+            { name: "Descripció", text: internship.description },
+          ])}
         />
-
-        {/* Máster */}
-        {masters.length > 0 && <MasterSection masters={masters} />}
-
-        {/* Trabajo actual */}
-        {currentJob && <CurrentJobSection currentJob={currentJob} />}
-
-        {/* Proyectos personales */}
-        {projects.length > 0 && <ProjectsSection projects={projects} />}
-      </div>
-    </>
+        <GenericSection
+          title="Treball Final de Grau"
+          itemLists={[
+            [
+              { name: "Títol", text: tfgTitle },
+              { name: "Descripció", text: tfgDescription },
+              { name: "Universitat", text: tfgUniversity },
+              { name: "País", text: tfgCountry },
+            ],
+          ]}
+        />
+        <GenericSection
+          title="Màster"
+          itemLists={masters.map((master) => [
+            { name: "Títol", text: master.name },
+            { name: "País", text: master.country },
+            { name: "Universitats", text: master.universities },
+            { name: "Descripció", text: master.description },
+          ])}
+        />
+        <GenericSection title="Feina Actual" itemLists={[[{ name: "Lloc de Treball", text: currentJob }]]} />
+        <GenericSection
+          title="Projectes Personals"
+          itemLists={projects.map((project) => [
+            { name: "Nom", text: project.name },
+            { name: "Descripció", text: project.description },
+          ])}
+        />
+      </DialogDescription>
+    </DialogContent>
   )
 }

@@ -1,19 +1,21 @@
+import { cn } from "@/lib/utils"
+import Image from "next/image"
+
 interface PersonIconProps {
-  width?: number
-  height?: number
-  id: number
+  id?: number
+  className?: string
 }
 
-export default function PersonIcon({ width = 75, height = 75, id = 0 }: PersonIconProps) {
+export default function PersonIcon({ id = 0, className }: PersonIconProps) {
   const imageUrl = `/fake_profile_pictures/${id}.jpeg`
 
   return (
-    <img
+    <Image
       src={imageUrl}
       alt={`Profile picture ${id}`}
-      width={width}
-      height={height}
-      style={{ objectFit: "cover", borderRadius: "50%" }} // Opcional: para que la imagen sea circular
+      width={1024}
+      height={1024}
+      className={cn("rounded-full", className)}
     />
   )
 }

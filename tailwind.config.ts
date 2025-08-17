@@ -8,6 +8,11 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
         background: "hsl(var(--background))",
@@ -50,6 +55,11 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        upc: {
+          DEFAULT: "hsl(var(--upc-color))",
+          light: "hsl(var(--upc-color-light))",
+          muted: "hsl(var(--upc-color-muted))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -69,6 +79,14 @@ export default {
           "0%": { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0)" }, // Mueve hacia la derecha
         },
+      },
+      flexBasis: {
+        "1/7": "14.2857143%",
+        "2/7": "28.5714286%",
+        "3/7": "42.8571429%",
+        "4/7": "57.1428571%",
+        "5/7": "71.4285714%",
+        "6/7": "85.7142857%",
       },
     },
   },

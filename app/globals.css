@@ -32,6 +32,10 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    --upc-color: 202 100% 37%;
+    --upc-color-light: 202 100% 90%;
+    --upc-color-muted: 202 100% 97%;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -72,6 +76,6 @@ body {
   }
 
   .debug {
-    @apply border-red-500 border-2;
+    @apply outline-red-500 outline-2;
   }
 }

@@ -45,11 +45,11 @@ export default function AlumniPage({ initialAlumniData }: Props) {
   }
 
   return (
-    <main className="p-4">
-      <h1 className="text-4xl font-bold mb-4 text-center text-[#007BC0] pt-10">Estudiants</h1>
+    <main className="w-full flex flex-col items-stretch">
+      <h1 className="text-6xl font-bold text-center text-[#007BC0] pt-8">Estudiants</h1>
 
       {/* Buscador con ShadCN UI */}
-      <div className="flex flex-col items-center mb-6 py-10">
+      <div className="flex flex-col items-center py-6 ">
         <form onSubmit={(e) => e.preventDefault()} className="w-full max-w-lg">
           <Input
             type="text"
@@ -63,8 +63,8 @@ export default function AlumniPage({ initialAlumniData }: Props) {
 
       {/* Tarjetas de alumnos */}
       {filteredAlumni.length > 0 && (
-        <section className="flex items-center justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bg-gray-100 rounded px-6 py-6 w-[95%]">
+        <section className="flex items-center justify-center bg-gray-100 border-t">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 rounded py-8 px-8 lg:px-12 max-w-[1400px]">
             {filteredAlumni.map((alumni) => (
               <AlumniCard key={alumni.id} alumni={alumni} />
             ))}
