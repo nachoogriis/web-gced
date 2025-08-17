@@ -3,7 +3,7 @@ import CompanyLogo from "@/components/CompanyLogo"
 export default function CompanyCard() {
   return (
     <div className="w-full max-w-6xl mx-auto px-4">
-      <h2 className="text-base md:text-lg lg:text-xl py-4 text-center font-bold">Els nostres estudiants treballen a</h2>
+      <h2 className="text-base md:text-lg lg:text-xl font-bold mb-4 text-center">Els nostres estudiants treballen a</h2>
       <div className="overflow-x-hidden">
         <div
           className="flex gap-4 animate-scroll"
@@ -24,7 +24,7 @@ export default function CompanyCard() {
             ))}
         </div>
       </div>
-      <h2 className="text-base md:text-lg lg:text-xl pt-4 text-center font-bold">
+      <h2 className="text-base md:text-lg lg:text-xl font-bold mb-4 text-center pt-6">
         Els nostres estudiants fan pràctiques a
       </h2>
       <div className="overflow-x-hidden">

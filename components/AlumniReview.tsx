@@ -1,4 +1,6 @@
 import AlumniTopPart from "@/components/alumni_card/AlumniTopPart"
+import { cn } from "@/lib/utils"
+
 
 interface AlumniReviewProps {
   firstName: string
@@ -10,7 +12,10 @@ interface AlumniReviewProps {
 
 export default function AlumniReview({ firstName, lastName, generation, review, id }: AlumniReviewProps) {
   return (
-    <div className="border border-[#B0DAED] bg-white overflow-hidden h-[230px] flex flex-col rounded-tl-[15px] rounded-tr-[15px] rounded-br-[15px]">
+    <div className={cn(
+    "rounded-tl-[15px] rounded-tr-[15px] rounded-br-[15px] bg-upc-muted overflow-hidden h-[230px] shadow-xl shadow-gray-300",
+    "flex flex-col items-stretch gap-[0.4em]",
+      )}>
       <div className="flex items-start">
         <AlumniTopPart name={firstName} surname={lastName} generation={generation} id={id} />
       </div>
