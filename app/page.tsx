@@ -15,9 +15,7 @@ export default async function Home() {
   return (
     <main>
       <section className="text-center py-10">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-upc mx-5">
-          Grau en Ciència i Enginyeria de Dades
-        </h1>
+        <h1 className="title">Grau en Ciència i Enginyeria de Dades</h1>
         <p className="py-2 text-base md:text-lg lg:text-2xl text-upc mx-5 pt-2">Quin és el teu somni?</p>
       </section>
 
@@ -79,14 +77,16 @@ export default async function Home() {
       <section className="text-sm md:text-base lg:text-lg py-10 bg-gray-100">
         <div className="mx-3">
           <div className="py-4">
-            <h2 className="text-base md:text-lg lg:text-xl font-bold mb-4 text-center">Opinions dels nostres estudiants</h2>
+            <h2 className="text-base md:text-lg lg:text-xl font-bold mb-4 text-center">
+              Opinions dels nostres estudiants
+            </h2>
             <Carousel>
               <CarouselPrevious
-              className={cn(
-                "absolute left-2 top-1/2 z-10 -translate-y-1/2",
-                "bg-upc text-white hover:bg-upc/90 hover:text-white/90",
-              )}
-            />
+                className={cn(
+                  "absolute left-2 top-1/2 z-10 -translate-y-1/2",
+                  "bg-upc text-white hover:bg-upc/90 hover:text-white/90",
+                )}
+              />
               <CarouselContent>
                 {alumniReviews.map((review, index) => (
                   <CarouselItem
@@ -107,11 +107,11 @@ export default async function Home() {
                 ))}
               </CarouselContent>
               <CarouselNext
-              className={cn(
-                "absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-upc text-white",
-                "bg-upc text-white hover:bg-upc/90 hover:text-white/90",
-              )}
-            />
+                className={cn(
+                  "absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-upc text-white",
+                  "bg-upc text-white hover:bg-upc/90 hover:text-white/90",
+                )}
+              />
             </Carousel>
             <div className="flex flex-row gap-10 justify-center"></div>
           </div>

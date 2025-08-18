@@ -27,7 +27,7 @@ export default function Header() {
       }}
       className={cn(
         pathname === href ? "underline decoration-2 underline-offset-4" : "",
-        "py-10 p-6 hover:bg-gray-50 w-full active:bg-[#007BC0] active:text-white",
+        "py-10 p-6 hover:bg-gray-50 w-full active:bg-upc active:text-white",
         "lg:p-0 lg:w-auto lg:hover:bg-inherit lg:active:bg-inherit lg:active:text-inherit",
       )}
     >
@@ -41,11 +41,11 @@ export default function Header() {
       </Link>
 
       <div onClick={toggleVisible} className="lg:hidden flex-1 flex flex-row justify-end cursor-pointer">
-        <Menu className="text-[#007BC0] w-10 h-13" />
+        <Menu className="text-upc w-10 h-13" />
       </div>
       <div
         className={cn(
-          "lg:flex lg:flex-1 lg:flex-row justify-end lg:static lg:p-0 lg:gap-10 text-[#007BC0] font-bold lg:shadow-none",
+          "lg:flex lg:flex-1 lg:flex-row justify-end lg:static lg:p-0 lg:gap-10 text-upc font-bold lg:shadow-none",
           "min-w-80 flex-col items-end absolute top-20 right-0 bg-white p-0 shadow",
           visible ? "flex z-50" : "hidden",
         )}

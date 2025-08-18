@@ -1,9 +1,12 @@
 import ProjectCard from "./ProjectCard"
 import { dbUniversityProjectsGetAll } from "@/lib/db/alumni"
 
-export default async function ProjectsList({ topic }: { topic: string }) {
+interface Props {
+  topic?: string | undefined
+}
+export default async function ProjectsList({ topic }: Props) {
   const universityProjects = await dbUniversityProjectsGetAll()
-  const filteredProjects = universityProjects.filter((project) => project.topic === topic)
+  const filteredProjects = universityProjects.filter((project) => !topic || project.topic === topic)
 
   return filteredProjects.length > 0 ? (
     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 bg-gray-100 rounded py-6 px-6 justify-center items-center">
