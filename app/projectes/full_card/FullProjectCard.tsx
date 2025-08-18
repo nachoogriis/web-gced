@@ -1,9 +1,7 @@
 "use client"
 
-import ProjectTitle from "./ProjectTitle"
 import ImageGallery from "./ImageGallery"
 import { cn } from "@/lib/utils"
-
 
 interface ProjectInfo {
   id: number
@@ -21,16 +19,14 @@ export default function FullProjectCard({ project }: { project: ProjectInfo }) {
       <div
         className={cn(
           "rounded-xl bg-upc-muted overflow-hidden shadow-xl shadow-gray-300",
-          "flex flex-col items-stretch transition-shadow duration-300 hover:shadow-2xl"
+          "flex flex-col items-stretch transition-shadow duration-300 hover:shadow-2xl",
         )}
       >
         {/* Header */}
         <div className="px-20 pt-12 pb-6 flex flex-col gap-2 bg-white border-b border-gray-300">
           <div className="text-lg text-gray-600 font-semibold">{project.topic}</div>
 
-          <h1 className="text-black text-left text-3xl leading-tight font-bold line-clamp-2">
-            {project.name}
-          </h1>
+          <h1 className="text-black text-left text-3xl leading-tight font-bold line-clamp-2">{project.name}</h1>
         </div>
 
         {/* Content */}
@@ -42,13 +38,11 @@ export default function FullProjectCard({ project }: { project: ProjectInfo }) {
 
           {/* Description */}
           <div className="w-full md:w-[45%] flex flex-col gap-3 text-left">
-            <h3 className="text-sm font-semibold text-gray-800 border-b border-gray-300 pb-1">
-              Descripció
-            </h3>
+            <h3 className="text-sm font-semibold text-gray-800 border-b border-gray-300 pb-1">Descripció</h3>
             <p className="text-sm leading-relaxed text-gray-700">{project.description}</p>
           </div>
         </div>
       </div>
     </div>
-      )
+  )
 }

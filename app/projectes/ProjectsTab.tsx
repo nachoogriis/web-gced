@@ -1,8 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import ProjectsList from "./ProjectsList"
 
-const options = ["APs", "DL", "Others"]
-
 export default function ProjectsTab({}) {
   return <ProjectsList />
 }

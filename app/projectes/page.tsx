@@ -1,12 +1,15 @@
-import ProjectsTab from "@/components/projects/ProjectsTab"
+import ProjectsList from "./ProjectsList"
+import { dbUniversityProjectsGetAll } from "@/lib/db/alumni"
 
-export default function Home() {
+export default async function Page() {
+  const universityProjects = await dbUniversityProjectsGetAll()
+
   return (
     <main>
       <h1 className="title">Projectes</h1>
 
-      <section className="flex items-center justify-center h-[100%] w-[100%]">
-        <ProjectsTab />
+      <section className="flex flex-col items-start h-[100%] w-[100%]">
+        <ProjectsList universityProjects={universityProjects} />
       </section>
     </main>
   )
