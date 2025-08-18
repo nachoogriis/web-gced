@@ -4,6 +4,7 @@ import { UniversityProject } from "@prisma/client"
 import { useState } from "react"
 import ProjectCard from "./ProjectCard"
 import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 const options = [
   { key: "APs", text: "Algorísima i Programació" },
@@ -35,9 +36,14 @@ export default function ProjectsList({ universityProjects: projects }: Props) {
 
   return (
     <>
-      <div className="mt-6 px-6 flex flex-row items-center text-foreground/70 text-sm gap-4">
+      <div
+        className={cn(
+          "mt-6 px-6 flex flex-col justify-start text-foreground/70 text-sm gap-2",
+          "md:flex-row md:items-center md:gap-4",
+        )}
+      >
         <span>Filtra els projectes:</span>
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-wrap gap-2">
           {options.map(({ key, text }) => (
             <Button
               key={key}
