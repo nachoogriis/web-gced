@@ -1,6 +1,6 @@
 import IconLinkedIn from "@/components/icons/IconLinkedIn"
 import PersonIcon from "@/components/icons/PersonIcon"
-import { DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import { DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { AlumniCardInfo } from "@/lib/db/alumni"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 import Link from "next/link"
@@ -63,45 +63,43 @@ export default function FullAlumniCard({ alumni }: Props) {
         </div>
       </DialogHeader>
 
-      <DialogDescription className="mt-4">
-        <GenericSection
-          title="Pràctiques a empresa"
-          itemLists={internships.map((internship) => [
-            { name: "Empresa", text: internship.organization },
-            { name: "País", text: internship.country },
-            { name: "Tema", text: internship.position },
-            { name: "Descripció", text: internship.description },
-          ])}
-        />
-        <GenericSection
-          title="Treball Final de Grau"
-          itemLists={[
-            [
-              { name: "Títol", text: tfgTitle },
-              { name: "Descripció", text: tfgDescription },
-              { name: "Universitat", text: tfgUniversity },
-              { name: "País", text: tfgCountry },
-            ],
-          ]}
-        />
-        <GenericSection
-          title="Màster"
-          itemLists={masters.map((master) => [
-            { name: "Títol", text: master.name },
-            { name: "País", text: master.country },
-            { name: "Universitats", text: master.universities },
-            { name: "Descripció", text: master.description },
-          ])}
-        />
-        <GenericSection title="Feina Actual" itemLists={[[{ name: "Lloc de Treball", text: currentJob }]]} />
-        <GenericSection
-          title="Projectes Personals"
-          itemLists={projects.map((project) => [
-            { name: "Nom", text: project.name },
-            { name: "Descripció", text: project.description },
-          ])}
-        />
-      </DialogDescription>
+      <GenericSection
+        title="Pràctiques a empresa"
+        itemLists={internships.map((internship) => [
+          { name: "Empresa", text: internship.organization },
+          { name: "País", text: internship.country },
+          { name: "Tema", text: internship.position },
+          { name: "Descripció", text: internship.description },
+        ])}
+      />
+      <GenericSection
+        title="Treball Final de Grau"
+        itemLists={[
+          [
+            { name: "Títol", text: tfgTitle },
+            { name: "Descripció", text: tfgDescription },
+            { name: "Universitat", text: tfgUniversity },
+            { name: "País", text: tfgCountry },
+          ],
+        ]}
+      />
+      <GenericSection
+        title="Màster"
+        itemLists={masters.map((master) => [
+          { name: "Títol", text: master.name },
+          { name: "País", text: master.country },
+          { name: "Universitats", text: master.universities },
+          { name: "Descripció", text: master.description },
+        ])}
+      />
+      <GenericSection title="Feina Actual" itemLists={[[{ name: "Lloc de Treball", text: currentJob }]]} />
+      <GenericSection
+        title="Projectes Personals"
+        itemLists={projects.map((project) => [
+          { name: "Nom", text: project.name },
+          { name: "Descripció", text: project.description },
+        ])}
+      />
     </DialogContent>
   )
 }
