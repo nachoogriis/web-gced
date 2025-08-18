@@ -59,7 +59,7 @@ export default function AlumniCard({ alumni, className }: Props) {
 
         {/* Botón siempre abajo */}
         <div className="mt-auto flex justify-center pb-2">
-          <button className="text-center text-sm text-[#4BADD9] hover:underline whitespace-nowrap">Saber més →</button>
+          <button className="text-center text-sm text-[#4BADD9] hover:underline whitespace-nowrap cursor-pointer">Saber més →</button>
         </div>
       </div>
     </FullAlumniDialogTrigger>
