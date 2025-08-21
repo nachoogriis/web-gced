@@ -6,7 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
-import LogoUPC_full from "./LogoUPC-full.svg"
+import Logo from "@/assets/logo-web-gced-optimized.svg"
 
 export default function Header() {
   const pathname = usePathname()
@@ -35,9 +35,9 @@ export default function Header() {
     </Link>
   )
   return (
-    <header className={cn("h-20 flex flex-row gap-2 items-end px-[1em] py-[0.8em]", "shadow", "relative")}>
+    <header className={cn("h-20 flex flex-row gap-2 items-end px-[1em] py-[0.8em]", "shadow-md", "relative")}>
       <Link href="/">
-        <Image src={LogoUPC_full} alt="Logo UPC" width={250} height={80} />
+        <Image src={Logo} alt="Logotip Web GCED" width={225} height={55} />
       </Link>
 
       <div onClick={toggleVisible} className="lg:hidden flex-1 flex flex-row justify-end cursor-pointer">
