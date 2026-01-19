@@ -39,7 +39,7 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
             </div>
 
             {/* Botón "Saber més" */}
-            <button className="text-sm text-[#4BADD9] hover:underline mt-1 whitespace-nowrap">
+            <button className="text-sm text-[#4BADD9] hover:underline mt-1 whitespace-nowrap cursor-pointer">
               Saber més →
             </button>
           </div>

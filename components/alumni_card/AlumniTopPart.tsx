@@ -1,4 +1,6 @@
 import PersonIcon from "@/components/icons/PersonIcon"
+import GenerationBadge from "./GenerationBadge"
+
 
 interface AlumniTopPartProps {
   name: string
@@ -6,7 +8,7 @@ interface AlumniTopPartProps {
   generation: number
   id?: number
 }
-
+ 
 export default function AlumniTopPart({ name, surname, generation, id = 0 }: AlumniTopPartProps) {
   return (
     <div className="flex flex-row w-full items-center gap-4 p-3 pb-1">
@@ -18,9 +20,7 @@ export default function AlumniTopPart({ name, surname, generation, id = 0 }: Alu
         <p className="text-black text-xl font-bold leading-none">
           {name} {surname}
         </p>
-        <div className="flex p-0.5 mt-1.5 justify-center items-center rounded-full bg-[#B0DAED]">
-          <p className="px-2 text-black font-poppins text-[12px] font-medium leading-normal">{generation}</p>
-        </div>
+          <GenerationBadge year={generation} />
       </div>
     </div>
   )
