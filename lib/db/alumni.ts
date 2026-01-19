@@ -46,7 +46,16 @@ export async function dbAlumniGetAllCardsInfo() {
     tfgDescription: alumnus.tfgDescription || "No especificat",
     tfgUniversity: alumnus.tfgUniversity || "No especificat",
     tfgCountry: alumnus.tfgCountry || "No especificat",
+
     currentJob: alumnus.currentJob || "No especificat",
+    currentSituation: alumnus.currentSituation || "No especificat",
+    currentOrganization: alumnus.currentOrganization || "No especificat",
+    currentPosition: alumnus.currentPosition || "No especificat",
+    currentJobDescription: alumnus.currentJobDescription || "No especificat",
+    currentJobRelatedToGCED: alumnus.currentJobRelatedToGCED || "No especificat",
+    currentJobKeywordsDomain: alumnus.currentJobKeywordsDomain || "No especificat",
+    currentJobKeywordsSpecialty: alumnus.currentJobKeywordsSpecialty || "No especificat",
+
     internships: alumnus.internships.map((internshipAlumnus) => ({
       position: internshipAlumnus.internship.position || "No especificat",
       description: internshipAlumnus.internship.description || "No especificat",

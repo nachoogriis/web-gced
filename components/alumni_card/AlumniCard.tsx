@@ -17,12 +17,13 @@ type Props = {
 export default function AlumniCard({ alumni, className }: Props) {
   const { id, firstName, lastName, generation, internships, tfgTitle, masters, currentJob } = alumni
 
-  const infoLines: [React.FC, string, string][] = [
-    [InternshipIcon, "Pràctiques", internships[0].description],
-    [TfgIcon, "TFG", tfgTitle],
-    [MasterIcon, "Màster", masters[0].name],
-    [CurrentJobIcon, "Actualment", currentJob],
-  ]
+const infoLines: [React.FC, string, string][] = [
+  [InternshipIcon, "Pràctiques", internships?.[0]?.organization ?? "No especificat"],
+  [TfgIcon, "TFG", tfgTitle ?? "No especificat"],
+  [MasterIcon, "Màster", masters?.[0]?.name ?? "No especificat"],
+  [CurrentJobIcon, "Actualment", currentJob ?? "No especificat"],
+]
+
 
   return (
     <FullAlumniDialogTrigger alumni={alumni}>

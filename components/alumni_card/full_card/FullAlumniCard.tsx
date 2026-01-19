@@ -93,7 +93,17 @@ export default function FullAlumniCard({ alumni }: Props) {
             { name: "Descripció", text: master.description },
           ])}
         />
-        <GenericSection title="Feina Actual" itemLists={[[{ name: "Lloc de Treball", text: currentJob }]]} />
+        <GenericSection
+          title="Feina Actual"
+          itemLists={[
+            [
+              { name: "Empresa", text: alumni.currentOrganization },
+              { name: "Posició", text: alumni.currentPosition },
+              { name: "Descripció", text: alumni.currentJobDescription },
+            ],
+          ]}
+        />
+
         <GenericSection
           title="Projectes Personals"
           itemLists={projects.map((project: AlumniCardInfo["projects"][number]) => [
