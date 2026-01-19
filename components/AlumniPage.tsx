@@ -26,11 +26,11 @@ export default function AlumniPage({ initialAlumniData }: Props) {
         `${alumni.firstName || ""} ${alumni.lastName || ""}`,
         String(alumni.generation || ""),
         String(alumni.tfgTitle || ""),
-        ...(alumni.internships || []).flatMap((internship) => [
+        ...(alumni.internships || []).flatMap((internship: AlumniCardInfo["internships"][number]) => [
           String(internship.position || ""),
           String(internship.organization || ""),
         ]),
-        ...(alumni.masters || []).map((master) => String(master.name || "")),
+        ...(alumni.masters || []).map((master: AlumniCardInfo["masters"][number]) => String(master.name || "")),
       ]
         .join(" ")
         .toLowerCase()

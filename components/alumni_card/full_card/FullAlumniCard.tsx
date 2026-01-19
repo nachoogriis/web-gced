@@ -66,7 +66,7 @@ export default function FullAlumniCard({ alumni }: Props) {
       <DialogDescription className="mt-4">
         <GenericSection
           title="Pràctiques a empresa"
-          itemLists={internships.map((internship) => [
+          itemLists={internships.map((internship: AlumniCardInfo["internships"][number]) => [
             { name: "Empresa", text: internship.organization },
             { name: "País", text: internship.country },
             { name: "Tema", text: internship.position },
@@ -86,7 +86,7 @@ export default function FullAlumniCard({ alumni }: Props) {
         />
         <GenericSection
           title="Màster"
-          itemLists={masters.map((master) => [
+          itemLists={masters.map((master: AlumniCardInfo["masters"][number]) => [
             { name: "Títol", text: master.name },
             { name: "País", text: master.country },
             { name: "Universitats", text: master.universities },
@@ -96,7 +96,7 @@ export default function FullAlumniCard({ alumni }: Props) {
         <GenericSection title="Feina Actual" itemLists={[[{ name: "Lloc de Treball", text: currentJob }]]} />
         <GenericSection
           title="Projectes Personals"
-          itemLists={projects.map((project) => [
+          itemLists={projects.map((project: AlumniCardInfo["projects"][number]) => [
             { name: "Nom", text: project.name },
             { name: "Descripció", text: project.description },
           ])}

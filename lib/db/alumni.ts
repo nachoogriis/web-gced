@@ -110,3 +110,5 @@ export async function dbUniversityProjectsGetAll() {
 export type AlumniCardInfo = Awaited<ReturnType<typeof dbAlumniGetAllCardsInfo>>[number]
 
 export type AlumniReviewInfo = Awaited<ReturnType<typeof dbAlumniGetAllReviews>>[number]
+
+export type UniversityProjectInfo = Awaited<ReturnType<typeof dbUniversityProjectsGetAll>>[number]

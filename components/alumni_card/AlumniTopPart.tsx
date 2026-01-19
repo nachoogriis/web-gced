@@ -15,10 +15,10 @@ export default function AlumniTopPart({ name, surname, generation, id = 0 }: Alu
       </div>
 
       <div className="flex flex-col justify-center items-start gap-0">
-        <p className="text-black text-2xl font-bold leading-normal">
+        <p className="text-black text-xl font-bold leading-none">
           {name} {surname}
         </p>
-        <div className="flex p-0.5 justify-center items-center rounded-full bg-[#B0DAED]">
+        <div className="flex p-0.5 mt-1.5 justify-center items-center rounded-full bg-[#B0DAED]">
           <p className="px-2 text-black font-poppins text-[12px] font-medium leading-normal">{generation}</p>
         </div>
       </div>

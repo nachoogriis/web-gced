@@ -77,7 +77,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="text-sm md:text-base lg:text-lg py-10 bg-gray-100">
+      <section className="text-sm md:text-base lg:text-lg py-10 bg-white">
         <div className="mx-3">
           <div className="py-4">
             <h2 className="text-3xl text-center font-semibold mb-6">Opinions dels nostres estudiants</h2>
@@ -90,6 +90,7 @@ export default async function Home() {
                     className={cn(
                       "md:basis-1/2 lg:basis-1/5 xl:basis-1/4 2xl:basis-1/5",
                       "min-[1920px]:basis-1/6 min-[2320px]:basis-1/7",
+                      "p-3",
                     )}
                   >
                     <AlumniReview

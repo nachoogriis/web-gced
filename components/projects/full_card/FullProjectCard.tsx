@@ -1,6 +1,5 @@
 "use client"
 
-import ProjectTitle from "./ProjectTitle"
 import ImageGallery from "./ImageGallery"
 import { cn } from "@/lib/utils"
 
