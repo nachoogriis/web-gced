@@ -11,7 +11,7 @@ export default function AlumniTopPart({ name, surname, generation, id = 0 }: Alu
   return (
     <div className="flex flex-row w-full items-center gap-4 p-3 pb-1">
       <div className="w-[75px] h-[75px] flex-shrink-0 rounded-full bg-[#B0DAED]">
-        <PersonIcon id={id} />
+        <PersonIcon name={name} surname={surname} />
       </div>
 
       <div className="flex flex-col justify-center items-start gap-0">

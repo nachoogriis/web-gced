@@ -39,7 +39,7 @@ const infoLines: [React.FC, string, string][] = [
         {/* Parte superior con el nombre y generación */}
         <div className="p-8 flex flex-col gap-2 bg-white pb-1 border-b">
           <div className="flex flex-row justify-between items-start gap-4">
-            <PersonIcon id={id} className="w-24 h-24" />
+            <PersonIcon name={firstName} surname={lastName} className="w-24 h-24" />
             <GenerationBadge year={generation} />
           </div>
 

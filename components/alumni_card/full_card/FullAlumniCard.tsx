@@ -40,7 +40,7 @@ export default function FullAlumniCard({ alumni }: Props) {
         </VisuallyHidden>
 
         <div className="flex flex-col w-full items-stretch gap-0">
-          <PersonIcon id={id} className="w-32 h-32" />
+          <PersonIcon name={firstName} surname={lastName} className="w-32 h-32" />
 
           <div className="flex flex-col justify-center items-stretch leading-none">
             <div className="flex flex-row justify-between items-center">
