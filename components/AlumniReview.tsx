@@ -13,7 +13,7 @@ interface AlumniReviewProps {
 export default function AlumniReview({ firstName, lastName, generation, review, id }: AlumniReviewProps) {
   return (
     <div className={cn(
-    "rounded-tl-[15px] rounded-tr-[15px] rounded-br-[15px] bg-upc-muted overflow-hidden h-[230px] shadow-xl shadow-gray-300",
+    "rounded-tl-[15px] rounded-tr-[15px] rounded-br-[15px] bg-upc-muted overflow-hidden h-[235px] shadow-xl shadow-gray-300",
     "flex flex-col items-stretch gap-[0.4em]",
       )}>
       <div className="flex items-start">

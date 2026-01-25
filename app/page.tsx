@@ -94,7 +94,7 @@ export default async function Home() {
                   <CarouselItem
                     key={index}
                     className={cn(
-                      "md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5",
+                      "md:basis-1/2 lg:basis-1/3 xl:basis-1/3",
                       "min-[1920px]:basis-1/6 min-[2320px]:basis-1/7 p-4",
                     )}
                   >
@@ -102,7 +102,7 @@ export default async function Home() {
                       firstName={review.firstName}
                       lastName={review.lastName}
                       generation={review.generation}
-                      review={review.review}
+                      review={`“${review.review}”`}
                       id={review.id}
                     />
                   </CarouselItem>
