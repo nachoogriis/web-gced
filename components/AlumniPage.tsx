@@ -13,36 +13,52 @@ export default function AlumniPage({ initialAlumniData }: Props) {
   const [searchTerm, setSearchTerm] = useState("")
   const [filteredAlumni, setFilteredAlumni] = useState(initialAlumniData)
 
-  const handleSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const search = e.target.value.toLowerCase()
-    setSearchTerm(e.target.value)
 
-    const isSimilar = (word1: string, word2: string, threshold = 1) => {
-      return levenshteinDistance(word1, word2) <= threshold
+  const handleSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const raw = e.target.value
+    const search = raw.toLowerCase()
+    setSearchTerm(raw)
+
+    const isSimilar = (term: string, dataWord: string, threshold = 1) => {
+      const isNumericTerm = /^\d+$/.test(term)
+      const isNumericData = /^\d+$/.test(dataWord)
+
+      if (isNumericTerm && isNumericData) return term === dataWord
+
+      if (isNumericTerm || isNumericData) return false
+
+      return levenshteinDistance(term, dataWord) <= threshold
     }
 
     const results = initialAlumniData.filter((alumni) => {
       const combinedData = [
         `${alumni.firstName || ""} ${alumni.lastName || ""}`,
-        String(alumni.generation || ""),
+        String(alumni.generation ?? ""),
         String(alumni.tfgTitle || ""),
-        ...(alumni.internships || []).flatMap((internship: AlumniCardInfo["internships"][number]) => [
-          String(internship.position || ""),
-          String(internship.organization || ""),
-        ]),
-        ...(alumni.masters || []).map((master: AlumniCardInfo["masters"][number]) => String(master.name || "")),
+        ...(alumni.internships || []).flatMap(
+          (internship: AlumniCardInfo["internships"][number]) => [
+            String(internship.position || ""),
+            String(internship.organization || ""),
+          ]
+        ),
+        ...(alumni.masters || []).map((master: AlumniCardInfo["masters"][number]) =>
+          String(master.name || "")
+        ),
       ]
         .join(" ")
         .toLowerCase()
 
+      const dataWords = combinedData.split(/\s+/).filter(Boolean)
+
       return search
-        .toLowerCase()
-        .split(" ")
-        .every((term: string) => combinedData.split(" ").some((dataWord) => isSimilar(term, dataWord)))
+        .split(/\s+/)
+        .filter(Boolean)
+        .every((term) => dataWords.some((dataWord) => isSimilar(term, dataWord)))
     })
 
     setFilteredAlumni(results)
   }
+
 
   return (
     <main className="w-full flex flex-col items-stretch p-4">
