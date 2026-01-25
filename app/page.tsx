@@ -43,7 +43,9 @@ export default async function Home() {
       </section>
 
       <section className="text-sm md:text-base lg:text-lg flex flex-col overflow-clip py-6 text-center mx-3">
-        <h2 className="text-base md:text-lg lg:text-xl font-bold mb-4">Coneix als nostres estudiants</h2>
+        <h2 className="text-2xl md:text-2xl lg:text-2xl font-bold mb-4">
+          Coneix als nostres estudiants
+        </h2>
 
         <div className="relative">
           <Carousel>
@@ -77,7 +79,7 @@ export default async function Home() {
       <section className="text-sm md:text-base lg:text-lg py-10 bg-white">
         <div className="mx-3">
           <div className="py-4">
-            <h2 className="text-base md:text-lg lg:text-xl font-bold mb-4 text-center">
+            <h2 className="text-2xl md:text-2xl lg:text-2xl font-bold mb-4 text-center">
               Opinions dels nostres estudiants
             </h2>
             <Carousel>

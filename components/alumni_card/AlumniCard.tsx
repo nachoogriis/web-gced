@@ -31,27 +31,29 @@ const infoLines: [React.FC, string, string][] = [
         className={cn(
           "rounded-xl bg-upc-muted overflow-hidden shadow-xl shadow-gray-300",
           "flex flex-col",
-          "hover:outline-4 outline-[#B0DAED] cursor-pointer h-[24em]",
+          "hover:outline-4 outline-[#B0DAED] cursor-pointer",
+          "h-[26em] md:h-[20em]", // Taller on mobile (more text wrapping), shorter on desktop
           "select-none text-left",
           "w-full min-w-[280px] max-w-[340px]",
           className,
         )}
       >
-        {/* Parte superior */}
-        <div className="p-8 flex flex-col gap-2 bg-white pb-1 border-b">
+        {/* Parte superior - fixed height for consistency */}
+        <div className="p-6 pb-2 flex flex-col gap-2 bg-white border-b h-[160px] shrink-0">
           <div className="flex flex-row justify-between items-start gap-4">
-            <PersonIcon name={firstName} surname={lastName} className="w-24 h-24" />
+            <PersonIcon name={firstName} surname={lastName} className="w-20 h-20" />
             <GenerationBadge year={generation} />
           </div>
-          <div className="text-black text-left text-2xl leading-none font-bold mb-2 line-clamp-2">
+          {/* Fixed height for name to accommodate 2 lines */}
+          <div className="text-black text-left text-xl leading-tight font-bold line-clamp-2 h-[2.5em]">
             {firstName} {lastName}
           </div>
         </div>
 
-        {/* Información adicional */}
-        <div className="p-4 pt-2.5 flex flex-col gap-2.5">
+        {/* Información adicional - fills remaining space */}
+        <div className="p-4 pt-3 flex flex-col gap-2 flex-1 overflow-hidden">
           {infoLines.map(([Icon, title, description], index) => (
-            <div key={`${alumni.id}-${index}`} className="grid grid-cols-[1em_4.5em_1fr] gap-x-2">
+            <div key={`${alumni.id}-${index}`} className="grid grid-cols-[1em_4.5em_1fr] gap-x-2 items-start">
               <Icon />
               <div className="font-bold text-xs text-gray-700">{title}</div>
               <div className="text-xs line-clamp-2 text-gray-600">{description}</div>
@@ -60,7 +62,7 @@ const infoLines: [React.FC, string, string][] = [
         </div>
 
         {/* Botón siempre abajo */}
-        <div className="mt-auto flex justify-center pb-2">
+        <div className="flex justify-center pb-3 shrink-0">
           <button className="text-center text-sm text-[#4BADD9] hover:underline whitespace-nowrap cursor-pointer">Saber més →</button>
         </div>
       </div>
