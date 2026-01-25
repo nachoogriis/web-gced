@@ -31,7 +31,7 @@ export default function FullAlumniCard({ alumni }: Props) {
   const tfg = { tfgTitle, tfgDescription, tfgCountry, tfgUniversity }
 
   return (
-    <DialogContent className="overflow-y-auto pointer-events-auto max-h-[60em] select-none">
+    <DialogContent className="overflow-y-auto pointer-events-auto select-none max-h-[calc(100dvh-2rem)] max-w-[720px] w-[calc(100vw-2rem)]">
       <DialogHeader>
         <VisuallyHidden>
           <DialogTitle>
