@@ -1,4 +1,31 @@
 import { db } from "./db"
+import { Alumni, InternshipAlumni, Internship, Organization, MasterAlumni, Master, MasterOrganizations, ProjectAlumni, Project, UniversityProject } from "@/generated/prisma/client"
+
+type AlumniWithRelations = Alumni & {
+  internships: (InternshipAlumni & {
+    internship: Internship & {
+      organization: Organization
+    }
+  })[]
+  masters: (MasterAlumni & {
+    master: Master & {
+      organizations: (MasterOrganizations & {
+        organization: Organization
+      })[]
+    }
+  })[]
+  projects: (ProjectAlumni & {
+    project: Project
+  })[]
+}
+
+type AlumniReview = {
+  id: number
+  firstName: string
+  lastName: string
+  generation: number
+  review: string | null
+}
 
 export async function dbAlumniGetAllCardsInfo() {
   const alumni = await db.alumni.findMany({
@@ -36,7 +63,7 @@ export async function dbAlumniGetAllCardsInfo() {
   // FIXME: This looks a little too cumbersome...
   // ... maybe solve it in the query?
   // ... or walk the structure and subsitute all "undefined"s for "No especificat"?
-  return alumni.map((alumnus) => ({
+  return alumni.map((alumnus: AlumniWithRelations) => ({
     id: alumnus.id,
     firstName: alumnus.firstName,
     lastName: alumnus.lastName,
@@ -56,21 +83,21 @@ export async function dbAlumniGetAllCardsInfo() {
     currentJobKeywordsDomain: alumnus.currentJobKeywordsDomain || "No especificat",
     currentJobKeywordsSpecialty: alumnus.currentJobKeywordsSpecialty || "No especificat",
 
-    internships: alumnus.internships.map((internshipAlumnus) => ({
+    internships: alumnus.internships.map((internshipAlumnus: AlumniWithRelations["internships"][number]) => ({
       position: internshipAlumnus.internship.position || "No especificat",
       description: internshipAlumnus.internship.description || "No especificat",
       organization: internshipAlumnus.internship.organization.name || "No especificat",
       country: internshipAlumnus.internship.organization.country || "No especificat",
     })),
-    masters: alumnus.masters.map((masterAlumnus) => ({
+    masters: alumnus.masters.map((masterAlumnus: AlumniWithRelations["masters"][number]) => ({
       name: masterAlumnus.master.name || "No especificat",
       description: masterAlumnus.master.description || "No especificat",
       universities: masterAlumnus.master.organizations
-        .map((org) => org.organization.name || "No especificat")
+        .map((org: AlumniWithRelations["masters"][number]["master"]["organizations"][number]) => org.organization.name || "No especificat")
         .join(", "),
       country: masterAlumnus.master.organizations[0]?.organization.country || "No especificat",
     })),
-    projects: alumnus.projects.map((projectAlumnus) => ({
+    projects: alumnus.projects.map((projectAlumnus: AlumniWithRelations["projects"][number]) => ({
       name: projectAlumnus.project.name || "No especificat",
       description: projectAlumnus.project.description || "No especificat",
     })),
@@ -93,7 +120,7 @@ export async function dbAlumniGetAllReviews() {
     },
   })
 
-  return alumniReviews.map((alumni) => ({
+  return alumniReviews.map((alumni: AlumniReview) => ({
     id: alumni.id,
     firstName: alumni.firstName,
     lastName: alumni.lastName,
@@ -105,7 +132,7 @@ export async function dbAlumniGetAllReviews() {
 export async function dbUniversityProjectsGetAll() {
   const uniProjects = await db.universityProject.findMany()
 
-  return uniProjects.map((project) => ({
+  return uniProjects.map((project: UniversityProject) => ({
     id: project.id,
     name: project.name,
     summary: project.summary,

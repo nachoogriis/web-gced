@@ -1,6 +1,6 @@
 "use client"
 
-import { UniversityProject } from "@prisma/client"
+import { UniversityProject } from "@/generated/prisma/client"
 import { useState } from "react"
 import ProjectCard from "./ProjectCard"
 import { Button } from "@/components/ui/button"

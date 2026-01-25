@@ -4,7 +4,7 @@ import BannerMainStats from "@/components/BannerMainStats"
 import ButtonGo from "@/components/ButtonGoStudents"
 import CompanyCard from "@/components/CompanyCard"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni"
+import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews, AlumniReviewInfo } from "@/lib/db/alumni"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 
@@ -54,7 +54,7 @@ export default async function Home() {
               )}
             />
             <CarouselContent>
-              {alumniData.map((alumni, index) => (
+              {alumniData.map((alumni: any, index: number) => (
                 <CarouselItem key={index} className="sm:basis-1 md:basis-1/2 lg:basis-1/3 p-4 pb-10">
                   <AlumniCard alumni={alumni} className="border border-upc/10" />
                 </CarouselItem>
@@ -88,7 +88,7 @@ export default async function Home() {
                 )}
               />
               <CarouselContent>
-                {alumniReviews.map((review, index) => (
+                {alumniReviews.map((review: AlumniReviewInfo, index: number) => (
                   <CarouselItem
                     key={index}
                     className={cn(
