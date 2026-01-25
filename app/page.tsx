@@ -55,7 +55,7 @@ export default async function Home() {
             />
             <CarouselContent>
               {alumniData.map((alumni: any, index: number) => (
-                <CarouselItem key={index} className="sm:basis-1 md:basis-1/2 lg:basis-1/3 p-4 pb-10">
+                <CarouselItem key={index} className="basis-auto p-4 pb-10">
                   <AlumniCard alumni={alumni} className="border border-upc/10" />
                 </CarouselItem>
               ))}

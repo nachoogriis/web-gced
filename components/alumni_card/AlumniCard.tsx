@@ -33,6 +33,7 @@ const infoLines: [React.FC, string, string][] = [
           "flex flex-col",
           "hover:outline-4 outline-[#B0DAED] cursor-pointer h-[24em]",
           "select-none text-left",
+          "w-full min-w-[280px] max-w-[340px]",
           className,
         )}
       >

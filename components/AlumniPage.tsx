@@ -64,7 +64,7 @@ export default function AlumniPage({ initialAlumniData }: Props) {
       {/* Tarjetas de alumnos */}
       {filteredAlumni.length > 0 && (
         <section className="flex items-center justify-center bg-gray-100 border-t">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 rounded py-8 px-8 lg:px-12 max-w-[1400px]">
+          <div className="flex flex-wrap justify-center gap-6 rounded py-8 px-8 lg:px-12 max-w-[1500px]">
             {filteredAlumni.map((alumni) => (
               <AlumniCard key={alumni.id} alumni={alumni} />
             ))}
