@@ -42,7 +42,7 @@ export default function FullProjectCard({ project }: { project: ProjectInfo }) {
               {tags.map((t, i) => (
                 <span
                   key={`${t}-${i}`}
-                  className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-600"
+                  className="rounded-full border border-slate-300 px-2.5 py-0.5 text-[11px] font-medium text-slate-600"
                 >
                   {t}
                 </span>
