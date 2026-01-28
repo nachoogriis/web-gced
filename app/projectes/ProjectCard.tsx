@@ -35,7 +35,7 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
     <FullProjectDialog project={project}>
       <article
         className={cn(
-          "group cursor-pointer select-none overflow-hidden rounded-3xl",
+          "group relative cursor-pointer select-none overflow-hidden rounded-3xl",
           "bg-white ring-1 ring-black/5 shadow-sm",
           "transition-all duration-200",
           "hover:-translate-y-0.5 hover:shadow-lg hover:ring-black/10",
@@ -58,13 +58,6 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
           <div className="absolute left-4 top-4">
             <span className="inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-upc ring-1 ring-black/5 backdrop-blur">
               {project.topic}
-            </span>
-          </div>
-
-          {/* CTA */}
-          <div className="absolute right-4 top-4">
-            <span className="inline-flex items-center rounded-full bg-upc px-3 py-1 text-xs font-bold text-white shadow-sm">
-              Saber més →
             </span>
           </div>
 
@@ -95,9 +88,12 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
               ))}
             </div>
           )}
-
-
         </div>
+        <div className="absolute right-4 bottom-4 opacity-100">
+            <button className="inline-flex text-sm text-[#4BADD9] hover:underline cursor-pointer">
+              Saber més →
+            </button>
+          </div>
       </article>
     </FullProjectDialog>
   )
