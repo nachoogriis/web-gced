@@ -33,14 +33,18 @@ export default function CompanyCard() {
   const internshipLogos = getPublicLogos("internship_logos")
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4">
-      <h2 className="text-base md:text-lg lg:text-xl font-bold mb-4 text-center">
+    <div className="w-full max-w-6xl mx-auto px-4 text-center">
+      <h2 className="m-2 text-2xl md:text-3xl font-extrabold text-slate-900">
+        Empreses
+      </h2>
+
+      <h2 className="mt-4 mb-8 text-slate-600 max-w-3xl mx-auto">
         Els nostres estudiants treballen a
       </h2>
 
       <LogosRow logos={jobLogos} animationClass="animate-scroll" keyPrefix="job" />
 
-      <h2 className="text-base md:text-lg lg:text-xl font-bold mb-4 text-center pt-6">
+      <h2 className="mt-12 text-slate-600 max-w-3xl mx-auto">
         Els nostres estudiants fan pràctiques a
       </h2>
 

@@ -7,16 +7,26 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews, AlumniReviewInfo } from "@/lib/db/alumni"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import { getHomeImages } from "@/lib/getHomeImages"
+import HomeSlideshow from "@/components/HomeSlideshow"
 
 export default async function Home() {
   const alumniData = await dbAlumniGetAllCardsInfo()
   const alumniReviews = await dbAlumniGetAllReviews()
+  const images = getHomeImages()
 
   return (
     <main>
-      <section className="text-center py-10">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-upc mx-5">Grau en Ciència i Enginyeria de Dades</h1>
-        <p className="py-2 text-base md:text-lg lg:text-2xl text-upc mx-5 pt-2">Quin és el teu somni?</p>
+      <section className="relative text-center overflow-hidden px-50 py-48">
+        <HomeSlideshow images={images} />
+
+        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-upc mx-5">
+          Grau en Ciència i Enginyeria de Dades
+        </h1>
+
+        <p className="mt-4 text-base md:text-lg lg:text-3xl text-upc mx-5">
+          Quin és el teu somni?
+        </p>
       </section>
 
       <BannerMainStats />
@@ -29,7 +39,7 @@ export default async function Home() {
       </section>
 
       <section className="text-sm md:text-base lg:text-lg flex flex-col items-center pb-10">
-        <h2 className="text-base md:text-lg lg:text-xl font-bold mb-4">Coneix més sobre el nostre programa</h2>
+        <h2 className="m-2 text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Coneix més sobre el nostre programa</h2>
         <div className="w-full max-w-3xl aspect-video">
           <iframe
             className="w-full h-full"
@@ -43,7 +53,7 @@ export default async function Home() {
       </section>
 
       <section className="text-sm md:text-base lg:text-lg flex flex-col overflow-clip py-6 text-center mx-3">
-        <h2 className="text-2xl md:text-2xl lg:text-2xl font-bold mb-4">
+        <h2 className="m-2 text-2xl md:text-3xl font-extrabold text-slate-900">
           Coneix als nostres estudiants
         </h2>
 
@@ -79,7 +89,7 @@ export default async function Home() {
       <section className="text-sm md:text-base lg:text-lg py-10 bg-white">
         <div className="mx-3">
           <div className="py-4">
-            <h2 className="text-2xl md:text-2xl lg:text-2xl font-bold mb-4 text-center">
+            <h2 className="m-2 text-2xl md:text-3xl font-extrabold text-slate-900 text-center">
               Opinions dels nostres estudiants
             </h2>
             <Carousel>

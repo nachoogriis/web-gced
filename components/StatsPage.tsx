@@ -3,6 +3,8 @@
 
 import { PrismaClient } from "@/generated/prisma/client"
 import { PrismaLibSql } from "@prisma/adapter-libsql"
+import CompanyCard from "@/components/CompanyCard"
+
 
 const adapter = new PrismaLibSql({
   url: process.env.DATABASE_URL!,
@@ -262,6 +264,12 @@ export default async function StatsPage() {
             <StatCard label="Pràctiques registrades" value={formatK(internshipsCount)} />
             <StatCard label="Generacions registrades" value={byGeneration.length} />
           </div>
+        </div>
+      </section>
+
+      <section className="bg-white border-t">
+        <div className="w-full max-w-[1500px] mx-auto px-4 py-12">
+          <CompanyCard />
         </div>
       </section>
 
