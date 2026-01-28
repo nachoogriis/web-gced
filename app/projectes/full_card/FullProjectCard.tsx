@@ -1,7 +1,6 @@
 "use client"
 
 import ImageGallery from "./ImageGallery"
-import { cn } from "@/lib/utils"
 
 interface ProjectInfo {
   id: number
@@ -13,36 +12,75 @@ interface ProjectInfo {
   images: string
 }
 
-export default function FullProjectCard({ project }: { project: ProjectInfo }) {
+function splitTags(tags?: string) {
+  if (!tags) return []
   return (
-    <div className="max-h-[80vh] overflow-y-auto px-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-      <div
-        className={cn(
-          "rounded-xl bg-upc-muted overflow-hidden shadow-xl shadow-gray-300",
-          "flex flex-col items-stretch transition-shadow duration-300 hover:shadow-2xl",
+    tags
+      .match(/\[([^\]]+)\]/g)
+      ?.map((t) => t.slice(1, -1).trim())
+      .filter(Boolean)
+      .slice(0, 8) ?? []
+  )
+}
+
+export default function FullProjectCard({ project }: { project: ProjectInfo }) {
+  const tags = splitTags(project.tags)
+
+  return (
+    <div className="w-full">
+
+      {/* Header */}
+      <header className="px-6 pt-8 pb-8 sm:px-10">
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          <span className="inline-flex items-center rounded-full bg-upc-muted px-3 py-1 text-xs font-bold text-upc">
+            {project.topic}
+          </span>
+
+          {/* Tags (misma opción que cards pequeñas) */}
+          {tags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              {tags.map((t, i) => (
+                <span
+                  key={`${t}-${i}`}
+                  className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-600"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight max-w-5xl">
+          {project.name}
+        </h1>
+
+        {project.summary && (
+          <p className="mt-4 max-w-3xl text-base sm:text-lg text-slate-600 leading-relaxed">
+            {project.summary}
+          </p>
         )}
-      >
-        {/* Header */}
-        <div className="px-20 pt-12 pb-6 flex flex-col gap-2 bg-white border-b border-gray-300">
-          <div className="text-lg text-gray-600 font-semibold">{project.topic}</div>
+      </header>
 
-          <h1 className="text-black text-left text-3xl leading-tight font-bold line-clamp-2">{project.name}</h1>
+      {/* Hero gallery */}
+      <section className="px-6 sm:px-10">
+        <div className="rounded-3xl bg-slate-50 p-4 sm:p-6">
+          <ImageGallery projectImages={project.images} />
         </div>
+      </section>
 
-        {/* Content */}
-        <div className="flex flex-col md:flex-row gap-6 p-8 items-start justify-between">
-          {/* Gallery */}
-          <div className="w-full md:w-[50%] bg-white rounded-lg shadow-md p-6">
-            <ImageGallery projectImages={project.images} />
-          </div>
-
-          {/* Description */}
-          <div className="w-full md:w-[45%] flex flex-col gap-3 text-left">
-            <h3 className="text-sm font-semibold text-gray-800 border-b border-gray-300 pb-1">Descripció</h3>
-            <p className="text-sm leading-relaxed text-gray-700">{project.description}</p>
-          </div>
+      {/* Content */}
+     <section className="px-6 py-10 sm:px-10">
+      <div className="max-w-5xl">
+        <div className="text-xs font-bold tracking-widest text-upc uppercase mb-3">
+          Descripció
         </div>
+        <p className="text-sm sm:text-base leading-relaxed text-slate-700 whitespace-pre-line">
+          {project.description}
+        </p>
       </div>
+    </section>
+
     </div>
   )
 }
