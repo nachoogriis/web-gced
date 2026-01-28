@@ -254,7 +254,7 @@ export default async function StatsPage() {
       </section>
 
       {/* KPI banner-like: fondo gris + contenedor centrado */}
-      <section className="flex items-center justify-center bg-gray-100 border-t">
+      <section className="flex items-center justify-center bg-upc border-t">
         <div className="w-full max-w-[1500px] px-4 py-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <StatCard label="Ocupabilitat" value={pct(employedRate)} />
