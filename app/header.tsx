@@ -35,7 +35,11 @@ export default function Header() {
     </Link>
   )
   return (
-    <header className={cn("h-20 flex flex-row gap-2 items-end px-[1em] py-[0.8em]", "shadow-md", "relative")}>
+    <header className={cn(
+      "w-6xl mx-auto",
+      "h-20 flex flex-row gap-2 items-end px-0 py-[0.8em]", 
+      "relative",
+    )}>
       <Link href="/">
         <Image src={Logo} alt="Logotip Web GCED" width={225} height={55} />
       </Link>
