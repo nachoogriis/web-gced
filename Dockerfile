@@ -1,13 +1,13 @@
-# From:
-# https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
-FROM node:24-bookworm-slim AS base
-RUN apt-get update -y && apt-get install -y openssl
+FROM oven/bun:1.3-slim AS base
+# Use Catalan Debian mirror for faster downloads
+#RUN sed -i 's|deb.debian.org|ftp.caliu.cat|g' /etc/apt/sources.list.d/debian.sources && \
+#    apt-get update -y && apt-get install -y openssl
 
-# Dependencies (with Bun to speed thigs up)
+# Dependencies
 FROM base AS deps
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 
 # Build
 FROM base AS builder
@@ -15,12 +15,12 @@ ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# Overwrite .env.production.local with the correct one
 COPY .env .env
+# Overwrite .env.production.local with the correct one
+COPY prod.db prod.db
 COPY .env.production.local .env.production.local
-ENV DATABASE_URL=file:./prisma/dev.db
-RUN npx prisma generate
-RUN npm run build
+RUN bunx prisma generate
+RUN bun run build
 
 # Run
 FROM base AS runner
@@ -30,15 +30,10 @@ WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
-# The UID here has to match the "pro1" user at racso.cs.upc.edu!
-RUN addgroup --system --gid $UID nodejs
-RUN adduser --system --uid $UID nextjs
 RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
 COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
 USER nextjs
 
@@ -46,4 +41,4 @@ ENV PORT=$PORT
 EXPOSE $PORT
 ENV HOSTNAME="0.0.0.0"
 
-CMD ["node", "server.js"]
+CMD ["bun", "server.js"]
