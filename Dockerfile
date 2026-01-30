@@ -1,6 +1,6 @@
 # From:
 # https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
-FROM node:18-bookworm-slim AS base
+FROM node:24-bookworm-slim AS base
 RUN apt-get update -y && apt-get install -y openssl
 
 # Dependencies (with Bun to speed thigs up)
