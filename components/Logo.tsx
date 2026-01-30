@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
-export default function CompanyLogo({
+export default function Logo({
   image,
   className,
 }: {
@@ -13,9 +13,8 @@ export default function CompanyLogo({
     <div
       className={cn(
         "shrink-0",
-        "h-14 w-40 md:h-16 md:w-44 lg:h-16 lg:w-48", // <-- ALARGADO
-        "rounded-xl bg-white",
-        "ring-1 ring-black/5",
+        "h-14 w-40 md:h-16 md:w-44 lg:h-20 lg:w-48", // <-- ALARGADO
+        "rounded-lg bg-white",
         "flex items-center justify-center",
         "px-4",
         className,
