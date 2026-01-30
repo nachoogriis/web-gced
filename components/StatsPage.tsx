@@ -1,7 +1,7 @@
 // app/estadistiques/page.tsx  (App Router)
 // Server Component: consulta Prisma directamente
 
-import CompanyCard from "@/components/CompanyCard"
+import CompanyLogos from "@/components/ComopanyLogos"
 import { db } from "@/lib/db/db";
 
 type GenItem = { generation: number; count: number }
@@ -262,7 +262,7 @@ export default async function StatsPage() {
 
       <section className="bg-white border-t">
         <div className="w-full max-w-[1500px] mx-auto px-4 py-12">
-          <CompanyCard />
+          <CompanyLogos />
         </div>
       </section>
 
