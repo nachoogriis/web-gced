@@ -18,6 +18,8 @@ COPY . .
 # Overwrite .env.production.local with the correct one
 COPY .env .env
 COPY .env.production.local .env.production.local
+ENV DATABASE_URL=file:./prisma/dev.db
+RUN npx prisma generate
 RUN npm run build
 
 # Run
