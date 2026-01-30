@@ -42,8 +42,9 @@ export default function ProjectsList({ universityProjects: projects }: Props) {
               {options.map(({ key, text }) => (
                 <Button
                   key={key}
+                  color="var(--upc-color)"
                   variant={key === topic ? "default" : "secondary"}
-                  className={cn("rounded-full cursor-pointer", key === topic && "bg-upc text-white")}
+                  className={cn("rounded-full cursor-pointer", key === topic && "bg-upc text-white hover:bg-upc/90")}
                   onClick={toggleTopic(key)}
                 >
                   {text}
