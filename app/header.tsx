@@ -45,7 +45,7 @@ export default function Header() {
         </Link>
 
         <div onClick={toggleVisible} className="lg:hidden flex-1 flex flex-row justify-end cursor-pointer">
-          <Menu className="text-upc w-10 h-13" />
+          <Menu className="text-upc w-10 h-13 mx-2" />
         </div>
         <div
           className={cn(
