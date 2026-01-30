@@ -16,10 +16,10 @@ export default async function Home() {
 
   return (
     <main>
-      <section className="relative text-center overflow-hidden px-50 py-48">
+      <section className="relative text-center overflow-hidden lg:px-50 py-16 lg:py-48">
         <HomeSlideshow images={images} />
 
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-upc mx-5 tracking-tight">
+        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold px-4 text-upc m-0 tracking-tight">
           Grau en Ciència i Enginyeria de Dades
         </h1>
 
@@ -30,7 +30,7 @@ export default async function Home() {
 
       <BannerMainStats />
 
-      <div className="max-w-6xl mx-auto">
+      <div className="lg:w-6xl mx-auto">
         <section className="text-sm md:text-base lg:text-lg text-center font-semibold py-10">
           <h2 className="m-2 text-2xl md:text-3xl font-extrabold text-slate-900">
             Empreses

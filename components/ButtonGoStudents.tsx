@@ -11,7 +11,7 @@ interface ButtonGoProps {
 export default function ButtonGo({ text, href }: ButtonGoProps) {
   const router = useRouter()
   return (
-    <Button variant="default" className="bg-upc" onClick={() => router.push(href)}>
+    <Button variant="default" className="bg-upc text-lg px-6 py-6 font-semibold" onClick={() => router.push(href)}>
       { text }
     </Button>
   )

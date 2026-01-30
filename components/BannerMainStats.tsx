@@ -46,8 +46,8 @@ export default async function BannerMainStats() {
 
   return (
     <section className="bg-upc py-8">
-      <div className="max-w-[1500px] mx-auto px-4 w-6xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
+      <div className="max-w-[1500px] mx-auto px-4 lg:w-6xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-white">
           <Stat title="Ocupabilitat" value={pct(employedRate)} />
           <Stat title="Feina dades / IA" value={pct(gcedRelatedRate)} />
           <Stat title="Alumni registrats" value={alumniCount} />

@@ -5,7 +5,7 @@ import Logo from "@/assets/logo-web-gced-white.svg"
 export default function Footer() {
   return (
     <footer className="bg-upc text-white mt-auto">
-      <div className="w-6xl h-[10em] mx-auto px-6 py-6 flex flex-col lg:flex-row items-start justify-between gap-4">
+      <div className="lg:w-6xl h-[10em] mx-auto px-6 py-6 flex flex-col lg:flex-row items-start justify-between gap-4">
         <Link href="/">
           <Image src={Logo} alt="Logotip Web GCED" width={200} height={50} />
         </Link>

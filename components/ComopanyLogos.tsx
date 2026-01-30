@@ -15,7 +15,7 @@ function LogosRow({ logos, animationClass, keyPrefix }: LogosRowProps) {
 
   return (
     <div className="overflow-x-hidden">
-      <div className={`flex gap-8 ${animationClass}`} style={{ width: "max-content" }}>
+      <div className={`flex gap-2 md:gap-4 lg:gap-8 ${animationClass}`} style={{ width: "max-content" }}>
         {logos.map((src, i) => (
           <CompanyLogo key={`${keyPrefix}-${i}`} image={src} />
         ))}

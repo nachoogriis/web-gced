@@ -39,7 +39,7 @@ export default function Header() {
       "h-20 px-0 py-[0.8em] shadow-lg",
       "relative",
     )}>
-      <div className="w-6xl mx-auto flex flex-row gap-2 items-end ">
+      <div className="lg:w-6xl lg:px-0 px-3 mx-auto flex flex-row gap-2 items-end ">
         <Link href="/">
           <Image src={Logo} alt="Logotip Web GCED" width={225} height={55} />
         </Link>
