@@ -36,28 +36,29 @@ export default function Header() {
   )
   return (
     <header className={cn(
-      "w-6xl mx-auto",
-      "h-20 flex flex-row gap-2 items-end px-0 py-[0.8em]", 
+      "h-20 px-0 py-[0.8em] shadow-lg",
       "relative",
     )}>
-      <Link href="/">
-        <Image src={Logo} alt="Logotip Web GCED" width={225} height={55} />
-      </Link>
+      <div className="w-6xl mx-auto flex flex-row gap-2 items-end ">
+        <Link href="/">
+          <Image src={Logo} alt="Logotip Web GCED" width={225} height={55} />
+        </Link>
 
-      <div onClick={toggleVisible} className="lg:hidden flex-1 flex flex-row justify-end cursor-pointer">
-        <Menu className="text-upc w-10 h-13" />
-      </div>
-      <div
-        className={cn(
-          "lg:flex lg:flex-1 lg:flex-row justify-end lg:static lg:p-0 lg:gap-10 text-upc font-bold lg:shadow-none",
-          "min-w-80 flex-col items-end absolute top-20 right-0 bg-white p-0 shadow",
-          visible ? "flex z-50" : "hidden",
-        )}
-      >
-        <MenuItem_ href="/"> PÀGINA PRINCIPAL</MenuItem_>
-        <MenuItem_ href="/estadistiques">ESTADÍSTIQUES</MenuItem_>
-        <MenuItem_ href="/estudiants">ESTUDIANTS</MenuItem_>
-        <MenuItem_ href="/projectes">PROJECTES</MenuItem_>
+        <div onClick={toggleVisible} className="lg:hidden flex-1 flex flex-row justify-end cursor-pointer">
+          <Menu className="text-upc w-10 h-13" />
+        </div>
+        <div
+          className={cn(
+            "lg:flex lg:flex-1 lg:flex-row justify-end lg:static lg:p-0 lg:gap-10 text-upc font-bold lg:shadow-none",
+            "min-w-80 flex-col items-end absolute top-20 right-0 bg-white p-0 shadow",
+            visible ? "flex z-50" : "hidden",
+          )}
+        >
+          <MenuItem_ href="/"> PÀGINA PRINCIPAL</MenuItem_>
+          <MenuItem_ href="/estadistiques">ESTADÍSTIQUES</MenuItem_>
+          <MenuItem_ href="/estudiants">ESTUDIANTS</MenuItem_>
+          <MenuItem_ href="/projectes">PROJECTES</MenuItem_>
+        </div>
       </div>
     </header>
   )
