@@ -19,7 +19,7 @@ export default async function Home() {
       <section className="relative text-center overflow-hidden px-50 py-48">
         <HomeSlideshow images={images} />
 
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-upc mx-5">
+        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-upc mx-5 tracking-tight">
           Grau en Ciència i Enginyeria de Dades
         </h1>
 
