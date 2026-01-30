@@ -29,7 +29,7 @@ const infoLines: [React.FC, string, string][] = [
     <FullAlumniDialogTrigger alumni={alumni}>
       <div
         className={cn(
-          "rounded-xl bg-upc-muted overflow-hidden shadow-xl shadow-gray-300",
+          "bg-upc-muted overflow-hidden",
           "flex flex-col",
           "hover:outline-4 outline-[#B0DAED] cursor-pointer",
           "h-[26em] md:h-[20em]", // Taller on mobile (more text wrapping), shorter on desktop
