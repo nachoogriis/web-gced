@@ -11,6 +11,18 @@ function safeRate(num: number, den: number) {
   return num / den
 }
 
+interface StatProps {
+  title: string
+  value: string | number
+}
+function Stat({ title, value }: StatProps) {
+  return (<div className="text-center">
+    <p className="text-sm font-semibold text-white/90">{title}</p>
+    <p className="mt-2 text-4xl md:text-5xl font-extrabold">{value}</p>
+  </div>)
+}
+
+
 export default async function BannerMainStats() {
   const [alumniCount, alumniRows] = await Promise.all([
     db.alumni.count(),
@@ -33,28 +45,13 @@ export default async function BannerMainStats() {
   const gcedRelatedRate = safeRate(gcedRelatedYes, alumniCount)
 
   return (
-    <section className="bg-upc py-10">
-      <div className="w-full max-w-[1500px] mx-auto px-4">
+    <section className="bg-upc py-8">
+      <div className="max-w-[1500px] mx-auto px-4 w-6xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
-          <div className="text-center">
-            <p className="text-sm font-semibold text-white/90">Ocupabilitat</p>
-            <p className="mt-2 text-4xl md:text-5xl font-extrabold">{pct(employedRate)}</p>
-          </div>
-
-          <div className="text-center">
-            <p className="text-sm font-semibold text-white/90">Feina dades / IA</p>
-            <p className="mt-2 text-4xl md:text-5xl font-extrabold">{pct(gcedRelatedRate)}</p>
-          </div>
-
-          <div className="text-center">
-            <p className="text-sm font-semibold text-white/90">Alumni registrats</p>
-            <p className="mt-2 text-4xl md:text-5xl font-extrabold">{alumniCount}</p>
-          </div>
-
-          <div className="text-center">
-            <p className="text-sm font-semibold text-white/90">Generacions</p>
-            <p className="mt-2 text-4xl md:text-5xl font-extrabold">—</p>
-          </div>
+          <Stat title="Ocupabilitat" value={pct(employedRate)} />
+          <Stat title="Feina dades / IA" value={pct(gcedRelatedRate)} />
+          <Stat title="Alumni registrats" value={alumniCount} />
+          <Stat title="Generacions" value="—" />
         </div>
       </div>
     </section>
