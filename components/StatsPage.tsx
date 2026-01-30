@@ -1,15 +1,8 @@
 // app/estadistiques/page.tsx  (App Router)
 // Server Component: consulta Prisma directamente
 
-import { PrismaClient } from "@/generated/prisma/client"
-import { PrismaLibSql } from "@prisma/adapter-libsql"
 import CompanyCard from "@/components/CompanyCard"
-
-
-const adapter = new PrismaLibSql({
-  url: process.env.DATABASE_URL!,
-})
-const prisma = new PrismaClient({ adapter })
+import { db } from "@/lib/db/db";
 
 type GenItem = { generation: number; count: number }
 
@@ -155,10 +148,10 @@ export default async function StatsPage() {
     internshipRows,
     masterRows,
   ] = await Promise.all([
-    prisma.alumni.count(),
-    prisma.internship.count(),
-    prisma.alumni.groupBy({ by: ["generation"], _count: { _all: true } }),
-    prisma.alumni.findMany({
+    db.alumni.count(),
+    db.internship.count(),
+    db.alumni.groupBy({ by: ["generation"], _count: { _all: true } }),
+    db.alumni.findMany({
       select: {
         currentJob: true,
         currentOrganization: true,
@@ -167,10 +160,10 @@ export default async function StatsPage() {
         tfgCountry: true,
       },
     }),
-    prisma.internship.findMany({
+    db.internship.findMany({
       select: { organization: { select: { name: true } } },
     }),
-    prisma.masterAlumni.findMany({
+    db.masterAlumni.findMany({
       select: { master: { select: { name: true } } },
     }),
   ])

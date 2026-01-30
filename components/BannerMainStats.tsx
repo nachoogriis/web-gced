@@ -1,9 +1,6 @@
 // components/BannerMainStats.tsx  (SIN "use client")
-import { PrismaClient } from "@/generated/prisma/client"
-import { PrismaLibSql } from "@prisma/adapter-libsql"
 
-const adapter = new PrismaLibSql({ url: process.env.DATABASE_URL! })
-const prisma = new PrismaClient({ adapter })
+import { db } from "@/lib/db/db"
 
 function pct(n: number) {
   return `${Math.round(n * 100)}%`
@@ -16,8 +13,8 @@ function safeRate(num: number, den: number) {
 
 export default async function BannerMainStats() {
   const [alumniCount, alumniRows] = await Promise.all([
-    prisma.alumni.count(),
-    prisma.alumni.findMany({
+    db.alumni.count(),
+    db.alumni.findMany({
       select: {
         currentJob: true,
         currentOrganization: true,

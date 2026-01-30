@@ -1,12 +1,4 @@
-import { PrismaClient } from "../generated/prisma/client"
-import { PrismaLibSql } from "@prisma/adapter-libsql"
 import { faker } from "@faker-js/faker"
-
-// Will pick DATABASE_URL from .env
-const adapter = new PrismaLibSQL({
-  url: process.env.DATABASE_URL!,
-})
-const db = new PrismaClient({ adapter })
 
 // Number of fake data to generate
 const NUM_SAMPLES = 23

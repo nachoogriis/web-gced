@@ -1,11 +1,4 @@
-import { PrismaClient } from "../generated/prisma/client"
-import { PrismaLibSql } from "@prisma/adapter-libsql"
-
-// Will pick DATABASE_URL from .env
-const adapter = new PrismaLibSql({
-  url: process.env.DATABASE_URL!,
-})
-const db = new PrismaClient({ adapter })
+import { db } from "@/lib/db/db"
 
 const johndoe = await db.alumni.create({
   data: {
