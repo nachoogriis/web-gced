@@ -31,7 +31,7 @@ const infoLines: [React.FC, string, string][] = [
         className={cn(
           "bg-upc-muted overflow-hidden",
           "flex flex-col",
-          "hover:outline-4 outline-[#B0DAED] cursor-pointer",
+          "transition-transform duration-200 ease-out hover:scale-105 cursor-pointer",
           "h-[26em] md:h-[20em]", // Taller on mobile (more text wrapping), shorter on desktop
           "select-none text-left",
           "w-full min-w-[280px] max-w-[340px]",
