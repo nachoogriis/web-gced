@@ -2,7 +2,8 @@
 // Server Component: consulta Prisma directamente
 
 import CompanyLogos from "@/components/ComopanyLogos"
-import { db } from "@/lib/db/db";
+import PageHeading from "@/components/PageHeading"
+import { db } from "@/lib/db/db"
 
 type GenItem = { generation: number; count: number }
 
@@ -238,13 +239,10 @@ export default async function StatsPage() {
 
   return (
     <main className="w-full flex flex-col items-stretch">
-      {/* Header como /estudiants */}
-      <section className="text-center py-10 px-4">
-        <h1 className="text-6xl font-bold text-upc">Estadístiques</h1>
-        <p className="py-2 text-base md:text-lg text-slate-600 pt-3">
-          Basat en alumni registrats a la base de dades.
-        </p>
-      </section>
+      <PageHeading
+        title="Estadístiques"
+        subtitle="Basat en alumni registrats a la base de dades."
+      />
 
       {/* KPI banner-like: fondo gris + contenedor centrado */}
       <section className="flex items-center justify-center bg-upc border-t">

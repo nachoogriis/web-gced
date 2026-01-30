@@ -1,6 +1,7 @@
 "use client"
 
 import AlumniCard from "@/components/alumni_card/AlumniCard"
+import PageHeading from "@/components/PageHeading"
 import { Input } from "@/components/ui/input"
 import { AlumniCardInfo } from "@/lib/db/alumni"
 import { levenshteinDistance } from "@/lib/utils"
@@ -61,8 +62,8 @@ export default function AlumniPage({ initialAlumniData }: Props) {
 
 
   return (
-    <main className="w-full flex flex-col items-stretch p-4">
-      <h1 className="text-6xl font-bold mb-4 text-center text-[#007BC0]">Estudiants</h1>
+    <main className="w-full flex flex-col items-stretch">
+      <PageHeading title="Estudiants" />
 
       {/* Buscador con ShadCN UI */}
       <div className="flex flex-col items-center py-6 ">
