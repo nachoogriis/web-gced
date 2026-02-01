@@ -16,9 +16,7 @@ export default function StudentsCarousel({ students, maxItems = 6 }: StudentsCar
 
   return (
     <Carousel>
-      <CarouselPrevious
-        className="bg-upc hover:bg-upc/90 text-white hover:text-white/90"
-      />
+      <CarouselPrevious />
       <CarouselContent>
         {displayedStudents.map((alumni: AlumniCardInfo) => (
           <CarouselItem key={alumni.id} className="basis-auto p-4 pb-10">
@@ -26,9 +24,7 @@ export default function StudentsCarousel({ students, maxItems = 6 }: StudentsCar
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselNext
-        className="bg-upc hover:bg-upc/90 text-white hover:text-white/90"
-      />
+      <CarouselNext />
     </Carousel>
   )
 }

@@ -16,9 +16,7 @@ export default function TestimonisCarousel({ reviews, maxItems = 6 }: Testimonis
 
   return (
     <Carousel>
-      <CarouselPrevious
-        className="bg-upc hover:bg-upc/90 text-white hover:text-white/90"
-      />
+      <CarouselPrevious />
       <CarouselContent>
         {displayedReviews.map(({ firstName, lastName, generation, review, id }: AlumniReviewInfo) => (
           <CarouselItem
@@ -38,9 +36,7 @@ export default function TestimonisCarousel({ reviews, maxItems = 6 }: Testimonis
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselNext
-        className="bg-upc hover:bg-upc/90 text-white hover:text-white/90"
-      />
+      <CarouselNext />
     </Carousel>
   )
 }
