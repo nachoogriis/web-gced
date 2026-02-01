@@ -55,6 +55,7 @@ export default function Header() {
           <MenuItem_ href="/estadistiques">ESTADÍSTIQUES</MenuItem_>
           <MenuItem_ href="/estudiants">ESTUDIANTS</MenuItem_>
           <MenuItem_ href="/projectes">PROJECTES</MenuItem_>
+          <MenuItem_ href="/opinions">OPINIONS</MenuItem_>
         </div>
       </div>
     </header>

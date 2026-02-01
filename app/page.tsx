@@ -132,7 +132,9 @@ export default async function Home() {
                   )}
                 />
               </Carousel>
-              <div className="flex flex-row justify-center gap-10"></div>
+              <div className="flex flex-row justify-center pt-6">
+                <ButtonGo text="Veure més opinions..." href="/opinions" />
+              </div>
             </div>
           </div>
         </section>
