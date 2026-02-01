@@ -2,12 +2,12 @@ import AlumniReview from "@/components/AlumniReview"
 import PageHeading from "@/components/PageHeading"
 import { AlumniReviewInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni"
 
-export default async function OpinionsPage() {
+export default async function TestimonisPage() {
   const alumniReviews = await dbAlumniGetAllReviews()
 
   return (
     <main className="flex w-full flex-col items-stretch">
-      <PageHeading title="Opinions" subtitle="Què diuen els nostres estudiants sobre el grau." />
+      <PageHeading title="Testimonis" subtitle="Què diuen els nostres estudiants sobre el grau." />
 
       <section className="border-t bg-gray-100 px-4 pb-20 pt-8 md:px-8 lg:px-12">
         <div className="mx-auto max-w-6xl columns-1 gap-6 md:columns-2 lg:columns-3">

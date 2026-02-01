@@ -95,7 +95,7 @@ export default async function Home() {
           <div className="mx-3">
             <div className="py-4">
               <h2 className="m-2 text-center text-2xl font-extrabold text-slate-900 md:text-3xl">
-                Opinions dels nostres estudiants
+                Testimonis dels nostres estudiants
               </h2>
               <Carousel>
                 <CarouselPrevious
@@ -133,7 +133,7 @@ export default async function Home() {
                 />
               </Carousel>
               <div className="flex flex-row justify-center pt-6">
-                <ButtonGo text="Veure més opinions..." href="/opinions" />
+                <ButtonGo text="Veure més testimonis..." href="/testimonis" />
               </div>
             </div>
           </div>

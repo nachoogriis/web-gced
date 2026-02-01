@@ -51,11 +51,10 @@ export default function Header() {
             visible ? "z-50 flex" : "hidden",
           )}
         >
-          <MenuItem_ href="/"> PÀGINA PRINCIPAL</MenuItem_>
           <MenuItem_ href="/estadistiques">ESTADÍSTIQUES</MenuItem_>
           <MenuItem_ href="/estudiants">ESTUDIANTS</MenuItem_>
           <MenuItem_ href="/projectes">PROJECTES</MenuItem_>
-          <MenuItem_ href="/opinions">OPINIONS</MenuItem_>
+          <MenuItem_ href="/testimonis">TESTIMONIS</MenuItem_>
         </div>
       </div>
     </header>
