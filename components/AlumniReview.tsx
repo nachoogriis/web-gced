@@ -15,26 +15,28 @@ export default function AlumniReview({ firstName, lastName, generation, review, 
     <div
       className={cn(
         "relative overflow-hidden",
-        "rounded-tl-[15px] rounded-tr-[15px] rounded-br-[15px]",
-        "bg-upc-muted h-[235px]",
-        "shadow-xl shadow-gray-300",
-        "flex flex-col gap-[0.1em] pt-2",
+        "bg-upc",
+        "flex flex-col pt-2 px-1 pb-1",
       )}
     >
       {/* Comillas decorativas */}
       <Quote
         aria-hidden
-        className="text-upc pointer-events-none absolute -top-4 -right-3 h-24 w-24 rotate-180 select-none"
+        className="text-white/20 pointer-events-none absolute -top-2 -left-2 h-24 w-24 select-none"
       />
 
       {/* Contenido real */}
-      <div className="relative z-10">
-        <div className="flex items-start">
-          <AlumniTopPart name={firstName} surname={lastName} generation={generation} id={id} />
+      <div className="relative z-10 flex flex-col">
+        <div className="relative pl-7 pr-4 pt-2">
+          <span className="absolute left-4 top-4.5 text-xl leading-0 text-white">"</span>
+          <p className="line-clamp-15 text-sm leading-normal font-normal text-white">
+            {review}
+            <span className="inline-block text-xl leading-0 translate-y-0.5">"</span>
+          </p>
         </div>
 
-        <div className="px-3">
-          <p className="line-clamp-6 text-[12px] leading-normal font-normal text-gray-700">{review}</p>
+        <div className="mt-3">
+          <AlumniTopPart name={firstName} surname={lastName} generation={generation} id={id} variant="dark" size="small" showGeneration={false} />
         </div>
       </div>
     </div>

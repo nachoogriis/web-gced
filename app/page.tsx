@@ -105,23 +105,25 @@ export default async function Home() {
                   )}
                 />
                 <CarouselContent>
-                  {alumniReviews.map((review: AlumniReviewInfo, index: number) => (
-                    <CarouselItem
-                      key={index}
-                      className={cn(
-                        "md:basis-1/2 lg:basis-1/3 xl:basis-1/3",
-                        "p-4 min-[1920px]:basis-1/6 min-[2320px]:basis-1/7",
-                      )}
-                    >
-                      <AlumniReview
-                        firstName={review.firstName}
-                        lastName={review.lastName}
-                        generation={review.generation}
-                        review={`“${review.review}”`}
-                        id={review.id}
-                      />
-                    </CarouselItem>
-                  ))}
+                  {alumniReviews.map(
+                    ({ firstName, lastName, generation, review, id }: AlumniReviewInfo, index: number) => (
+                      <CarouselItem
+                        key={index}
+                        className={cn(
+                          "md:basis-1/2 lg:basis-1/3 xl:basis-1/3",
+                          "p-4 min-[1920px]:basis-1/6 min-[2320px]:basis-1/7",
+                        )}
+                      >
+                        <AlumniReview
+                          firstName={firstName}
+                          lastName={lastName}
+                          generation={generation}
+                          review={review}
+                          id={id}
+                        />
+                      </CarouselItem>
+                    )
+                  )}
                 </CarouselContent>
                 <CarouselNext
                   className={cn(
