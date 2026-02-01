@@ -6,13 +6,10 @@ export default async function Page() {
   const universityProjects = await dbUniversityProjectsGetAll()
 
   return (
-    <main className="">
-      <PageHeading
-        title="Projectes"
-        subtitle="Explora projectes desenvolupats a la universitat."
-      />
+    <main>
+      <PageHeading title="Projectes" subtitle="Explora projectes desenvolupats a la universitat." />
 
-      <section className="flex flex-col items-start h-[100%] w-[100%]">
+      <section className="flex h-full w-full flex-col items-start">
         <ProjectsList universityProjects={universityProjects} />
       </section>
     </main>

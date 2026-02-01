@@ -14,7 +14,6 @@ export default function AlumniPage({ initialAlumniData }: Props) {
   const [searchTerm, setSearchTerm] = useState("")
   const [filteredAlumni, setFilteredAlumni] = useState(initialAlumniData)
 
-
   const handleSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
     const raw = e.target.value
     const search = raw.toLowerCase()
@@ -36,15 +35,11 @@ export default function AlumniPage({ initialAlumniData }: Props) {
         `${alumni.firstName || ""} ${alumni.lastName || ""}`,
         String(alumni.generation ?? ""),
         String(alumni.tfgTitle || ""),
-        ...(alumni.internships || []).flatMap(
-          (internship: AlumniCardInfo["internships"][number]) => [
-            String(internship.position || ""),
-            String(internship.organization || ""),
-          ]
-        ),
-        ...(alumni.masters || []).map((master: AlumniCardInfo["masters"][number]) =>
-          String(master.name || "")
-        ),
+        ...(alumni.internships || []).flatMap((internship: AlumniCardInfo["internships"][number]) => [
+          String(internship.position || ""),
+          String(internship.organization || ""),
+        ]),
+        ...(alumni.masters || []).map((master: AlumniCardInfo["masters"][number]) => String(master.name || "")),
       ]
         .join(" ")
         .toLowerCase()
@@ -60,28 +55,27 @@ export default function AlumniPage({ initialAlumniData }: Props) {
     setFilteredAlumni(results)
   }
 
-
   return (
-    <main className="w-full flex flex-col items-stretch">
+    <main className="flex w-full flex-col items-stretch">
       <PageHeading title="Estudiants" />
 
       {/* Buscador con ShadCN UI */}
-      <div className="flex flex-col items-center py-6 ">
+      <div className="flex flex-col items-center py-6">
         <form onSubmit={(e) => e.preventDefault()} className="w-full max-w-lg">
           <Input
             type="text"
             value={searchTerm}
             onChange={handleSearch}
             placeholder="🔍 Busca per paraules clau. Per exemple: Juan Perez Computer Vision..."
-            className="w-full rounded-full border-gray-300"
+            className="w-full px-4 rounded-full border-gray-300"
           />
         </form>
       </div>
 
       {/* Tarjetas de alumnos */}
       {filteredAlumni.length > 0 && (
-        <section className="flex items-center justify-center bg-gray-100 border-t">
-          <div className="flex flex-wrap justify-center gap-6 rounded py-8 px-8 lg:px-12 max-w-[1500px]">
+        <section className="flex items-start justify-center border-t bg-gray-100 pb-20 min-h-[56em]">
+          <div className="flex max-w-6xl flex-wrap justify-center gap-6 rounded px-2 py-8">
             {filteredAlumni.map((alumni) => (
               <AlumniCard key={alumni.id} alumni={alumni} />
             ))}
@@ -91,7 +85,9 @@ export default function AlumniPage({ initialAlumniData }: Props) {
 
       {/* Mensaje si no hay resultados */}
       {filteredAlumni.length === 0 && (
-        <p className="text-center text-gray-500 mt-6">No s&apos;han trobat resultats per a &quot;{searchTerm}&quot;.</p>
+        <section className="flex items-start justify-center border-t bg-gray-100 pb-20 min-h-[56em]">
+          <p className="mt-12 text-center text-gray-400">No s&apos;han trobat resultats per a &quot;{searchTerm}&quot;.</p>
+        </section>
       )}
     </main>
   )

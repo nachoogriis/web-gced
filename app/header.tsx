@@ -27,31 +27,28 @@ export default function Header() {
       }}
       className={cn(
         pathname === href ? "underline decoration-2 underline-offset-4" : "",
-        "py-10 p-6 hover:bg-gray-50 w-full active:bg-upc active:text-white",
-        "lg:p-0 lg:w-auto lg:hover:bg-inherit lg:active:bg-inherit lg:active:text-inherit",
+        "active:bg-upc w-full p-6 py-10 hover:bg-gray-50 active:text-white",
+        "lg:w-auto lg:p-0 lg:hover:bg-inherit lg:active:bg-inherit lg:active:text-inherit",
       )}
     >
       {children}
     </Link>
   )
   return (
-    <header className={cn(
-      "h-20 px-0 py-[0.8em] shadow-lg",
-      "relative",
-    )}>
-      <div className="lg:w-6xl lg:px-0 px-3 mx-auto flex flex-row gap-2 items-end ">
+    <header className={cn("h-20 px-0 py-[0.8em] shadow-lg", "relative")}>
+      <div className="mx-auto flex flex-row items-end gap-2 px-3 lg:w-6xl lg:px-0">
         <Link href="/">
           <Image src={Logo} alt="Logotip Web GCED" width={225} height={55} />
         </Link>
 
-        <div onClick={toggleVisible} className="lg:hidden flex-1 flex flex-row justify-end cursor-pointer">
-          <Menu className="text-upc w-10 h-13 mx-2" />
+        <div onClick={toggleVisible} className="flex flex-1 cursor-pointer flex-row justify-end lg:hidden">
+          <Menu className="text-upc mx-2 h-13 w-10" />
         </div>
         <div
           className={cn(
-            "lg:flex lg:flex-1 lg:flex-row justify-end lg:static lg:p-0 lg:gap-10 text-upc font-bold lg:shadow-none",
-            "min-w-80 flex-col items-end absolute top-20 right-0 bg-white p-0 shadow",
-            visible ? "flex z-50" : "hidden",
+            "text-upc justify-end font-bold lg:static lg:flex lg:flex-1 lg:flex-row lg:gap-10 lg:p-0 lg:shadow-none",
+            "absolute top-20 right-0 min-w-80 flex-col items-end bg-white p-0 shadow",
+            visible ? "z-50 flex" : "hidden",
           )}
         >
           <MenuItem_ href="/"> PÀGINA PRINCIPAL</MenuItem_>

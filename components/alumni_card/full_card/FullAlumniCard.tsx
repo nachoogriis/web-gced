@@ -31,7 +31,7 @@ export default function FullAlumniCard({ alumni }: Props) {
   const tfg = { tfgTitle, tfgDescription, tfgCountry, tfgUniversity }
 
   return (
-    <DialogContent className="overflow-y-auto pointer-events-auto select-none max-h-[calc(100dvh-2rem)] max-w-[720px] w-[calc(100vw-2rem)]">
+    <DialogContent className="pointer-events-auto max-h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] max-w-[720px] overflow-y-auto select-none">
       <DialogHeader>
         <VisuallyHidden>
           <DialogTitle>
@@ -39,19 +39,19 @@ export default function FullAlumniCard({ alumni }: Props) {
           </DialogTitle>
         </VisuallyHidden>
 
-        <div className="flex flex-col w-full items-stretch gap-0">
-          <PersonIcon name={firstName} surname={lastName} className="w-32 h-32" />
+        <div className="flex w-full flex-col items-stretch gap-0">
+          <PersonIcon name={firstName} surname={lastName} className="h-32 w-32" />
 
-          <div className="flex flex-col justify-center items-stretch leading-none">
-            <div className="flex flex-row justify-between items-center">
-              <div className="flex flex-row gap-3 items-baseline">
-                <p className="text-black text-3xl md:text-5xl font-bold leading-normal">
+          <div className="flex flex-col items-stretch justify-center leading-none">
+            <div className="flex flex-row items-center justify-between">
+              <div className="flex flex-row items-baseline gap-3">
+                <p className="text-3xl leading-normal font-bold text-black md:text-5xl">
                   {firstName} {lastName}
                 </p>
                 {linkedInURL !== "No especificat" && (
                   <div className="flex flex-row">
                     <Link href={linkedInURL} target="_blank" className="text-upc">
-                      <IconLinkedIn className="w-8 h-8" />
+                      <IconLinkedIn className="h-8 w-8" />
                     </Link>
                   </div>
                 )}

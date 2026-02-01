@@ -18,7 +18,7 @@ export default function InfoCardLine({
       {/* Icono */}
       <div className="flex items-center justify-center text-[20px]">{icon}</div>
 
-      <p className="text-black text-[12px] font-normal leading-normal">
+      <p className="text-[12px] leading-normal font-normal text-black">
         <span className="font-bold">{title}:</span> {description || "No especificat"}
       </p>
     </div>

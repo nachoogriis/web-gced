@@ -28,11 +28,10 @@ export default function FullProjectCard({ project }: { project: ProjectInfo }) {
 
   return (
     <div className="w-full">
-
       {/* Header */}
       <header className="px-6 pt-8 pb-8 sm:px-10">
-        <div className="flex flex-wrap items-center gap-2 mb-3">
-          <span className="inline-flex items-center rounded-full bg-upc-muted px-3 py-1 text-xs font-bold text-upc">
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <span className="bg-upc-muted text-upc inline-flex items-center rounded-full px-3 py-1 text-xs font-bold">
             {project.topic}
           </span>
 
@@ -51,14 +50,12 @@ export default function FullProjectCard({ project }: { project: ProjectInfo }) {
           )}
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight max-w-5xl">
+        <h1 className="max-w-5xl text-3xl leading-tight font-extrabold text-slate-900 sm:text-4xl md:text-5xl">
           {project.name}
         </h1>
 
         {project.summary && (
-          <p className="mt-4 max-w-3xl text-base sm:text-lg text-slate-600 leading-relaxed">
-            {project.summary}
-          </p>
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">{project.summary}</p>
         )}
       </header>
 
@@ -70,17 +67,14 @@ export default function FullProjectCard({ project }: { project: ProjectInfo }) {
       </section>
 
       {/* Content */}
-     <section className="px-6 py-10 sm:px-10">
-      <div className="max-w-5xl">
-        <div className="text-xs font-bold tracking-widest text-upc uppercase mb-3">
-          Descripció
+      <section className="px-6 py-10 sm:px-10">
+        <div className="max-w-5xl">
+          <div className="text-upc mb-3 text-xs font-bold tracking-widest uppercase">Descripció</div>
+          <p className="text-sm leading-relaxed whitespace-pre-line text-slate-700 sm:text-base">
+            {project.description}
+          </p>
         </div>
-        <p className="text-sm sm:text-base leading-relaxed text-slate-700 whitespace-pre-line">
-          {project.description}
-        </p>
-      </div>
-    </section>
-
+      </section>
     </div>
   )
 }

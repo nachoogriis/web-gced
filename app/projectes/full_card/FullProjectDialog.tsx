@@ -22,17 +22,7 @@ export default function FullProjectDialog({ project, children }: Props) {
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
 
-      <DialogContent
-        className="
-          w-[calc(100vw-2rem)] max-w-4xl
-          max-h-[calc(100vh-2rem)] overflow-y-auto
-          p-4
-          bg-white
-          rounded-3xl
-          border-0
-          shadow-2xl
-        "
-      >
+      <DialogContent className="max-h-[calc(100vh-2rem)] w-[calc(100vw-2rem)] max-w-4xl overflow-y-auto rounded-3xl border-0 bg-white p-4 shadow-2xl">
         <VisuallyHidden>
           <DialogTitle>Full Project Card</DialogTitle>
         </VisuallyHidden>

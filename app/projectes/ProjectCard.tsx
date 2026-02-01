@@ -15,18 +15,18 @@ interface ProjectInfo {
 function splitTags(tags?: string) {
   if (!tags) return []
 
-  return tags
-    .match(/\[([^\]]+)\]/g)      // extrae [tag]
-    ?.map(t => t.slice(1, -1))   // quita [ ]
-    .map(t => t.trim())
-    .filter(Boolean)
-    .slice(0, 4) || []
+  return (
+    tags
+      .match(/\[([^\]]+)\]/g) // extrae [tag]
+      ?.map((t) => t.slice(1, -1)) // quita [ ]
+      .map((t) => t.trim())
+      .filter(Boolean)
+      .slice(0, 4) || []
+  )
 }
 
-
 export default function ProjectCard({ project }: { project: ProjectInfo }) {
-  const image_paths =
-    project.images.match(/\[([^\]]+)\]/g)?.map((str) => str.slice(1, -1)) || []
+  const image_paths = project.images.match(/\[([^\]]+)\]/g)?.map((str) => str.slice(1, -1)) || []
   const image_path = image_paths[0] ? `/projects/${image_paths[0]}` : "/projects/placeholder.png"
 
   const tags = splitTags(project.tags)
@@ -35,8 +35,8 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
     <FullProjectDialog project={project}>
       <article
         className={cn(
-          "group relative cursor-pointer select-none overflow-hidden rounded-3xl",
-          "bg-white ring-1 ring-black/5 shadow-sm",
+          "group relative cursor-pointer overflow-hidden rounded-3xl select-none",
+          "bg-white shadow-sm ring-1 ring-black/5",
           "transition-all duration-200",
           "hover:-translate-y-0.5 hover:shadow-lg hover:ring-black/10",
         )}
@@ -55,15 +55,15 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
 
           {/* Topic pill */}
-          <div className="absolute left-4 top-4">
-            <span className="inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-upc ring-1 ring-black/5 backdrop-blur">
+          <div className="absolute top-4 left-4">
+            <span className="text-upc inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-bold ring-1 ring-black/5 backdrop-blur">
               {project.topic}
             </span>
           </div>
 
           {/* Title on image */}
-          <div className="absolute bottom-0 left-0 right-0 p-5">
-            <h2 className="text-xl md:text-2xl font-extrabold leading-snug text-white line-clamp-2 drop-shadow">
+          <div className="absolute right-0 bottom-0 left-0 p-5">
+            <h2 className="line-clamp-2 text-xl leading-snug font-extrabold text-white drop-shadow md:text-2xl">
               {project.name}
             </h2>
           </div>
@@ -71,9 +71,7 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
 
         {/* Content */}
         <div className="p-5">
-          <p className="text-sm text-slate-700 leading-relaxed line-clamp-3">
-            {project.summary}
-          </p>
+          <p className="line-clamp-3 text-sm leading-relaxed text-slate-700">{project.summary}</p>
 
           {/* Tags */}
           {tags.length > 0 && (
@@ -90,10 +88,8 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
           )}
         </div>
         <div className="absolute right-4 bottom-4 opacity-100">
-            <button className="inline-flex text-sm text-[#4BADD9] hover:underline cursor-pointer">
-              Saber més →
-            </button>
-          </div>
+          <button className="inline-flex cursor-pointer text-sm text-[#4BADD9] hover:underline">Saber més →</button>
+        </div>
       </article>
     </FullProjectDialog>
   )

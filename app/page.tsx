@@ -16,38 +16,29 @@ export default async function Home() {
 
   return (
     <main>
-      <section className="relative text-center overflow-hidden lg:px-50 py-16 lg:py-48">
+      <section className="relative overflow-hidden py-16 text-center lg:px-50 lg:py-48">
         <HomeSlideshow images={images} />
 
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold px-4 text-upc m-0 tracking-tight">
+        <h1 className="text-upc m-0 px-4 text-6xl font-bold tracking-tight md:text-7xl lg:text-8xl">
           Grau en Ciència i Enginyeria de Dades
         </h1>
 
-        <p className="mt-4 text-base md:text-lg lg:text-3xl text-upc mx-5">
-          Quin és el teu somni?
-        </p>
+        <p className="text-upc mx-5 mt-4 text-base md:text-lg lg:text-3xl">Quin és el teu somni?</p>
       </section>
 
       <BannerMainStats />
 
-      <div className="lg:w-6xl mx-auto">
-        <section className="text-sm md:text-base lg:text-lg text-center font-semibold py-10">
-          <h2 className="m-2 text-2xl md:text-3xl font-extrabold text-slate-900">
-            Empreses
-          </h2>
-          <CompanyLogos />
-          <div className="flex flex-row justify-center">
-            <ButtonGo text="Veure més estadístiques..." href="/estadistiques" />
-          </div>
-        </section>
 
-        <section className="text-sm md:text-base lg:text-lg flex flex-col items-center pb-10">
-          <h2 className="m-2 text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">
+
+      <div className="mx-auto lg:w-6xl">
+
+        <section className="pb-10 text-sm md:text-base lg:text-lg mt-12">
+          {/* <h2 className="m-2 mb-4 text-2xl font-extrabold text-slate-900 md:text-3xl">
             Coneix més sobre el nostre programa
-          </h2>
-          <div className="w-full max-w-3xl aspect-video">
+          </h2> */}
+          <div className="aspect-video w-full max-w-6xl">
             <iframe
-              className="w-full h-full"
+              className="h-full w-full"
               src="https://www.youtube.com/embed/54Yeq8OoKS8"
               title="YouTube video player"
               frameBorder="0"
@@ -57,30 +48,39 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="text-sm md:text-base lg:text-lg flex flex-col overflow-clip py-6 text-center mx-3">
-          <h2 className="m-2 text-2xl md:text-3xl font-extrabold text-slate-900">
-            Coneix als nostres estudiants
-          </h2>
+        <div className="flex flex-row justify-center my-8">
+          <ButtonGo text="Veure més estadístiques..." href="/estadistiques" />
+        </div>
+
+        <section className="py-10 text-center text-sm font-semibold md:text-base lg:text-lg">
+          <h2 className="m-2 text-2xl font-extrabold text-slate-900 md:text-3xl">Empreses</h2>
+          <CompanyLogos />
+
+        </section>
+
+
+        <section className="mx-3 flex flex-col overflow-clip py-6 text-center text-sm md:text-base lg:text-lg">
+          <h2 className="m-2 text-2xl font-extrabold text-slate-900 md:text-3xl">Coneix als nostres estudiants</h2>
 
           <div className="relative">
             <Carousel>
               <CarouselPrevious
                 className={cn(
-                  "absolute left-2 top-1/2 z-10 -translate-y-1/2",
-                  "bg-upc text-white hover:bg-upc/90 hover:text-white/90",
+                  "absolute top-1/2 left-2 z-10 -translate-y-1/2",
+                  "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
                 )}
               />
               <CarouselContent>
                 {alumniData.map((alumni: any, index: number) => (
                   <CarouselItem key={index} className="basis-auto p-4 pb-10">
-                    <AlumniCard alumni={alumni} className="border border-upc/30" />
+                    <AlumniCard alumni={alumni} className="border-upc/30 border" />
                   </CarouselItem>
                 ))}
               </CarouselContent>
               <CarouselNext
                 className={cn(
-                  "absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-upc text-white",
-                  "bg-upc text-white hover:bg-upc/90 hover:text-white/90",
+                  "bg-upc absolute top-1/2 right-2 z-10 -translate-y-1/2 text-white",
+                  "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
                 )}
               />
             </Carousel>
@@ -91,17 +91,17 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="text-sm md:text-base lg:text-lg py-10 bg-white">
+        <section className="bg-white py-10 text-sm md:text-base lg:text-lg">
           <div className="mx-3">
             <div className="py-4">
-              <h2 className="m-2 text-2xl md:text-3xl font-extrabold text-slate-900 text-center">
+              <h2 className="m-2 text-center text-2xl font-extrabold text-slate-900 md:text-3xl">
                 Opinions dels nostres estudiants
               </h2>
               <Carousel>
                 <CarouselPrevious
                   className={cn(
-                    "absolute left-2 top-1/2 z-10 -translate-y-1/2",
-                    "bg-upc text-white hover:bg-upc/90 hover:text-white/90",
+                    "absolute top-1/2 left-2 z-10 -translate-y-1/2",
+                    "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
                   )}
                 />
                 <CarouselContent>
@@ -110,7 +110,7 @@ export default async function Home() {
                       key={index}
                       className={cn(
                         "md:basis-1/2 lg:basis-1/3 xl:basis-1/3",
-                        "min-[1920px]:basis-1/6 min-[2320px]:basis-1/7 p-4",
+                        "p-4 min-[1920px]:basis-1/6 min-[2320px]:basis-1/7",
                       )}
                     >
                       <AlumniReview
@@ -125,12 +125,12 @@ export default async function Home() {
                 </CarouselContent>
                 <CarouselNext
                   className={cn(
-                    "absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-upc text-white",
-                    "bg-upc text-white hover:bg-upc/90 hover:text-white/90",
+                    "bg-upc absolute top-1/2 right-2 z-10 -translate-y-1/2 text-white",
+                    "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
                   )}
                 />
               </Carousel>
-              <div className="flex flex-row gap-10 justify-center"></div>
+              <div className="flex flex-row justify-center gap-10"></div>
             </div>
           </div>
         </section>

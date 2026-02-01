@@ -71,24 +71,14 @@ function toTop(map: Map<string, CountItem>, limit = 10): TopItem[] {
     .map(({ label, count }) => ({ name: label, count }))
 }
 
-function ProgressRow({
-  name,
-  count,
-  max,
-}: {
-  name: string
-  count: number
-  max: number
-}) {
+function ProgressRow({ name, count, max }: { name: string; count: number; max: number }) {
   const w = max === 0 ? 0 : Math.round((count / max) * 100)
   return (
     <div className="flex items-center gap-3">
-      <div className="w-40 sm:w-56 truncate text-sm font-medium text-slate-800">
-        {name}
-      </div>
+      <div className="w-40 truncate text-sm font-medium text-slate-800 sm:w-56">{name}</div>
       <div className="flex-1">
-        <div className="h-2 rounded-full bg-slate-100 ring-1 ring-black/5 overflow-hidden">
-          <div className="h-full bg-upc" style={{ width: `${w}%` }} />
+        <div className="h-2 overflow-hidden rounded-full bg-slate-100 ring-1 ring-black/5">
+          <div className="bg-upc h-full" style={{ width: `${w}%` }} />
         </div>
       </div>
       <div className="w-10 text-right text-sm font-semibold text-slate-700">{count}</div>
@@ -96,59 +86,28 @@ function ProgressRow({
   )
 }
 
-function SectionTitle({
-  kicker,
-  title,
-  subtitle,
-}: {
-  kicker?: string
-  title: string
-  subtitle?: string
-}) {
+function SectionTitle({ kicker, title, subtitle }: { kicker?: string; title: string; subtitle?: string }) {
   return (
     <div className="mb-5 text-center">
-      {kicker && (
-        <div className="text-xs font-bold tracking-widest text-upc uppercase">
-          {kicker}
-        </div>
-      )}
-      <h2 className="mt-2 text-2xl md:text-3xl font-extrabold text-slate-900">
-        {title}
-      </h2>
-      {subtitle && <p className="mt-2 text-slate-600 max-w-3xl mx-auto">{subtitle}</p>}
+      {kicker && <div className="text-upc text-xs font-bold tracking-widest uppercase">{kicker}</div>}
+      <h2 className="mt-2 text-2xl font-extrabold text-slate-900 md:text-3xl">{title}</h2>
+      {subtitle && <p className="mx-auto mt-2 max-w-3xl text-slate-600">{subtitle}</p>}
     </div>
   )
 }
 
-function StatCard({
-  label,
-  value,
-  sublabel,
-}: {
-  label: string
-  value: React.ReactNode
-  sublabel?: string
-}) {
+function StatCard({ label, value, sublabel }: { label: string; value: React.ReactNode; sublabel?: string }) {
   return (
-    <div className="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-8 text-center">
+    <div className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-black/5">
       <div className="text-sm font-semibold text-slate-600">{label}</div>
-      <div className="mt-3 text-5xl md:text-6xl font-extrabold text-upc tracking-tight">
-        {value}
-      </div>
+      <div className="text-upc mt-3 text-5xl font-extrabold tracking-tight md:text-6xl">{value}</div>
       {sublabel && <div className="mt-2 text-sm text-slate-500">{sublabel}</div>}
     </div>
   )
 }
 
 export default async function StatsPage() {
-  const [
-    alumniCount,
-    internshipsCount,
-    cohortsGrouped,
-    alumniRows,
-    internshipRows,
-    masterRows,
-  ] = await Promise.all([
+  const [alumniCount, internshipsCount, cohortsGrouped, alumniRows, internshipRows, masterRows] = await Promise.all([
     db.alumni.count(),
     db.internship.count(),
     db.alumni.groupBy({ by: ["generation"], _count: { _all: true } }),
@@ -238,16 +197,13 @@ export default async function StatsPage() {
   const maxDomains = Math.max(0, ...topDomains.map((x) => x.count))
 
   return (
-    <main className="w-full flex flex-col items-stretch">
-      <PageHeading
-        title="Estadístiques"
-        subtitle="Basat en alumni registrats a la base de dades."
-      />
+    <main className="flex w-full flex-col items-stretch">
+      <PageHeading title="Estadístiques" subtitle="Basat en alumni registrats a la base de dades." />
 
       {/* KPI banner-like: fondo gris + contenedor centrado */}
-      <section className="flex items-center justify-center bg-upc border-t">
-        <div className="w-full max-w-[1500px] px-4 py-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="bg-upc flex items-center justify-center border-t">
+        <div className="w-full max-w-6xl px-4 py-10">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <StatCard label="Ocupabilitat" value={pct(employedRate)} />
             <StatCard label="Feina relacionada amb dades / IA" value={pct(gcedRelatedRate)} />
             <StatCard label="Mobilitat internacional" value={intl} sublabel="TFG fora d’Espanya" />
@@ -258,28 +214,26 @@ export default async function StatsPage() {
         </div>
       </section>
 
-      <section className="bg-white border-t">
-        <div className="w-full max-w-[1500px] mx-auto px-4 py-12">
+      <section className="border-t bg-white">
+        <div className="mx-auto w-full max-w-6xl px-4 py-12">
           <CompanyLogos />
         </div>
       </section>
 
       {/* Bloque de “gráficos”/rankings con fondo blanco como home */}
       <section className="bg-white">
-        <div className="w-full max-w-[1500px] mx-auto px-10 py-12">
+        <div className="mx-auto w-full max-w-6xl px-10 py-12">
           <SectionTitle
             kicker="RESULTATS"
             title="Pràctiques, feina i especialització"
             subtitle="Quatre vistes ràpides: pràctiques, feina, màsters i dominis."
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
               <div className="flex items-baseline justify-between">
                 <h3 className="text-lg font-extrabold text-slate-900">Top pràctiques</h3>
-                <span className="text-xs font-semibold text-slate-500">
-                  {topInternships.length} entitats
-                </span>
+                <span className="text-xs font-semibold text-slate-500">{topInternships.length} entitats</span>
               </div>
               <div className="mt-5 space-y-3">
                 {topInternships.length ? (
@@ -292,61 +246,46 @@ export default async function StatsPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-6">
+            <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
               <div className="flex items-baseline justify-between">
                 <h3 className="text-lg font-extrabold text-slate-900">Top feina actual</h3>
-                <span className="text-xs font-semibold text-slate-500">
-                  {topJobs.length} entitats
-                </span>
+                <span className="text-xs font-semibold text-slate-500">{topJobs.length} entitats</span>
               </div>
               <div className="mt-5 space-y-3">
                 {topJobs.length ? (
-                  topJobs.map((it) => (
-                    <ProgressRow key={it.name} name={it.name} count={it.count} max={maxJobs} />
-                  ))
+                  topJobs.map((it) => <ProgressRow key={it.name} name={it.name} count={it.count} max={maxJobs} />)
                 ) : (
                   <p className="text-sm text-slate-600">Encara no hi ha prou dades de feina actual.</p>
                 )}
               </div>
             </div>
 
-            <div className="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-6">
+            <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
               <div className="flex items-baseline justify-between">
                 <h3 className="text-lg font-extrabold text-slate-900">Màsters més freqüents</h3>
-                <span className="text-xs font-semibold text-slate-500">
-                  {topMasters.length} màsters
-                </span>
+                <span className="text-xs font-semibold text-slate-500">{topMasters.length} màsters</span>
               </div>
               <div className="mt-5 space-y-3">
                 {topMasters.length ? (
-                  topMasters.map((it) => (
-                    <ProgressRow key={it.name} name={it.name} count={it.count} max={maxMasters} />
-                  ))
+                  topMasters.map((it) => <ProgressRow key={it.name} name={it.name} count={it.count} max={maxMasters} />)
                 ) : (
                   <p className="text-sm text-slate-600">Encara no hi ha prou dades de màsters.</p>
                 )}
               </div>
             </div>
 
-            <div className="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-6">
+            <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
               <div className="flex items-baseline justify-between">
                 <h3 className="text-lg font-extrabold text-slate-900">Dominis més comuns</h3>
-                <span className="text-xs font-semibold text-slate-500">
-                  {topDomains.length} dominis
-                </span>
+                <span className="text-xs font-semibold text-slate-500">{topDomains.length} dominis</span>
               </div>
               <div className="mt-5 space-y-3">
                 {topDomains.length ? (
-                  topDomains.map((it) => (
-                    <ProgressRow key={it.name} name={it.name} count={it.count} max={maxDomains} />
-                  ))
+                  topDomains.map((it) => <ProgressRow key={it.name} name={it.name} count={it.count} max={maxDomains} />)
                 ) : (
                   <p className="text-sm text-slate-600">
                     Encara no hi ha prou keywords a{" "}
-                    <code className="px-1 py-0.5 rounded bg-slate-100">
-                      currentJobKeywordsDomain
-                    </code>
-                    .
+                    <code className="rounded bg-slate-100 px-1 py-0.5">currentJobKeywordsDomain</code>.
                   </p>
                 )}
               </div>
@@ -357,26 +296,24 @@ export default async function StatsPage() {
 
       {/* CTA estilo “banner” pero alineado con el resto (contenedor centrado) */}
       <section className="bg-white">
-        <div className="w-full max-w-[1500px] mx-auto px-4 pb-14">
-          <div className="max-w-5xl mx-auto rounded-3xl bg-upc text-white px-6 py-10 sm:px-10 shadow-sm ring-1 ring-black/10">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-center">
-              Vols veure exemples de projectes?
-            </h2>
+        <div className="mx-auto w-full max-w-6xl px-4 pb-14">
+          <div className="bg-upc mx-auto max-w-5xl rounded-3xl px-6 py-10 text-white shadow-sm ring-1 ring-black/10 sm:px-10">
+            <h2 className="text-center text-2xl font-extrabold sm:text-3xl">Vols veure exemples de projectes?</h2>
 
-            <p className="mt-2 text-white/90 max-w-3xl mx-auto text-center">
-              Descobreix projectes desenvolupats a la universitat i coneix els alumni,
-              els seus interessos i projectes personals.
+            <p className="mx-auto mt-2 max-w-3xl text-center text-white/90">
+              Descobreix projectes desenvolupats a la universitat i coneix els alumni, els seus interessos i projectes
+              personals.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3 justify-center">
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
               <a
-                className="inline-flex items-center justify-center rounded-xl bg-white text-upc px-5 py-3 font-bold shadow-sm"
+                className="text-upc inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 font-bold shadow-sm"
                 href="/projectes"
               >
                 Projectes de la universitat
               </a>
               <a
-                className="inline-flex items-center justify-center rounded-xl bg-transparent text-white px-5 py-3 font-bold ring-2 ring-white/60 hover:ring-white"
+                className="inline-flex items-center justify-center rounded-xl bg-transparent px-5 py-3 font-bold text-white ring-2 ring-white/60 hover:ring-white"
                 href="/estudiants"
               >
                 Alumni i projectes personals
@@ -385,7 +322,6 @@ export default async function StatsPage() {
           </div>
         </div>
       </section>
-
 
       <section className="h-20" />
     </main>

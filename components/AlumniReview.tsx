@@ -2,8 +2,6 @@ import AlumniTopPart from "@/components/alumni_card/AlumniTopPart"
 import { cn } from "@/lib/utils"
 import { Quote } from "lucide-react"
 
-
-
 interface AlumniReviewProps {
   firstName: string
   lastName: string
@@ -12,13 +10,7 @@ interface AlumniReviewProps {
   id: number
 }
 
-export default function AlumniReview({
-  firstName,
-  lastName,
-  generation,
-  review,
-  id,
-}: AlumniReviewProps) {
+export default function AlumniReview({ firstName, lastName, generation, review, id }: AlumniReviewProps) {
   return (
     <div
       className={cn(
@@ -32,35 +24,19 @@ export default function AlumniReview({
       {/* Comillas decorativas */}
       <Quote
         aria-hidden
-        className="
-          absolute -top-4 -right-3
-          h-24 w-24
-          text-upc
-          rotate-180
-          pointer-events-none
-          select-none
-        "
+        className="text-upc pointer-events-none absolute -top-4 -right-3 h-24 w-24 rotate-180 select-none"
       />
-
 
       {/* Contenido real */}
       <div className="relative z-10">
         <div className="flex items-start">
-          <AlumniTopPart
-            name={firstName}
-            surname={lastName}
-            generation={generation}
-            id={id}
-          />
+          <AlumniTopPart name={firstName} surname={lastName} generation={generation} id={id} />
         </div>
 
         <div className="px-3">
-          <p className="text-[12px] text-gray-700 font-normal leading-normal line-clamp-6">
-            {review}
-          </p>
+          <p className="line-clamp-6 text-[12px] leading-normal font-normal text-gray-700">{review}</p>
         </div>
       </div>
     </div>
   )
 }
-

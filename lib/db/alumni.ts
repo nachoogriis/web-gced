@@ -1,5 +1,16 @@
 import { db } from "./db"
-import { Alumni, InternshipAlumni, Internship, Organization, MasterAlumni, Master, MasterOrganizations, ProjectAlumni, Project, UniversityProject } from "@/generated/prisma/client"
+import {
+  Alumni,
+  InternshipAlumni,
+  Internship,
+  Organization,
+  MasterAlumni,
+  Master,
+  MasterOrganizations,
+  ProjectAlumni,
+  Project,
+  UniversityProject,
+} from "@/generated/prisma/client"
 
 type AlumniWithRelations = Alumni & {
   internships: (InternshipAlumni & {
@@ -93,7 +104,10 @@ export async function dbAlumniGetAllCardsInfo() {
       name: masterAlumnus.master.name || "No especificat",
       description: masterAlumnus.master.description || "No especificat",
       universities: masterAlumnus.master.organizations
-        .map((org: AlumniWithRelations["masters"][number]["master"]["organizations"][number]) => org.organization.name || "No especificat")
+        .map(
+          (org: AlumniWithRelations["masters"][number]["master"]["organizations"][number]) =>
+            org.organization.name || "No especificat",
+        )
         .join(", "),
       country: masterAlumnus.master.organizations[0]?.organization.country || "No especificat",
     })),

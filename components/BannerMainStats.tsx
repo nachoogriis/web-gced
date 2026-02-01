@@ -16,12 +16,13 @@ interface StatProps {
   value: string | number
 }
 function Stat({ title, value }: StatProps) {
-  return (<div className="text-center">
-    <p className="text-sm font-semibold text-white/90">{title}</p>
-    <p className="mt-2 text-4xl md:text-5xl font-extrabold">{value}</p>
-  </div>)
+  return (
+    <div className="text-center">
+      <p className="text-sm font-semibold text-white/90">{title}</p>
+      <p className="mt-2 text-4xl font-extrabold md:text-5xl">{value}</p>
+    </div>
+  )
 }
-
 
 export default async function BannerMainStats() {
   const [alumniCount, alumniRows] = await Promise.all([
@@ -46,8 +47,8 @@ export default async function BannerMainStats() {
 
   return (
     <section className="bg-upc py-8">
-      <div className="max-w-[1500px] mx-auto px-4 lg:w-6xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-white">
+      <div className="mx-auto max-w-6xl px-4 lg:w-6xl">
+        <div className="grid grid-cols-2 gap-4 text-white md:grid-cols-4">
           <Stat title="Ocupabilitat" value={pct(employedRate)} />
           <Stat title="Feina dades / IA" value={pct(gcedRelatedRate)} />
           <Stat title="Alumni registrats" value={alumniCount} />

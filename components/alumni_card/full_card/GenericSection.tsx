@@ -12,13 +12,13 @@ export default function GenericSection({ title, itemLists }: Props) {
     return <></>
   }
 
-  const Title = () => <div className="text-m text-upc font-bold border-b border-upc/30 mb-2 text-xl">{title}</div>
+  const Title = () => <div className="text-m text-upc border-upc/30 mb-2 border-b text-xl font-bold">{title}</div>
 
   const Name = ({ name }: { name: string }) => {
-    return <span className="font-bold inline-block min-w-[8em] text-foreground/80 ">{name}</span>
+    return <span className="text-foreground/80 inline-block min-w-[8em] font-bold">{name}</span>
   }
   const Item = ({ name, text }: { name: string; text: string }) => (
-    <div className="text-sm flex flex-row">
+    <div className="flex flex-row text-sm">
       <Name name={name} />
       <span className="text-black/80">{text}</span>
     </div>

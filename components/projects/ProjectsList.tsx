@@ -6,12 +6,12 @@ export default async function ProjectsList({ topic }: { topic: string }) {
   const filteredProjects = universityProjects.filter((project: UniversityProjectInfo) => project.topic === topic)
 
   return filteredProjects.length > 0 ? (
-    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 bg-gray-100 rounded py-6 px-6 justify-center items-center">
+    <div className="grid grid-cols-1 items-center justify-center gap-6 rounded bg-gray-100 px-6 py-6 md:grid-cols-1 lg:grid-cols-2">
       {filteredProjects.map((project: UniversityProjectInfo, index: number) => (
         <ProjectCard key={index} project={project} />
       ))}
     </div>
   ) : (
-    <div className="flex items-center jusitify center">No projects have been defined yet for this category</div>
+    <div className="jusitify center flex items-center">No projects have been defined yet for this category</div>
   )
 }

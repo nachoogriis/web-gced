@@ -5,11 +5,9 @@ type Props = {
 
 export default function PageHeading({ title, subtitle }: Props) {
   return (
-    <section className="text-center py-10 px-4">
-      <h1 className="text-6xl font-bold text-upc">{title}</h1>
-      {subtitle && (
-        <p className="text-base md:text-lg text-slate-600 pt-3">{subtitle}</p>
-      )}
+    <section className="px-4 pt-20 pb-10 text-center">
+      <h1 className="text-upc text-6xl font-extrabold">{title}</h1>
+      {subtitle && <p className="pt-3 text-base text-slate-600 md:text-lg">{subtitle}</p>}
     </section>
   )
 }

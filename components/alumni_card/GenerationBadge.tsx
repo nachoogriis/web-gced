@@ -8,13 +8,13 @@ export default function GenerationBadge({ year, size = "normal" }: Props) {
   return (
     <div
       className={cn(
-        "flex justify-center items-center rounded-full bg-upc-light",
+        "bg-upc-light flex items-center justify-center rounded-full",
         size === "normal" ? "p-0.5" : "px-1 py-1.5",
       )}
     >
       <p
         className={cn(
-          "text-upc font-medium leading-normal",
+          "text-upc leading-normal font-medium",
           size === "normal" ? "px-2 text-[12px]" : "px-3 text-[20px]",
         )}
       >

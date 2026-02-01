@@ -7,21 +7,19 @@ interface PersonIconProps {
   className?: string
 }
 
-const peopleWithoutLinkedin: Set<string> = new Set([
-  "antoni-jubes-monforte"
-])
+const peopleWithoutLinkedin: Set<string> = new Set(["antoni-jubes-monforte"])
 
-export default function PersonIcon({ name, surname, className}: PersonIconProps) {
+export default function PersonIcon({ name, surname, className }: PersonIconProps) {
   const removeAccents = (str: string) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
   }
-  
-  const cleanName = removeAccents(name).toLowerCase();
-  const cleanSurname = removeAccents(surname).toLowerCase();
-  const concat_surnames = cleanSurname.split(' ').join('-');
+
+  const cleanName = removeAccents(name).toLowerCase()
+  const cleanSurname = removeAccents(surname).toLowerCase()
+  const concat_surnames = cleanSurname.split(" ").join("-")
   const filename = `${cleanName}-${concat_surnames}`
-  
-  const imageUrl = peopleWithoutLinkedin.has(filename) 
+
+  const imageUrl = peopleWithoutLinkedin.has(filename)
     ? `/profile_pictures/blank-profile.png`
     : `/profile_pictures/${filename}.jpeg`
 

@@ -130,18 +130,21 @@ In-depth analysis and curated examples:
 ## Key Design Patterns to Consider
 
 ### Card Layouts
+
 - Grid layouts (2-4 columns)
 - Masonry / Pinterest-style
 - Horizontal scrolling carousels
 - Overlapping cards with z-index layering
 
 ### Interactive Elements
+
 - Hover effects revealing additional info
 - Hover image swap (professional ↔ casual photo)
 - Scale/rotate transforms on hover
 - GSAP/Framer Motion animations
 
 ### Information Hierarchy
+
 - Photo + Name + Title (minimal)
 - Extended bio or fun facts
 - Social media links
@@ -149,6 +152,7 @@ In-depth analysis and curated examples:
 - Signature or personal quote
 
 ### Creative Approaches
+
 - Casual/Business mode toggle (Sandwich)
 - Custom illustrations per team member (BlockJoy)
 - Team categorization: "Family" vs "Friends" (Square One)
@@ -157,4 +161,4 @@ In-depth analysis and curated examples:
 
 ---
 
-*Last updated: January 2026*
+_Last updated: January 2026_

@@ -2,13 +2,7 @@
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
-export default function Logo({
-  image,
-  className,
-}: {
-  image: string
-  className?: string
-}) {
+export default function Logo({ image, className }: { image: string; className?: string }) {
   return (
     <div
       className={cn(
