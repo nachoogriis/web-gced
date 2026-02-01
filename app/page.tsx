@@ -57,10 +57,10 @@ export default async function Home() {
         </section>
 
 
-        <section className="mx-3 flex flex-col overflow-clip py-6 text-center text-sm md:text-base lg:text-lg">
+        <section className="flex flex-col py-6 text-center text-sm md:text-base lg:text-lg">
           <h2 className="m-2 text-2xl font-extrabold text-slate-900 md:text-3xl">Coneix als nostres estudiants</h2>
 
-          <div className="relative">
+          <div className="relative px-3 md:px-24">
             <StudentsCarousel students={alumniData} maxItems={6} />
           </div>
 
@@ -70,7 +70,7 @@ export default async function Home() {
         </section>
 
         <section className="bg-white py-10 text-sm md:text-base lg:text-lg">
-          <div className="mx-3">
+          <div className="px-3 md:px-24">
             <div className="py-4">
               <h2 className="m-2 text-center text-2xl font-extrabold text-slate-900 md:text-3xl">
                 Testimonis dels nostres estudiants

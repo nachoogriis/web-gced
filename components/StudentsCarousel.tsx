@@ -4,7 +4,7 @@ import { useMemo } from "react"
 import AlumniCard from "@/components/alumni_card/AlumniCard"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { AlumniCardInfo } from "@/lib/db/alumni"
-import { cn, shuffle } from "@/lib/utils"
+import { shuffle } from "@/lib/utils"
 
 interface StudentsCarouselProps {
   students: AlumniCardInfo[]
@@ -17,10 +17,7 @@ export default function StudentsCarousel({ students, maxItems = 6 }: StudentsCar
   return (
     <Carousel>
       <CarouselPrevious
-        className={cn(
-          "absolute top-1/2 left-2 z-10 -translate-y-1/2",
-          "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
-        )}
+        className="bg-upc hover:bg-upc/90 text-white hover:text-white/90"
       />
       <CarouselContent>
         {displayedStudents.map((alumni: AlumniCardInfo) => (
@@ -30,10 +27,7 @@ export default function StudentsCarousel({ students, maxItems = 6 }: StudentsCar
         ))}
       </CarouselContent>
       <CarouselNext
-        className={cn(
-          "bg-upc absolute top-1/2 right-2 z-10 -translate-y-1/2 text-white",
-          "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
-        )}
+        className="bg-upc hover:bg-upc/90 text-white hover:text-white/90"
       />
     </Carousel>
   )
