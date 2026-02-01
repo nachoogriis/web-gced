@@ -7,7 +7,7 @@ export default function Logo({ image, className }: { image: string; className?: 
     <div
       className={cn(
         "shrink-0",
-        "h-8 md:h-10 lg:h-12", // Fixed height (reduced by 40%), width auto from content
+        "h-12 md:h-10 lg:h-12", // Fixed height: larger on mobile, slightly smaller on tablet
         "rounded-lg bg-white",
         "flex items-center justify-center",
         "px-4",
