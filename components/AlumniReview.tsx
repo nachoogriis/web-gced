@@ -14,7 +14,7 @@ export default function AlumniReview({ firstName, lastName, generation, review, 
   return (
     <div
       className={cn(
-        "relative overflow-hidden",
+        "relative overflow-hidden select-none",
         "bg-upc",
         "flex flex-col pt-2 px-1 pb-1",
       )}
