@@ -18,7 +18,7 @@ function LogosRow({ logos, animationClass, keyPrefix }: LogosRowProps) {
       {/* Left fade overlay */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent md:w-24 lg:w-32" />
       
-      <div className={`flex gap-2 md:gap-4 lg:gap-8 ${animationClass}`} style={{ width: "max-content" }}>
+      <div className={`flex gap-4 md:gap-8 lg:gap-16 ${animationClass}`} style={{ width: "max-content" }}>
         {logos.map((src, i) => (
           <CompanyLogo key={`${keyPrefix}-${i}`} image={src} />
         ))}

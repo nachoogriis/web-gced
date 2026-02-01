@@ -7,7 +7,7 @@ export default function Logo({ image, className }: { image: string; className?: 
     <div
       className={cn(
         "shrink-0",
-        "h-14 w-40 md:h-16 md:w-44 lg:h-20 lg:w-48", // <-- ALARGADO
+        "h-8 md:h-10 lg:h-12", // Fixed height (reduced by 40%), width auto from content
         "rounded-lg bg-white",
         "flex items-center justify-center",
         "px-4",
@@ -19,7 +19,7 @@ export default function Logo({ image, className }: { image: string; className?: 
         alt="Company logo"
         width={220}
         height={80}
-        className="h-full w-full object-contain"
+        className="h-full w-auto"
         sizes="192px"
       />
     </div>

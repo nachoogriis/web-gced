@@ -67,8 +67,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       animation: {
-        scroll: "scroll 60s linear infinite",
-        scroll1: "scroll1 60s linear infinite",
+        scroll: "scroll 100s linear infinite",
+        scroll1: "scroll1 100s linear infinite",
       },
       keyframes: {
         scroll: {
