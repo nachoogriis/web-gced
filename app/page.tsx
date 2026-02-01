@@ -1,13 +1,11 @@
-import AlumniCard from "@/components/alumni_card/AlumniCard"
-import AlumniReview from "@/components/AlumniReview"
 import BannerMainStats from "@/components/BannerMainStats"
 import ButtonGo from "@/components/ButtonGoStudents"
 import CompanyLogos from "@/components/ComopanyLogos"
 import HomeSlideshow from "@/components/HomeSlideshow"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { AlumniReviewInfo, dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni"
+import StudentsCarousel from "@/components/StudentsCarousel"
+import TestimonisCarousel from "@/components/TestimonisCarousel"
+import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni"
 import { getHomeImages } from "@/lib/getHomeImages"
-import { cn } from "@/lib/utils"
 
 export default async function Home() {
   const alumniData = await dbAlumniGetAllCardsInfo()
@@ -63,27 +61,7 @@ export default async function Home() {
           <h2 className="m-2 text-2xl font-extrabold text-slate-900 md:text-3xl">Coneix als nostres estudiants</h2>
 
           <div className="relative">
-            <Carousel>
-              <CarouselPrevious
-                className={cn(
-                  "absolute top-1/2 left-2 z-10 -translate-y-1/2",
-                  "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
-                )}
-              />
-              <CarouselContent>
-                {alumniData.map((alumni: any, index: number) => (
-                  <CarouselItem key={index} className="basis-auto p-4 pb-10">
-                    <AlumniCard alumni={alumni} className="border-upc/30 border" />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselNext
-                className={cn(
-                  "bg-upc absolute top-1/2 right-2 z-10 -translate-y-1/2 text-white",
-                  "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
-                )}
-              />
-            </Carousel>
+            <StudentsCarousel students={alumniData} maxItems={6} />
           </div>
 
           <div className="flex flex-row justify-center pb-12">
@@ -97,41 +75,7 @@ export default async function Home() {
               <h2 className="m-2 text-center text-2xl font-extrabold text-slate-900 md:text-3xl">
                 Testimonis dels nostres estudiants
               </h2>
-              <Carousel>
-                <CarouselPrevious
-                  className={cn(
-                    "absolute top-1/2 left-2 z-10 -translate-y-1/2",
-                    "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
-                  )}
-                />
-                <CarouselContent>
-                  {alumniReviews.map(
-                    ({ firstName, lastName, generation, review, id }: AlumniReviewInfo, index: number) => (
-                      <CarouselItem
-                        key={index}
-                        className={cn(
-                          "md:basis-1/2 lg:basis-1/3 xl:basis-1/3",
-                          "p-4 min-[1920px]:basis-1/6 min-[2320px]:basis-1/7",
-                        )}
-                      >
-                        <AlumniReview
-                          firstName={firstName}
-                          lastName={lastName}
-                          generation={generation}
-                          review={review}
-                          id={id}
-                        />
-                      </CarouselItem>
-                    )
-                  )}
-                </CarouselContent>
-                <CarouselNext
-                  className={cn(
-                    "bg-upc absolute top-1/2 right-2 z-10 -translate-y-1/2 text-white",
-                    "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
-                  )}
-                />
-              </Carousel>
+              <TestimonisCarousel reviews={alumniReviews} maxItems={6} />
               <div className="flex flex-row justify-center pt-6">
                 <ButtonGo text="Veure més testimonis..." href="/testimonis" />
               </div>

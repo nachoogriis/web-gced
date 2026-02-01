@@ -1,0 +1,40 @@
+"use client"
+
+import { useMemo } from "react"
+import AlumniCard from "@/components/alumni_card/AlumniCard"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { AlumniCardInfo } from "@/lib/db/alumni"
+import { cn, shuffle } from "@/lib/utils"
+
+interface StudentsCarouselProps {
+  students: AlumniCardInfo[]
+  maxItems?: number
+}
+
+export default function StudentsCarousel({ students, maxItems = 6 }: StudentsCarouselProps) {
+  const displayedStudents = useMemo(() => shuffle(students).slice(0, maxItems), [students, maxItems])
+
+  return (
+    <Carousel>
+      <CarouselPrevious
+        className={cn(
+          "absolute top-1/2 left-2 z-10 -translate-y-1/2",
+          "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
+        )}
+      />
+      <CarouselContent>
+        {displayedStudents.map((alumni: AlumniCardInfo) => (
+          <CarouselItem key={alumni.id} className="basis-auto p-4 pb-10">
+            <AlumniCard alumni={alumni} className="border-upc/30 border" />
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselNext
+        className={cn(
+          "bg-upc absolute top-1/2 right-2 z-10 -translate-y-1/2 text-white",
+          "bg-upc hover:bg-upc/90 text-white hover:text-white/90",
+        )}
+      />
+    </Carousel>
+  )
+}
