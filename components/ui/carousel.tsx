@@ -136,14 +136,34 @@ Carousel.displayName = "Carousel"
 
 const CarouselContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
-    const { carouselRef, orientation } = useCarousel()
+    const { carouselRef, orientation, canScrollPrev, canScrollNext } = useCarousel()
 
     return (
-      <div ref={carouselRef} className="overflow-hidden">
+      <div className="relative">
+        {/* Left fade overlay - shows when there are more items to the left */}
         <div
-          ref={ref}
-          className={cn("flex", orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col", className)}
-          {...props}
+          className={cn(
+            "pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-white to-transparent md:w-16 lg:w-24",
+            "transition-opacity duration-300",
+            canScrollPrev ? "opacity-100" : "opacity-0",
+          )}
+        />
+
+        <div ref={carouselRef} className="overflow-hidden">
+          <div
+            ref={ref}
+            className={cn("flex", orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col", className)}
+            {...props}
+          />
+        </div>
+
+        {/* Right fade overlay - shows when there are more items to the right */}
+        <div
+          className={cn(
+            "pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-white to-transparent md:w-16 lg:w-24",
+            "transition-opacity duration-300",
+            canScrollNext ? "opacity-100" : "opacity-0",
+          )}
         />
       </div>
     )
@@ -172,12 +192,14 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
   ({ className, variant = "ghost", ...props }, ref) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
+    if (!canScrollPrev) return null
+
     return (
       <Button
         ref={ref}
         variant={variant}
         className={cn(
-          "absolute hidden h-[100px] w-10 rounded-lg md:flex p-0",
+          "absolute hidden h-[120px] w-14 rounded-lg md:flex px-3 py-5",
           "items-stretch",
           "bg-transparent hover:bg-transparent",
           "text-upc/30 hover:text-upc/60",
@@ -188,7 +210,6 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
             : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
           className,
         )}
-        disabled={!canScrollPrev}
         onClick={scrollPrev}
         {...props}
       >
@@ -204,12 +225,14 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
   ({ className, variant = "ghost", ...props }, ref) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel()
 
+    if (!canScrollNext) return null
+
     return (
       <Button
         ref={ref}
         variant={variant}
         className={cn(
-          "absolute hidden h-[100px] w-10 rounded-lg md:flex p-0",
+          "absolute hidden h-[120px] w-14 rounded-lg md:flex px-3 py-5",
           "items-stretch",
           "bg-transparent hover:bg-transparent",
           "text-upc/30 hover:text-upc/60",
@@ -220,7 +243,6 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
             : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
           className,
         )}
-        disabled={!canScrollNext}
         onClick={scrollNext}
         {...props}
       >
