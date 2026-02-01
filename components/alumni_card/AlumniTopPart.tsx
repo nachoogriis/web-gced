@@ -17,7 +17,7 @@ export default function AlumniTopPart({ name, surname, generation, id = 0, varia
     <div className={cn("flex w-full flex-row items-center", size === "small" ? "p-2" : "p-3")}>
       <div
         className={cn(
-          "flex-shrink-0 rounded-full bg-[#B0DAED]",
+          "shrink-0 rounded-full bg-[#B0DAED]",
           size === "small" ? "h-[32px] w-[32px]" : "h-[75px] w-[75px]",
         )}
       >

@@ -143,7 +143,7 @@ const CarouselContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
         {/* Left fade overlay - shows when there are more items to the left */}
         <div
           className={cn(
-            "pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-white to-transparent md:w-16 lg:w-24",
+            "pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-linear-to-r from-white to-transparent md:w-16 lg:w-24",
             "transition-opacity duration-300",
             canScrollPrev ? "opacity-100" : "opacity-0",
           )}
@@ -160,7 +160,7 @@ const CarouselContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
         {/* Right fade overlay - shows when there are more items to the right */}
         <div
           className={cn(
-            "pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-white to-transparent md:w-16 lg:w-24",
+            "pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-linear-to-l from-white to-transparent md:w-16 lg:w-24",
             "transition-opacity duration-300",
             canScrollNext ? "opacity-100" : "opacity-0",
           )}

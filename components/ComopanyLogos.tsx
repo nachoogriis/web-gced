@@ -16,7 +16,7 @@ function LogosRow({ logos, animationClass, keyPrefix }: LogosRowProps) {
   return (
     <div className="relative overflow-x-hidden">
       {/* Left fade overlay */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent md:w-24 lg:w-32" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-linear-to-r from-white to-transparent md:w-24 lg:w-32" />
       
       <div className={`flex gap-4 md:gap-8 lg:gap-16 ${animationClass}`} style={{ width: "max-content" }}>
         {logos.map((src, i) => (
@@ -29,7 +29,7 @@ function LogosRow({ logos, animationClass, keyPrefix }: LogosRowProps) {
       </div>
       
       {/* Right fade overlay */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent md:w-24 lg:w-32" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-linear-to-l from-white to-transparent md:w-24 lg:w-32" />
     </div>
   )
 }
