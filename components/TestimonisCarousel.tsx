@@ -22,7 +22,7 @@ export default function TestimonisCarousel({ reviews, maxItems = 6 }: Testimonis
           <CarouselItem
             key={id}
             className={cn(
-              "md:basis-1/2 lg:basis-1/3 xl:basis-1/3",
+              "basis-auto md:basis-1/2 lg:basis-1/3 xl:basis-1/3",
               "p-4 min-[1920px]:basis-1/6 min-[2320px]:basis-1/7",
             )}
           >

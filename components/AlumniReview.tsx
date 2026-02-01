@@ -17,6 +17,7 @@ export default function AlumniReview({ firstName, lastName, generation, review, 
         "relative overflow-hidden select-none",
         "bg-upc",
         "flex flex-col pt-2 px-1 pb-1",
+        "max-w-72 md:max-w-none", // Limit width on mobile so fade effects aren't both visible
       )}
     >
       {/* Comillas decorativas */}
