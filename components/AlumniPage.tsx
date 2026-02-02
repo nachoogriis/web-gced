@@ -57,7 +57,7 @@ export default function AlumniPage({ initialAlumniData }: Props) {
 
   return (
     <main className="flex w-full flex-col items-stretch">
-      <PageHeading title="Estudiants" />
+      <PageHeading title="Graduats" />
 
       {/* Buscador con ShadCN UI */}
       <div className="flex flex-col items-center py-6">

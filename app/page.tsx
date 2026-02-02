@@ -46,26 +46,23 @@ export default async function Home() {
           </div>
         </section>
 
+        <section className="py-10 text-center text-sm font-semibold md:text-base lg:text-lg">
+          <CompanyLogos />
+        </section>
+
         <div className="flex flex-row justify-center my-8">
           <ButtonGo text="Veure més estadístiques..." href="/estadistiques" />
         </div>
 
-        <section className="py-10 text-center text-sm font-semibold md:text-base lg:text-lg">
-          <h2 className="m-2 text-2xl font-extrabold text-slate-900 md:text-3xl">Empreses</h2>
-          <CompanyLogos />
-
-        </section>
-
-
         <section className="flex flex-col py-6 text-center text-sm md:text-base lg:text-lg">
-          <h2 className="m-2 text-2xl font-extrabold text-slate-900 md:text-3xl">Coneix als nostres estudiants</h2>
+          <h2 className="m-2 text-2xl font-extrabold text-slate-900 md:text-3xl">Coneix als nostres graduats</h2>
 
           <div className="relative px-3 md:px-24">
             <StudentsCarousel students={alumniData} maxItems={6} />
           </div>
 
           <div className="flex flex-row justify-center pb-12">
-            <ButtonGo text="Veure més perfils d'estudiants..." href="/estudiants" />
+            <ButtonGo text="Veure més perfils de graduats..." href="/estudiants" />
           </div>
         </section>
 
@@ -73,7 +70,7 @@ export default async function Home() {
           <div className="px-3 md:px-24">
             <div className="py-4">
               <h2 className="m-2 text-center text-2xl font-extrabold text-slate-900 md:text-3xl">
-                Testimonis dels nostres estudiants
+                Testimonis dels nostres graduats
               </h2>
               <TestimonisCarousel reviews={alumniReviews} maxItems={6} />
               <div className="flex flex-row justify-center pt-6">
