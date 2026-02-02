@@ -1,18 +1,26 @@
 "use client"
 
+import { useMemo } from "react"
 import AlumniCard from "@/components/alumni_card/AlumniCard"
 import PageHeading from "@/components/PageHeading"
 import { Input } from "@/components/ui/input"
-import { AlumniCardInfo } from "@/lib/db/alumni"
+import { AlumniCardInfo, AlumniReviewInfo } from "@/lib/db/alumni"
 import { levenshteinDistance } from "@/lib/utils"
 import { ChangeEventHandler, useState } from "react"
 
 type Props = {
   initialAlumniData: AlumniCardInfo[]
+  alumniReviews: AlumniReviewInfo[]
 }
-export default function AlumniPage({ initialAlumniData }: Props) {
+export default function AlumniPage({ initialAlumniData, alumniReviews }: Props) {
   const [searchTerm, setSearchTerm] = useState("")
   const [filteredAlumni, setFilteredAlumni] = useState(initialAlumniData)
+
+  const reviewsMap = useMemo(() => {
+      const map = new Map<number, AlumniReviewInfo>()
+      alumniReviews.forEach((review) => map.set(review.id, review))
+      return map
+    }, [alumniReviews])
 
   const handleSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
     const raw = e.target.value
@@ -77,7 +85,7 @@ export default function AlumniPage({ initialAlumniData }: Props) {
         <section className="flex items-start justify-center border-t bg-gray-100 pb-20 min-h-[56em]">
           <div className="flex max-w-6xl flex-wrap justify-center gap-6 rounded px-2 py-8">
             {filteredAlumni.map((alumni) => (
-              <AlumniCard key={alumni.id} alumni={alumni} />
+              <AlumniCard key={alumni.id} alumni={alumni} review={reviewsMap.get(alumni.id)}/>
             ))}
           </div>
         </section>

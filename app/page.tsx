@@ -58,7 +58,7 @@ export default async function Home() {
           <h2 className="m-2 text-2xl font-extrabold text-slate-900 md:text-3xl">Coneix als nostres graduats</h2>
 
           <div className="relative px-3 md:px-24">
-            <StudentsCarousel students={alumniData} maxItems={6} />
+            <StudentsCarousel students={alumniData} reviews={alumniReviews} maxItems={6} />
           </div>
 
           <div className="flex flex-row justify-center pb-12">
@@ -73,9 +73,6 @@ export default async function Home() {
                 Testimonis dels nostres graduats
               </h2>
               <TestimonisCarousel reviews={alumniReviews} maxItems={6} />
-              <div className="flex flex-row justify-center pt-6">
-                <ButtonGo text="Veure més testimonis..." href="/testimonis" />
-              </div>
             </div>
           </div>
         </section>
