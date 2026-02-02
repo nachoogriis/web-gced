@@ -7,7 +7,7 @@ export default async function Page() {
 
   return (
     <main>
-      <PageHeading title="Projectes" subtitle="Explora projectes desenvolupats a la universitat." />
+      <PageHeading title="Projectes" subtitle="Explora alguns dels projectes desenvolupats a la universitat." />
 
       <section className="flex h-full w-full flex-col items-start">
         <ProjectsList universityProjects={universityProjects} />

@@ -301,7 +301,7 @@ export default async function StatsPage() {
             <h2 className="text-center text-2xl font-extrabold sm:text-3xl">Vols veure exemples de projectes?</h2>
 
             <p className="mx-auto mt-2 max-w-3xl text-center text-white/90">
-              Descobreix projectes desenvolupats a la universitat i coneix els alumni, els seus interessos i projectes
+              Descobreix projectes desenvolupats a la universitat i coneix als alumni, els seus interessos i projectes
               personals.
             </p>
 

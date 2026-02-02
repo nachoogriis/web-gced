@@ -40,10 +40,10 @@ export default function CompanyLogos() {
 
   return (
     <div className="w-full text-center">
-      <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">Els nostres estudiants treballen a</h2>
+      <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">Els nostres graduats treballen a</h2>
       <LogosRow logos={jobLogos} animationClass="animate-scroll" keyPrefix="job" />
 
-      <h2 className="mx-auto mt-12 max-w-3xl text-slate-600">Els nostres estudiants fan pràctiques a</h2>
+      <h2 className="mx-auto mt-12 max-w-3xl text-slate-600">Els nostres graduats han fet pràctiques a</h2>
       <LogosRow logos={internshipLogos} animationClass="animate-scroll1 py-4" keyPrefix="intern" />
     </div>
   )
