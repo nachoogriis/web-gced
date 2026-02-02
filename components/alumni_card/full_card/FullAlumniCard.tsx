@@ -1,17 +1,20 @@
 import IconLinkedIn from "@/components/icons/IconLinkedIn"
 import PersonIcon from "@/components/icons/PersonIcon"
+import AlumniReview from "@/components/AlumniReview"
 import { DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
-import { AlumniCardInfo } from "@/lib/db/alumni"
+import { AlumniCardInfo, AlumniReviewInfo } from "@/lib/db/alumni"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 import Link from "next/link"
 import GenerationBadge from "../GenerationBadge"
 import GenericSection from "./GenericSection"
+import { Alumni } from "@/generated/prisma/browser"
 
 type Props = {
   alumni: AlumniCardInfo
+  review: AlumniReviewInfo | undefined
 }
 
-export default function FullAlumniCard({ alumni }: Props) {
+export default function FullAlumniCard({ alumni, review }: Props) {
   const {
     id,
     firstName,
@@ -24,11 +27,8 @@ export default function FullAlumniCard({ alumni }: Props) {
     tfgCountry,
     tfgUniversity,
     masters,
-    currentJob,
     projects,
   } = alumni
-
-  const tfg = { tfgTitle, tfgDescription, tfgCountry, tfgUniversity }
 
   return (
     <DialogContent className="pointer-events-auto max-h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] max-w-[720px] overflow-y-auto select-none">
@@ -112,6 +112,16 @@ export default function FullAlumniCard({ alumni }: Props) {
           ])}
         />
       </DialogDescription>
+
+      {review !== undefined && (
+        <AlumniReview
+                    firstName={review.firstName}
+                    lastName={review.lastName}
+                    generation={review.generation}
+                    review={review.review}
+                    id={review.id}
+                  />
+      )}
     </DialogContent>
   )
 }

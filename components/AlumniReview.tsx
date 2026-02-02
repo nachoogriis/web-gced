@@ -29,7 +29,7 @@ export default function AlumniReview({ firstName, lastName, generation, review, 
       {/* Contenido real */}
       <div className="relative z-10 flex flex-col">
         <div className="relative pl-7 pr-4 pt-2">
-          <span className="absolute left-4 top-4.5 text-xl leading-0 text-white">"</span>
+          <span className="absolute left-4.5 top-4.5 text-xl leading-0 text-white">"</span>
           <p className="line-clamp-15 text-sm leading-normal font-normal text-white">
             {review}
             <span className="inline-block text-xl leading-0 translate-y-0.5">"</span>

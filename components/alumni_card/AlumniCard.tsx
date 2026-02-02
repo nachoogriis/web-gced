@@ -3,7 +3,7 @@
 import InternshipIcon from "@/components/icons/InternshipIcon"
 import MasterIcon from "@/components/icons/MasterIcon"
 import TfgIcon from "@/components/icons/TfgIcon"
-import { AlumniCardInfo } from "@/lib/db/alumni"
+import { AlumniCardInfo, AlumniReviewInfo } from "@/lib/db/alumni"
 import { cn } from "@/lib/utils"
 import CurrentJobIcon from "../icons/CurrentJobIcon"
 import PersonIcon from "../icons/PersonIcon"
@@ -12,9 +12,10 @@ import GenerationBadge from "./GenerationBadge"
 
 type Props = {
   alumni: AlumniCardInfo
+  review: AlumniReviewInfo | undefined
   className?: string
 }
-export default function AlumniCard({ alumni, className }: Props) {
+export default function AlumniCard({ alumni, review, className }: Props) {
   const { id, firstName, lastName, generation, internships, tfgTitle, masters, currentJob } = alumni
 
   const infoLines: [React.FC, string, string][] = [
@@ -25,7 +26,7 @@ export default function AlumniCard({ alumni, className }: Props) {
   ]
 
   return (
-    <FullAlumniDialogTrigger alumni={alumni}>
+    <FullAlumniDialogTrigger alumni={alumni} review={review}>
       <div
         className={cn(
           "bg-upc-muted overflow-hidden",
