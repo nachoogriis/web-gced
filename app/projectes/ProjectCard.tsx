@@ -42,7 +42,7 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
         )}
       >
         {/* Media (hero) */}
-        <div className="relative aspect-[16/9] bg-slate-100">
+        <div className="relative aspect-video bg-slate-100">
           <Image
             src={image_path}
             alt={project.name}
@@ -51,13 +51,22 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority={false}
           />
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/30" />
 
           {/* Topic pill */}
           <div className="absolute top-4 left-4">
             <span className="text-upc inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-bold ring-1 ring-black/5 backdrop-blur">
               {project.topic}
+            </span>
+          </div>
+
+          {/*Saber més button pill*/}
+          <div className="absolute top-4 right-4">
+            <span className="text-upc inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-bold ring-1 ring-black/5 backdrop-blur">
+              <button>
+                Saber més →
+              </button>
             </span>
           </div>
 
@@ -86,9 +95,6 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
               ))}
             </div>
           )}
-        </div>
-        <div className="absolute right-4 bottom-4 opacity-100">
-          <button className="inline-flex cursor-pointer text-sm text-[#4BADD9] hover:underline">Saber més →</button>
         </div>
       </article>
     </FullProjectDialog>
