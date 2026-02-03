@@ -11,27 +11,35 @@ datasource db {
 }
 
 model Alumni {
-    id             Int                @id @default(autoincrement())
-    firstName      String
-    lastName       String
-    linkedInURL    String?
-    generation     Int
-    review         String?
-    tfgTitle       String
-    tfgDescription String
-    tfgUniversity  String             @default("Universitat Politècnica de Catalunya")
-    tfgCountry     String             @default("Spain")
-    currentJob     String?
-    currentSituation            String? 
-    currentOrganization         String? 
-    currentPosition             String?
-    currentJobRelatedToGCED     String? 
-    currentJobKeywordsDomain    String? 
-    currentJobKeywordsSpecialty String? 
-    currentJobDescription       String? 
-    internships    InternshipAlumni[]
-    masters        MasterAlumni[]
-    projects       ProjectAlumni[]
+    id                              Int                @id @default(autoincrement())
+    firstName                       String
+    lastName                        String
+    linkedInURL                     String?
+    generation                      Int
+    review                          String?
+    degreeScore                     Int?
+    hasRelativeInDegree             Boolean?
+    hasMobility                     Boolean?
+    mobilityCountry                 String?
+    mobilityUniversity              String?
+    mobilityReview                  String?
+    homeBetterThanAwayUniversity    Boolean?
+    tfgTitle                        String
+    tfgDescription                  String
+    tfgUniversity                   String             @default("Universitat Politècnica de Catalunya")
+    tfgCountry                      String             @default("Spain")
+    currentJob                      String?
+    currentSituation                String? 
+    currentOrganization             String? 
+    currentPosition                 String?
+    currentJobRelatedToGCED         String? 
+    currentJobKeywordsDomain        String? 
+    currentJobKeywordsSpecialty     String? 
+    currentJobDescription           String?
+    currentJobSalary                String? 
+    internships                     InternshipAlumni[]
+    masters                         MasterAlumni[]
+    projects                        ProjectAlumni[]
 }
 
 model Organization {
