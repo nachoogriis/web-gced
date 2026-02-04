@@ -61,15 +61,6 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
             </span>
           </div>
 
-          {/*Saber més button pill*/}
-          <div className="absolute top-4 right-4">
-            <span className="text-upc inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-bold ring-1 ring-black/5 backdrop-blur">
-              <button>
-                Saber més →
-              </button>
-            </span>
-          </div>
-
           {/* Title on image */}
           <div className="absolute right-0 bottom-0 left-0 p-5">
             <h2 className="line-clamp-2 text-xl leading-snug font-extrabold text-white drop-shadow md:text-2xl">

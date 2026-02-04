@@ -60,13 +60,6 @@ export default function AlumniCard({ alumni, review, className }: Props) {
             </div>
           ))}
         </div>
-
-        {/* Botón siempre abajo */}
-        <div className="flex shrink-0 justify-center pb-3">
-          <button className="cursor-pointer text-center text-sm whitespace-nowrap text-[#4BADD9] hover:underline">
-            Saber més →
-          </button>
-        </div>
       </div>
     </FullAlumniDialogTrigger>
   )
