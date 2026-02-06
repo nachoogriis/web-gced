@@ -56,7 +56,7 @@ export default function ProjectsList({ universityProjects: projects }: Props) {
       {/* Grid como /estudiants (fondo gris + contenedor centrado) */}
       <section className="flex items-start justify-center border-t bg-gray-100 pb-20 min-h-[56em]">
         <div className="w-full max-w-6xl px-4 py-10">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
             {filteredProjects.map((project, index) => (
               <ProjectCard key={index} project={project as any} />
             ))}
