@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Header from "./header"
 import Footer from "./footer"
+import "leaflet/dist/leaflet.css"
 
 export const dynamic = "force-static"
 
