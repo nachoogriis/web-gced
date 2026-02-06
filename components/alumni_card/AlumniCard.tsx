@@ -1,66 +1,108 @@
 "use client"
 
-import InternshipIcon from "@/components/icons/InternshipIcon"
-import MasterIcon from "@/components/icons/MasterIcon"
-import TfgIcon from "@/components/icons/TfgIcon"
-import { AlumniCardInfo, AlumniReviewInfo } from "@/lib/db/alumni"
-import { cn } from "@/lib/utils"
-import CurrentJobIcon from "../icons/CurrentJobIcon"
-import PersonIcon from "../icons/PersonIcon"
+import Image from "next/image"
 import FullAlumniDialogTrigger from "./full_card/FullAlumniDialogTrigger"
 import GenerationBadge from "./GenerationBadge"
+import { AlumniCardInfo, AlumniReviewInfo } from "@/lib/db/alumni"
+import { cn } from "@/lib/utils"
+import { ChevronRight } from "lucide-react"
+
+
+const peopleWithoutLinkedin: Set<string> = new Set(["antoni-jubes-monforte"])
+const removeAccents = (str: string) =>
+  str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+
+function getProfileImageUrl(firstName: string, lastName: string) {
+  const cleanName = removeAccents(firstName).toLowerCase()
+  const cleanSurname = removeAccents(lastName).toLowerCase()
+  const filename = `${cleanName}-${cleanSurname.split(" ").join("-")}`
+
+  return peopleWithoutLinkedin.has(filename)
+    ? `/profile_pictures/blank-profile.png`
+    : `/profile_pictures/${filename}.jpeg`
+}
 
 type Props = {
   alumni: AlumniCardInfo
   review: AlumniReviewInfo | undefined
   className?: string
 }
-export default function AlumniCard({ alumni, review, className }: Props) {
-  const { id, firstName, lastName, generation, internships, tfgTitle, masters, currentJob } = alumni
 
-  const infoLines: [React.FC, string, string][] = [
-    [InternshipIcon, "Pràctiques", internships?.[0]?.organization ?? "No especificat"],
-    [TfgIcon, "TFG", tfgTitle ?? "No especificat"],
-    [MasterIcon, "Màster", masters?.[0]?.name ?? "No especificat"],
-    [CurrentJobIcon, "Actualment", currentJob ?? "No especificat"],
-  ]
+export default function AlumniCard({ alumni, review, className }: Props) {
+  const {
+    firstName,
+    lastName,
+    generation,
+    currentJobDescription,
+    currentPosition,
+    currentOrganization,
+  } = alumni
+
+  const subtitle =
+    currentPosition && currentOrganization
+      ? `${currentPosition} · ${currentOrganization}`
+      : currentPosition || currentOrganization || ""
+
+  const description =
+    currentJobDescription?.trim() ||
+    "Experiència professional actual dins del sector."
+
+  const imageUrl = getProfileImageUrl(firstName, lastName)
 
   return (
     <FullAlumniDialogTrigger alumni={alumni} review={review}>
       <div
         className={cn(
-          "bg-upc-muted overflow-hidden",
-          "flex flex-col",
-          "cursor-pointer transition-transform duration-200 ease-out hover:scale-105",
-          "h-[26em] md:h-[20em]", // Taller on mobile (more text wrapping), shorter on desktop
-          "text-left select-none",
-          "w-full max-w-[340px] min-w-[280px]",
+          "group w-full max-w-[300px]", // smaller overall width
+          "cursor-pointer overflow-hidden rounded-2xl bg-white", // slightly smaller radius
+          "transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg", // smaller hover
           className,
         )}
       >
-        {/* Parte superior - fixed height for consistency */}
-        <div className="flex h-[160px] shrink-0 flex-col gap-2 border-b bg-white p-6 pb-2">
-          <div className="flex flex-row items-start justify-between gap-4">
-            <PersonIcon name={firstName} surname={lastName} className="h-20 w-20" />
+        {/* IMAGE — slightly less tall */}
+        <div className="relative w-full aspect-[16/15] bg-gray-100">
+          <Image
+            src={imageUrl}
+            alt={`${firstName} ${lastName}`}
+            fill
+            sizes="(max-width: 768px) 100vw, 300px" // fix sizes (your 50px was wrong)
+            className="object-cover object-center"
+          />
+          <div className="absolute right-3 top-3">
             <GenerationBadge year={generation} />
-          </div>
-          {/* Fixed height for name to accommodate 2 lines */}
-          <div className="line-clamp-2 h-[2.5em] text-left text-xl leading-tight font-bold text-black">
-            {firstName} {lastName}
           </div>
         </div>
 
-        {/* Información adicional - fills remaining space */}
-        <div className="flex flex-1 flex-col gap-2 overflow-hidden p-4 pt-3">
-          {infoLines.map(([Icon, title, description], index) => (
-            <div key={`${alumni.id}-${index}`} className="grid grid-cols-[1em_4.5em_1fr] items-start gap-x-2">
-              <Icon />
-              <div className="text-xs font-bold text-gray-700">{title}</div>
-              <div className="line-clamp-2 text-xs text-gray-600">{description}</div>
+        {/* TEXT — tighter */}
+        <div className="flex flex-col gap-3 p-4">
+          <p className="line-clamp-3 text-sm leading-relaxed text-gray-800">
+            {description}
+          </p>
+
+          <div>
+            <div className="text-sm font-semibold text-black">
+              {firstName} {lastName}
             </div>
-          ))}
-        </div>
+            {subtitle && (
+              <div className="text-xs text-gray-500">{subtitle}</div>
+            )}
+          </div>
+
+          {/* CTA */}
+          <span
+            className={cn(
+              "mt-1 block text-[11px] leading-tight text-gray-400",
+              "opacity-0 transition-opacity duration-200",
+              "group-hover:opacity-100",
+            )}
+          >
+            Veure fitxa completa
+          </span>
+
+          </div>
       </div>
+      {/* TEXT — tighter */}
+
     </FullAlumniDialogTrigger>
   )
 }
