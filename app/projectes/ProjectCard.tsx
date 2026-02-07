@@ -35,7 +35,7 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
     <FullProjectDialog project={project}>
       <article
   className={cn(
-    "group relative cursor-pointer overflow-hidden rounded-l select-none",
+    "group relative cursor-pointer overflow-hidden rounded select-none",
     "bg-white shadow-sm ring-1 ring-black/5",
     "transition-all duration-200",
     "hover:-translate-y-0.5 hover:shadow-lg hover:ring-black/10",
