@@ -4,7 +4,7 @@ import PageHeading from "@/components/PageHeading"
 import CompanyLogo from "@/components/Logo"
 import { MapPin, Star, ArrowUp, ArrowDown } from "lucide-react"
 import { ChartConfig, ChartContainer } from "./ui/chart"
-import { Bar, BarChart, XAxis, LabelList } from "recharts"
+import { Bar, BarChart, XAxis, YAxis, LabelList } from "recharts"
 import dynamic from "next/dynamic"
 
 const MobilityMap = dynamic(() => import("@/components/MobilityMap"), {
@@ -152,36 +152,64 @@ export default function StatsPageClient({
     )
   }
 
-  function CustomBarChart({ label, data, title }: { label: string; data: TopItem[]; title?: string }) {
+  function CustomBarChart({
+    label,
+    data,
+    title,
+  }: {
+    label: string
+    data: TopItem[]
+    title?: string
+  }) {
     const chartConfig = {
       count: { label, color: "#0077BD" },
     } satisfies ChartConfig
 
-    const dataWithIndex = data.map((item, index) => ({ ...item, index: index + 1 }))
-
     return (
       <div className="w-full p-4">
-        {title && <h3 className="mb-4 text-center text-lg font-extrabold text-slate-600">{title}</h3>}
+        {title && (
+          <h3 className="mb-4 text-center text-lg font-extrabold text-slate-600">
+            {title}
+          </h3>
+        )}
+
         <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-          <BarChart accessibilityLayer data={dataWithIndex}>
-            <XAxis dataKey="index" tickLine={false} tickMargin={10} axisLine={false} />
+          <BarChart
+            layout="vertical"
+            data={data}
+            margin={{ left: 40 }}
+          >
+            {/* Y = categorías */}
+            <YAxis
+              dataKey="name"
+              type="category"
+              tickLine={false}
+              axisLine={false}
+              width={120}
+            />
+
+            {/* X = valores */}
+            <XAxis
+              type="number"
+              tickLine={false}
+              axisLine={false}
+            />
+
             <Bar dataKey="count" fill="#0077BD" radius={4}>
-              <LabelList dataKey="count" position="top" fill="#0077BD" fontSize={12} fontWeight="bold" offset={10} />
+              <LabelList
+                dataKey="count"
+                position="right"
+                fill="#0077BD"
+                fontSize={12}
+                fontWeight="bold"
+              />
             </Bar>
           </BarChart>
         </ChartContainer>
-
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-600">
-          {data.map((item, index) => (
-            <div key={index} className="flex items-start gap-1">
-              <span className="font-bold text-slate-900 tabular-nums">{index + 1}.</span>
-              <span>{item.name}</span>
-            </div>
-          ))}
-        </div>
       </div>
     )
   }
+
 
   return (
     <main className="flex w-full flex-col items-stretch bg-white">
