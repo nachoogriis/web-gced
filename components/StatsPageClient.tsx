@@ -2,7 +2,9 @@
 
 import PageHeading from "@/components/PageHeading"
 import CompanyLogo from "@/components/Logo"
-import { Briefcase, Building2, GraduationCap, Banknote, MapPin, BarChart3, Star } from "lucide-react"
+import { Banknote, MapPin, Star, ArrowUp, ArrowDown } from "lucide-react"
+import { ChartConfig, ChartContainer } from "./ui/chart"
+import { Bar, BarChart, XAxis, LabelList} from "recharts"
 import dynamic from "next/dynamic"
 
 const MobilityMap = dynamic(() => import("@/components/MobilityMap"), {
@@ -235,119 +237,95 @@ export default function StatsPageClient({
     )
   }
 
+  function StatComponent({ value, label, arrow }: { value: string; label: string; arrow?: "up" | "down" }) {
+    const lastChar = value.slice(-1)
+    const restOfValue = value.slice(0, -1)
+    
+    return (
+      <div className="text-left max-w-70 p-4">
+        <div className="flex items-start gap-2">
+          {arrow && (
+            <div className="mt-1">
+              {arrow === "up" ? (
+                <ArrowUp className="h-5 w-5 text-green-500" strokeWidth={2.5} />
+              ) : (
+                <ArrowDown className="h-5 w-5 text-red-400" strokeWidth={2.5} />
+              )}
+            </div>
+          )}
+          <div className="text-4xl font-extrabold text-slate-600 tabular-nums">
+            {restOfValue}
+            <span className="text-upc text-2xl">{lastChar == '%' ? " " + lastChar : lastChar}</span>
+          </div>
+        </div>
+        <div className="mt-1 text-sm text-slate-600">
+          {label}
+        </div>
+      </div>
+    )
+  }
+
+  function CustomBarChart({ label, data, title }: { label: string, data: TopItem[], title?: string }) {
+    const chartConfig = {
+      count: {
+        label: label,
+        color: "#0077BD"
+      }
+    } satisfies ChartConfig
+
+    // Add index to each data item
+    const dataWithIndex = data.map((item, index) => ({
+      ...item,
+      index: index + 1
+    }))
+
+    return (
+      <div className="w-full p-4">
+        {title && (
+          <h3 className="text-center text-lg font-extrabold text-slate-600 mb-4">{title}</h3>
+        )}
+        <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+          <BarChart accessibilityLayer data={dataWithIndex}>
+            <XAxis
+              dataKey="index"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+            />
+            <Bar dataKey="count" fill="#0077BD" radius={4}>
+              <LabelList dataKey="count" position="top" fill="#0077BD" fontSize={12} fontWeight="bold" offset={10}/>
+            </Bar>
+          </BarChart>
+        </ChartContainer>
+        
+        {/* Legend */}
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600 items-center justify-center">
+          {data.map((item, index) => (
+            <div key={index} className="flex items-start gap-1">
+              <span className="font-bold text-slate-900 tabular-nums">{index + 1}.</span>
+              <span>{item.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <main className="flex w-full flex-col items-stretch bg-white">
-      <PageHeading title="Estadístiques" subtitle="Dades agregades dels garduats." />
+      <PageHeading title="Estadístiques" subtitle="Dades agregades dels nostres garduats." />
       <div className="flex flex-wrap gap-2 justify-center">
         <MetaPill label="Alumni" value={`${alumniCount}`} />
         <MetaPill label="Generacions" value={`${generationCount}`} />
       </div>
 
-      <section className="border-b bg-upc mt-10">
-        <div className="mx-auto w-full max-w-6xl px-3 py-10 sm:px-4">
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
-            
-            <div className="grid grid-cols-1 gap-4 lg:col-span-6">
-              <div className="rounded-3xl bg-white p-6 ring-1 ring-black/5 shadow-sm">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-xs font-bold tracking-widest uppercase text-slate-500">
-                      Ocupabilitat
-                    </div>
-                    <div className="mt-2 text-4xl font-extrabold text-slate-900 tabular-nums">
-                      {pct(employedRate)}
-                    </div>
-                  </div>
-                  <div className="rounded-2xl bg-slate-50 p-3 ring-1 ring-black/5">
-                    <Briefcase className="h-5 w-5 text-slate-700" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-3xl bg-white p-6 ring-1 ring-black/5 shadow-sm">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-xs font-bold tracking-widest uppercase text-slate-500">
-                      Sou (mediana)
-                    </div>
-                    <div className="mt-2 text-4xl font-extrabold text-slate-900 tabular-nums">
-                      {salaryMedian ? formatEUR(salaryMedian) : "—"}
-                    </div>
-                  </div>
-                  <div className="rounded-2xl bg-slate-50 p-3 ring-1 ring-black/5">
-                    <Banknote className="h-5 w-5 text-slate-700" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-3xl bg-white p-6 ring-1 ring-black/5 shadow-sm">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-xs font-bold tracking-widest uppercase text-slate-500">
-                      Feina relacionada
-                    </div>
-                    <div className="mt-2 text-4xl font-extrabold text-slate-900 tabular-nums">
-                      {pct(gcedRelatedRate)}
-                    </div>
-                  </div>
-                  <div className="rounded-2xl bg-slate-50 p-3 ring-1 ring-black/5">
-                    <BarChart3 className="h-5 w-5 text-slate-700" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-4 lg:col-span-6">
-              <div className="rounded-3xl bg-white p-6 ring-1 ring-black/5 shadow-sm">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-xs font-bold tracking-widest uppercase text-slate-500">
-                      % amb pràctiques
-                    </div>
-                    <div className="mt-2 text-4xl font-extrabold text-slate-900 tabular-nums">
-                      {pct(internshipsRate)}
-                    </div>
-                  </div>
-                  <div className="rounded-2xl bg-slate-50 p-3 ring-1 ring-black/5">
-                    <Building2 className="h-5 w-5 text-slate-700" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-3xl bg-white p-6 ring-1 ring-black/5 shadow-sm">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-xs font-bold tracking-widest uppercase text-slate-500">
-                      % amb màster
-                    </div>
-                    <div className="mt-2 text-4xl font-extrabold text-slate-900 tabular-nums">
-                      {pct(masterRate)}
-                    </div>
-                  </div>
-                  <div className="rounded-2xl bg-slate-50 p-3 ring-1 ring-black/5">
-                    <GraduationCap className="h-5 w-5 text-slate-700" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-3xl bg-white p-6 ring-1 ring-black/5 shadow-sm">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-xs font-bold tracking-widest uppercase text-slate-500">
-                      Mobilitat
-                    </div>
-                    <div className="mt-2 text-4xl font-extrabold text-slate-900 tabular-nums">
-                      {pct(mobilityRate)}
-                    </div>
-                  </div>
-                  <div className="rounded-2xl bg-slate-50 p-3 ring-1 ring-black/5">
-                    <MapPin className="h-5 w-5 text-slate-700" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
+      <section className="py-10 text-center text-sm font-semibold md:text-base lg:text-lg">
+        <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">Algunes de les estadístiques més destacades</h2>
+        <div className="mx-auto w-full items-center flex flex-row justify-between max-w-7xl px-3 sm:px-4 mt-10">
+          <StatComponent value={pct(employedRate)} label={"Dels nostres graduats tenen feina actualment"} arrow={"up"}/>
+          <StatComponent value={salaryMedian ? formatEUR(salaryMedian) : "—"} label={"És el sou de més de la meitat dels nostres graduats"} arrow={"up"}/>
+          <StatComponent value={pct(internshipsRate)} label={"Dels nostres graduats han fet pràctiques durant el grau"} arrow={"up"}/>
+          <StatComponent value={pct(masterRate)} label={"Dels nostres graduats han cursat un màster després del grau"} arrow={"up"}/>
         </div>
       </section>
 
@@ -401,48 +379,10 @@ export default function StatsPageClient({
           <div className="mb-6">
             <h2 className="text-2xl font-extrabold tracking-tight text-slate-900">Rankings i perfils</h2>
           </div>
-
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="lg:col-span-6">
-              <BarsList title="On fan pràctiques" subtitle="Entitats més freqüents." items={topInternships} max={maxIntern} empty={<>Encara no hi ha prou dades de pràctiques.</>} />
-            </div>
-
-            <div className="lg:col-span-6">
-              <BarsList title="On treballen" subtitle="Organitzacions més repetides." items={topJobs} max={maxJobs} empty={<>Encara no hi ha prou dades de feina actual.</>} />
-            </div>
-
-            <div className="lg:col-span-6">
-              <BarsList title="Màsters més habituals" subtitle="Programes amb més repetits." items={topMasters} max={maxMasters} empty={<>Encara no hi ha prou dades de màsters.</>} />
-            </div>
-
-            <div className="lg:col-span-6">
-              <BarsList title="Àrees i dominis" subtitle="" items={topDomains} max={maxDomains} empty={<>Encara no hi ha prou keywords a <code className="rounded bg-white px-1 py-0.5 ring-1 ring-black/5">currentJobKeywordsDomain</code>.</>} />
-            </div>
-
-            <div className="lg:col-span-6">
-              <BarsList title="Especialització" subtitle="" items={topSpecialties} max={maxSpecialties} empty={<>Encara no hi ha prou keywords a <code className="rounded bg-white px-1 py-0.5 ring-1 ring-black/5">currentJobKeywordsSpecialty</code>.</>} />
-            </div>
-
-            <div id="salaris" className="lg:col-span-6 rounded-3xl bg-white p-6 ring-1 ring-black/5 shadow-sm">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h2 className="text-xl font-extrabold text-slate-900">Salaris</h2>
-                </div>
-                <div className="rounded-2xl bg-slate-50 p-3 ring-1 ring-black/5">
-                  <Banknote className="h-5 w-5 text-slate-700" />
-                </div>
-              </div>
-
-              {salaryValues.length ? (
-                <div className="mt-4">
-                  <SalaryDistribution values={salaryValues} />
-                </div>
-              ) : (
-                <div className="mt-5 rounded-2xl bg-slate-50 p-4 text-sm text-slate-600 ring-1 ring-black/5">
-                  Encara no hi ha prou dades de salari per mostrar una distribució.
-                </div>
-              )}
-            </div>
+          
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 my-10">
+            <CustomBarChart label={"Dominis"} data={topDomains} title={"Àrees i dominis on treballen els nostres graduats"}/>
+            <CustomBarChart label={"Especialitat"} data={topSpecialties} title={"Especialitat de la feina dels nostres graduats"}/>
           </div>
         </div>
       </section>
