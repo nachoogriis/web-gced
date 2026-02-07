@@ -221,19 +221,46 @@ export default function StatsPageClient({
       </div>
 
       <section className="py-10 text-center text-sm font-semibold md:text-base lg:text-lg">
-        <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">Algunes de les estadístiques més destacades</h2>
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-white" />
+          <div className="absolute inset-x-0 top-0 h-px bg-slate-200/70" />
+        </div>
 
-        <div className="mx-auto mt-10 flex w-full max-w-7xl flex-row items-center justify-between px-3 sm:px-4">
-          <StatComponent value={pct(employedRate)} label="Dels nostres graduats tenen feina actualment" arrow="up" />
-          <StatComponent
-            value={salaryMedian ? formatEUR(salaryMedian) : "—"}
-            label="És el sou de més de la meitat dels nostres graduats"
-            arrow="up"
-          />
-          <StatComponent value={pct(internshipsRate)} label="Dels nostres graduats han fet pràctiques durant el grau" arrow="up" />
-          <StatComponent value={pct(masterRate)} label="Dels nostres graduats han cursat un màster després del grau" arrow="up" />
+        <div className="mx-auto w-full max-w-7xl px-3 sm:px-4">
+          <div className="text-center">
+            <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">
+              Algunes de les estadístiques més destacades
+            </h2>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-3xl bg-white/80 p-5 shadow-sm ring-1 ring-black/5 backdrop-blur">
+              <StatComponent value={pct(employedRate)} label="Dels nostres graduats tenen feina actualment" arrow="up" />
+            </div>
+
+            <div className="rounded-3xl bg-white/80 p-5 shadow-sm ring-1 ring-black/5 backdrop-blur">
+              <StatComponent
+                value={salaryMedian ? formatEUR(salaryMedian) : "—"}
+                label="És el sou de més de la meitat dels nostres graduats"
+                arrow="up"
+              />
+            </div>
+
+            <div className="rounded-3xl bg-white/80 p-5 shadow-sm ring-1 ring-black/5 backdrop-blur">
+              <StatComponent
+                value={pct(internshipsRate)}
+                label="Dels nostres graduats han fet pràctiques durant el grau"
+                arrow="up"
+              />
+            </div>
+
+            <div className="rounded-3xl bg-white/80 p-5 shadow-sm ring-1 ring-black/5 backdrop-blur">
+              <StatComponent value={pct(masterRate)} label="Dels nostres graduats han cursat un màster després del grau" arrow="up" />
+            </div>
+          </div>
         </div>
       </section>
+
 
       <div className="mx-auto w-full max-w-6xl px-3 sm:px-4">
         {averageDegreeScore !== null && (
