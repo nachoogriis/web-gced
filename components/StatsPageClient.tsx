@@ -257,15 +257,18 @@ export default function StatsPageClient({
         </section>
 
         <section className="mt-6">
-          <div id="mobilitat" className="rounded-3xl bg-white p-6 ring-1 ring-black/5 shadow-sm">
+          <div
+            id="mobilitat"
+            className="relative overflow-hidden rounded-3xl bg-white p-6 ring-1 ring-black/5 shadow-sm"
+          >
             <div className="mb-4 flex items-start justify-between gap-4">
-              <div>
-                <h2 className="text-xl font-extrabold text-slate-900">Mobilitat internacional</h2>
-              </div>
+              <h2 className="text-xl font-extrabold text-slate-900">
+                Mobilitat internacional
+              </h2>
               <MapPin className="h-5 w-5 text-slate-400" />
             </div>
 
-            <div className="h-[480px] overflow-hidden rounded-2xl">
+            <div className="relative isolate z-0 h-[480px] overflow-hidden rounded-2xl">
               <MobilityMap
                 points={topMobilityCountries.map((p) => ({
                   label: p.name,
