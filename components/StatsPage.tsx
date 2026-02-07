@@ -100,6 +100,7 @@ export default async function StatsPage() {
         hasMobility: true,
         mobilityCountry: true,
         review: true,
+        degreeScore: true
       },
     }),
     db.internship.findMany({ select: { organization: { select: { name: true } } } }),
@@ -138,6 +139,14 @@ export default async function StatsPage() {
     .filter((x): x is number => typeof x === "number" && x > 0)
 
   const salaryMedian = median(salaryValues)
+
+  const degreeScores = alumniRows
+    .map((a) => a.degreeScore)
+    .filter((x): x is number => typeof x === "number" && x > 0)
+  
+  const averageDegreeScore = degreeScores.length > 0
+    ? degreeScores.reduce((sum, score) => sum + score, 0) / degreeScores.length
+    : null
 
   const mobilityCountryMap = new Map<string, CountItem>()
   for (const a of alumniRows) {
@@ -222,6 +231,7 @@ export default async function StatsPage() {
       generationCount={generationCount}
       employedRate={employedRate}
       salaryMedian={salaryMedian}
+      averageDegreeScore={averageDegreeScore}
       gcedRelatedRate={gcedRelatedRate}
       internshipsRate={internshipsRate}
       masterRate={masterRate}

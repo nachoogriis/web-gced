@@ -2,7 +2,7 @@
 
 import PageHeading from "@/components/PageHeading"
 import CompanyLogo from "@/components/Logo"
-import { Briefcase, Building2, GraduationCap, Banknote, MapPin, BarChart3 } from "lucide-react"
+import { Briefcase, Building2, GraduationCap, Banknote, MapPin, BarChart3, Star } from "lucide-react"
 import dynamic from "next/dynamic"
 
 const MobilityMap = dynamic(() => import("@/components/MobilityMap"), {
@@ -136,6 +136,7 @@ type StatsPageClientProps = {
   generationCount: number
   employedRate: number
   salaryMedian: number | null
+  averageDegreeScore: number | null
   gcedRelatedRate: number
   internshipsRate: number
   masterRate: number
@@ -161,6 +162,7 @@ export default function StatsPageClient({
   generationCount,
   employedRate,
   salaryMedian,
+  averageDegreeScore,
   gcedRelatedRate,
   internshipsRate,
   masterRate,
@@ -195,6 +197,40 @@ export default function StatsPageClient({
           ))}
         </div>
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-linear-to-l from-white to-transparent md:w-24 lg:w-32" />
+      </div>
+    )
+  }
+
+  function StarRating({ score }: { score: number | null }) {
+    if (score === null) return null
+
+    // Convert from 1-10 scale to 0-5 scale
+    const normalizedScore = (score / 10) * 5
+    const fullStars = Math.floor(normalizedScore)
+    const partialStar = normalizedScore - fullStars
+    const emptyStars = 5 - fullStars - (partialStar > 0 ? 1 : 0)
+
+    return (
+      <div className="flex items-center justify-center gap-2">
+        {/* Full stars */}
+        {Array.from({ length: fullStars }).map((_, i) => (
+          <Star key={`full-${i}`} className="h-15 w-15 fill-yellow-400 text-yellow-400" strokeWidth={1} />
+        ))}
+        
+        {/* Partial star */}
+        {partialStar > 0 && (
+          <div key="partial" className="relative h-15 w-15">
+            <Star className="absolute h-15 w-15 text-slate-200" strokeWidth={1} />
+            <div style={{ width: `${partialStar * 100}%` }} className="absolute overflow-hidden">
+              <Star className="h-15 w-15 fill-yellow-400 text-yellow-400" strokeWidth={1} />
+            </div>
+          </div>
+        )}
+        
+        {/* Empty stars */}
+        {Array.from({ length: emptyStars }).map((_, i) => (
+          <Star key={`empty-${i}`} className="h-15 w-15 text-slate-200" strokeWidth={1} />
+        ))}
       </div>
     )
   }
@@ -316,6 +352,17 @@ export default function StatsPageClient({
       </section>
 
       <div className="mx-auto w-full max-w-6xl px-3 sm:px-4">
+        {/* Average Degree Score */}
+        {averageDegreeScore !== null && (
+          <section className="pt-10 text-center text-sm font-semibold md:text-base lg:text-lg">
+            <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">La valoració del grau segons els nostres graduats</h2>
+            <StarRating score={averageDegreeScore} />
+            <div className="mt-2 text-sm text-slate-600 tabular-nums  md:text-base lg:text-lg">
+              {(averageDegreeScore / 2).toFixed(1)} / 5.0
+            </div>
+          </section>
+        )}
+
         <section className="py-10 text-center text-sm font-semibold md:text-base lg:text-lg">
           <div className="w-full text-center">
             <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">Els nostres graduats treballen a</h2>
