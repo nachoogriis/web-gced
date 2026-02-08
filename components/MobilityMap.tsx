@@ -1,6 +1,7 @@
 "use client"
 
 import { MapContainer, TileLayer, CircleMarker, Tooltip } from "react-leaflet"
+import type { LatLngExpression } from "leaflet"
 import countries from "i18n-iso-countries"
 import es from "i18n-iso-countries/langs/es.json"
 import ca from "i18n-iso-countries/langs/ca.json"
@@ -92,7 +93,7 @@ export default function MobilityMap({ points }: { points: Point[] }) {
       <div className="px-4 pb-4">
         <div className="relative h-[400px] w-full overflow-hidden rounded-xl bg-white ring-1 ring-black/5 sm:h-[320px] lg:h-[480px]">
           <MapContainer
-            center={[20, 0]}
+            center={[20, 0] as LatLngExpression}
             zoom={2}
             scrollWheelZoom={false}
             className="h-full w-full"
