@@ -6,7 +6,7 @@ import { Linkedin } from "lucide-react"
 export default function Footer() {
   const authors = [
     { name: "Ignacio Gris Martín", linkedin: "https://www.linkedin.com/in/ignacio-gris-martin-68a57725a" },
-    { name: "Maria Risques Montalbán", linkedin: "https://www.linkedin.com/in/maria-risques-montalban" },
+    { name: "Maria Risques Montalban", linkedin: "https://www.linkedin.com/in/maria-risques-montalban" },
     { name: "Pau Fernández Durán", linkedin: "https://www.linkedin.com/in/pauek/" },
   ]
 
