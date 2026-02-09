@@ -177,7 +177,7 @@ export default function StatsPageClient({
           <BarChart
             layout="vertical"
             data={data}
-            margin={{ left: 40 }}
+            margin={{ left: 10, right: 10 }}
           >
             {/* Y = categorías */}
             <YAxis
@@ -185,7 +185,8 @@ export default function StatsPageClient({
               type="category"
               tickLine={false}
               axisLine={false}
-              width={120}
+              width={100}
+              tick={{ fontSize: 11 }}
             />
 
             {/* X = valores */}
@@ -201,7 +202,7 @@ export default function StatsPageClient({
                 dataKey="count"
                 position="right"
                 fill="#0077BD"
-                fontSize={12}
+                fontSize={11}
                 fontWeight="bold"
               />
             </Bar>
