@@ -190,6 +190,7 @@ export default function StatsPageClient({
 
             {/* X = valores */}
             <XAxis
+              hide={true}
               type="number"
               tickLine={false}
               axisLine={false}
@@ -222,7 +223,7 @@ export default function StatsPageClient({
 
       <section className="py-10 text-center text-sm font-semibold md:text-base lg:text-lg">
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-white" />
+          <div className="absolute inset-0 bg-linear-to-b from-slate-50 via-white to-white" />
           <div className="absolute inset-x-0 top-0 h-px bg-slate-200/70" />
         </div>
 
@@ -284,17 +285,14 @@ export default function StatsPageClient({
         </section>
 
         <section className="mt-6">
+          <div className="text-center text-sm font-semibold md:text-base lg:text-lg">
+            <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">Mobilitat internacional</h2>
+          </div>
+
           <div
             id="mobilitat"
             className="relative overflow-hidden rounded-3xl bg-white p-6 ring-1 ring-black/5 shadow-sm"
           >
-            <div className="mb-4 flex items-start justify-between gap-4">
-              <h2 className="text-xl font-extrabold text-slate-900">
-                Mobilitat internacional
-              </h2>
-              <MapPin className="h-5 w-5 text-slate-400" />
-            </div>
-
             <div className="relative isolate z-0 h-[480px] overflow-hidden rounded-2xl">
               <MobilityMap
                 points={topMobilityCountries.map((p) => ({
@@ -309,8 +307,8 @@ export default function StatsPageClient({
 
       <section id="rankings" className="mt-10 border-t bg-gray-100 -mx-3 px-3 py-10 sm:-mx-4 sm:px-4">
         <div className="mx-auto w-full max-w-6xl">
-          <div className="mb-6">
-            <h2 className="text-2xl font-extrabold tracking-tight text-slate-900">Rankings i perfils</h2>
+          <div className="text-center text-sm font-semibold md:text-base lg:text-lg">
+            <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">Algunes de les àreas i especialitzacions dels nostres graduats</h2>
           </div>
 
           <div className="my-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
