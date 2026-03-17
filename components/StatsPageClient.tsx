@@ -285,7 +285,7 @@ export default function StatsPageClient({
         <div className="mx-auto w-full max-w-6xl">
           <div className="text-center text-sm font-semibold md:text-base lg:text-lg">
             <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">
-              Algunes de les àreas i especialitzacions dels nostres graduats
+              Algunes de les àrees i especialitzacions dels nostres graduats
             </h2>
           </div>
 
@@ -309,7 +309,7 @@ export default function StatsPageClient({
           <div className="bg-upc mx-auto max-w-5xl rounded-3xl px-6 py-10 text-white shadow-sm ring-1 ring-black/10 sm:px-10">
             <h2 className="text-center text-2xl font-extrabold sm:text-3xl">Vols veure exemples de projectes?</h2>
             <p className="mx-auto mt-2 max-w-3xl text-center text-white/90">
-              Descobreix projectes desenvolupats a la universitat i coneix als alumni, els seus interessos i projectes
+              Descobreix projectes desenvolupats a la universitat i coneix els alumni, els seus interessos i projectes
               personals.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">

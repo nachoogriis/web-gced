@@ -65,7 +65,7 @@ export default async function Home() {
         </div>
 
         <section className="flex flex-col py-6 text-center text-sm md:text-base lg:text-lg">
-          <h2 className="m-2 text-2xl font-extrabold text-slate-900 md:text-3xl">Coneix als nostres graduats</h2>
+          <h2 className="m-2 text-2xl font-extrabold text-slate-900 md:text-3xl">Coneix els nostres graduats</h2>
 
           <div className="relative px-3 md:px-24">
             <StudentsCarousel students={alumniData} reviews={alumniReviews} maxItems={6} />
