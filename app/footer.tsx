@@ -7,7 +7,7 @@ export default function Footer() {
   const authors = [
     { name: "Ignacio Gris Martín", linkedin: "https://www.linkedin.com/in/ignacio-gris-martin-68a57725a" },
     { name: "Maria Risques Montalban", linkedin: "https://www.linkedin.com/in/maria-risques-montalban" },
-    { name: "Pau Fernández Durán", linkedin: "https://www.linkedin.com/in/pauek/" },
+    { name: "Pau Fernández Duran", linkedin: "https://www.linkedin.com/in/pauek/" },
   ]
 
   return (
@@ -18,7 +18,7 @@ export default function Footer() {
         </Link>
 
         <div className="flex flex-col items-start gap-2 lg:items-end">
-          <div className="flex flex-col gap-1 items-start lg:items-end">
+          <div className="flex flex-col items-start gap-1 lg:items-end">
             {authors.map((author) => (
               <div key={author.name} className="flex items-center gap-2">
                 <span className="text-xs text-white/70">{author.name}</span>
@@ -26,7 +26,7 @@ export default function Footer() {
                   href={author.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors"
+                  className="text-white/70 transition-colors hover:text-white"
                   aria-label={`LinkedIn de ${author.name}`}
                 >
                   <Linkedin className="h-3.5 w-3.5" />
