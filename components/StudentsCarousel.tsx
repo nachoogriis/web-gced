@@ -14,7 +14,7 @@ interface StudentsCarouselProps {
 
 export default function StudentsCarousel({ students, reviews, maxItems = 6 }: StudentsCarouselProps) {
   const displayedStudents = useMemo(() => shuffle(students).slice(0, maxItems), [students, maxItems])
-  
+
   const reviewsMap = useMemo(() => {
     const map = new Map<number, AlumniReviewInfo>()
     reviews.forEach((review) => map.set(review.id, review))

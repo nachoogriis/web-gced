@@ -14,14 +14,7 @@ export default function Logo({ image, className }: { image: string; className?: 
         className,
       )}
     >
-      <Image
-        src={image}
-        alt="Company logo"
-        width={220}
-        height={80}
-        className="h-full w-auto"
-        sizes="192px"
-      />
+      <Image src={image} alt="Company logo" width={220} height={80} className="h-full w-auto" sizes="192px" />
     </div>
   )
 }

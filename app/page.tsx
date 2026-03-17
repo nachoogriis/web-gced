@@ -26,11 +26,8 @@ export default async function Home() {
 
       <BannerMainStats />
 
-
-
       <div className="mx-auto lg:w-6xl">
-
-        <section className="pb-10 text-sm md:text-base lg:text-lg mt-12">
+        <section className="mt-12 pb-10 text-sm md:text-base lg:text-lg">
           {/* <h2 className="m-2 mb-4 text-2xl font-extrabold text-slate-900 md:text-3xl">
             Coneix més sobre el nostre programa
           </h2> */}
@@ -50,7 +47,7 @@ export default async function Home() {
           <CompanyLogos />
         </section>
 
-        <div className="flex flex-row justify-center my-8">
+        <div className="my-8 flex flex-row justify-center">
           <ButtonGo text="Veure més estadístiques..." href="/estadistiques" />
         </div>
 

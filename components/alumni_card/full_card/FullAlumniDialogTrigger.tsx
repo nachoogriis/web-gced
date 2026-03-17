@@ -11,7 +11,7 @@ export default function FullAlumniDialogTrigger({ alumni, review, children }: Pr
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <FullAlumniCard alumni={alumni} review={review}/>
+      <FullAlumniCard alumni={alumni} review={review} />
     </Dialog>
   )
 }

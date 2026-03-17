@@ -199,7 +199,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
         ref={ref}
         variant={variant}
         className={cn(
-          "absolute hidden h-[120px] w-14 rounded-lg md:flex px-3 py-5",
+          "absolute hidden h-[120px] w-14 rounded-lg px-3 py-5 md:flex",
           "items-stretch",
           "bg-transparent hover:bg-transparent",
           "text-upc/30 hover:text-upc/60",
@@ -232,7 +232,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         ref={ref}
         variant={variant}
         className={cn(
-          "absolute hidden h-[120px] w-14 rounded-lg md:flex px-3 py-5",
+          "absolute hidden h-[120px] w-14 rounded-lg px-3 py-5 md:flex",
           "items-stretch",
           "bg-transparent hover:bg-transparent",
           "text-upc/30 hover:text-upc/60",

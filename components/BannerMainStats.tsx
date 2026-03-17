@@ -25,15 +25,18 @@ function formatEUR(n: number) {
 
 function parseSalaryAnnualEUR(s?: string | null) {
   if (!s) return null
-  const cleaned = s.trim().replace(/\u00A0/g, " ").replace(/\./g, "").replace(/,/g, ".")
+  const cleaned = s
+    .trim()
+    .replace(/\u00A0/g, " ")
+    .replace(/\./g, "")
+    .replace(/,/g, ".")
   const m = cleaned.match(/(\d{2,6}(\.\d+)?)/)
   if (!m) return null
   const n = Number(m[1])
   if (!Number.isFinite(n) || n <= 0) return null
 
   const isMonthly =
-    /\/\s*mes|mensual|month|mo\b/i.test(cleaned) ||
-    (n > 300 && n < 12000 && !/anual|year|año|\/\s*a/i.test(cleaned))
+    /\/\s*mes|mensual|month|mo\b/i.test(cleaned) || (n > 300 && n < 12000 && !/anual|year|año|\/\s*a/i.test(cleaned))
 
   return isMonthly ? n * 12 : n
 }
@@ -62,17 +65,13 @@ export default async function BannerMainStats() {
         currentJobSalary: true,
       },
     }),
-    db.internshipAlumni
-      .findMany({ select: { alumniId: true }, distinct: ["alumniId"] })
-      .then((rows) => rows.length),
-    db.masterAlumni
-      .findMany({ select: { alumniId: true }, distinct: ["alumniId"] })
-      .then((rows) => rows.length),
+    db.internshipAlumni.findMany({ select: { alumniId: true }, distinct: ["alumniId"] }).then((rows) => rows.length),
+    db.masterAlumni.findMany({ select: { alumniId: true }, distinct: ["alumniId"] }).then((rows) => rows.length),
   ])
 
   const employedRate = safeRate(
     alumniRows.filter((a) => Boolean(a.currentJob || a.currentOrganization)).length,
-    alumniCount
+    alumniCount,
   )
 
   const internshipsRate = safeRate(alumniWithInternship, alumniCount)

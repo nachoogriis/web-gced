@@ -12,7 +12,15 @@ interface AlumniTopPartProps {
   showGeneration?: boolean
 }
 
-export default function AlumniTopPart({ name, surname, generation, id = 0, variant = "light", size = "normal", showGeneration = true }: AlumniTopPartProps) {
+export default function AlumniTopPart({
+  name,
+  surname,
+  generation,
+  id = 0,
+  variant = "light",
+  size = "normal",
+  showGeneration = true,
+}: AlumniTopPartProps) {
   return (
     <div className={cn("flex w-full flex-row items-center", size === "small" ? "p-2" : "p-3")}>
       <div
@@ -36,7 +44,9 @@ export default function AlumniTopPart({ name, surname, generation, id = 0, varia
             {name} {surname}
           </p>
         </div>
-        {showGeneration && <GenerationBadge year={generation} variant={variant} size={size === "small" ? "small" : "normal"} />}
+        {showGeneration && (
+          <GenerationBadge year={generation} variant={variant} size={size === "small" ? "small" : "normal"} />
+        )}
       </div>
     </div>
   )

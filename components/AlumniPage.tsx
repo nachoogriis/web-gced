@@ -17,10 +17,10 @@ export default function AlumniPage({ initialAlumniData, alumniReviews }: Props) 
   const [filteredAlumni, setFilteredAlumni] = useState(initialAlumniData)
 
   const reviewsMap = useMemo(() => {
-      const map = new Map<number, AlumniReviewInfo>()
-      alumniReviews.forEach((review) => map.set(review.id, review))
-      return map
-    }, [alumniReviews])
+    const map = new Map<number, AlumniReviewInfo>()
+    alumniReviews.forEach((review) => map.set(review.id, review))
+    return map
+  }, [alumniReviews])
 
   const handleSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
     const raw = e.target.value
@@ -75,7 +75,7 @@ export default function AlumniPage({ initialAlumniData, alumniReviews }: Props) 
             value={searchTerm}
             onChange={handleSearch}
             placeholder="🔍 Busca per paraules clau. Per exemple: Juan Perez Computer Vision..."
-            className="w-full px-4 rounded-full border-gray-300"
+            className="w-full rounded-full border-gray-300 px-4"
           />
         </form>
       </div>
@@ -83,9 +83,9 @@ export default function AlumniPage({ initialAlumniData, alumniReviews }: Props) 
       {/* Tarjetas de alumnos */}
       {filteredAlumni.length > 0 && (
         <section className="flex items-start justify-center border-t bg-gray-100 pb-20">
-          <div className="grid w-full max-w-6xl grid-cols-1 gap-6 rounded px-2 py-8 text-center sm:grid-cols-2 lg:grid-cols-4 items-start justify-items-center">
+          <div className="grid w-full max-w-6xl grid-cols-1 items-start justify-items-center gap-6 rounded px-2 py-8 text-center sm:grid-cols-2 lg:grid-cols-4">
             {filteredAlumni.map((alumni) => (
-              <AlumniCard key={alumni.id} alumni={alumni} review={reviewsMap.get(alumni.id)}/>
+              <AlumniCard key={alumni.id} alumni={alumni} review={reviewsMap.get(alumni.id)} />
             ))}
           </div>
         </section>
@@ -93,8 +93,10 @@ export default function AlumniPage({ initialAlumniData, alumniReviews }: Props) 
 
       {/* Mensaje si no hay resultados */}
       {filteredAlumni.length === 0 && (
-        <section className="flex items-start justify-center border-t bg-gray-100 pb-20 min-h-[56em]">
-          <p className="mt-12 text-center text-gray-400">No s&apos;han trobat resultats per a &quot;{searchTerm}&quot;.</p>
+        <section className="flex min-h-[56em] items-start justify-center border-t bg-gray-100 pb-20">
+          <p className="mt-12 text-center text-gray-400">
+            No s&apos;han trobat resultats per a &quot;{searchTerm}&quot;.
+          </p>
         </section>
       )}
     </main>

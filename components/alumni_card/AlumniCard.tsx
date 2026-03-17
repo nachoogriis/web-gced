@@ -7,10 +7,8 @@ import { AlumniCardInfo, AlumniReviewInfo } from "@/lib/db/alumni"
 import { cn } from "@/lib/utils"
 import { ChevronRight } from "lucide-react"
 
-
 const peopleWithoutLinkedin: Set<string> = new Set(["antoni-jubes-monforte"])
-const removeAccents = (str: string) =>
-  str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+const removeAccents = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 
 function getProfileImageUrl(firstName: string, lastName: string) {
   const cleanName = removeAccents(firstName).toLowerCase()
@@ -29,23 +27,14 @@ type Props = {
 }
 
 export default function AlumniCard({ alumni, review, className }: Props) {
-  const {
-    firstName,
-    lastName,
-    generation,
-    currentJobDescription,
-    currentPosition,
-    currentOrganization,
-  } = alumni
+  const { firstName, lastName, generation, currentJobDescription, currentPosition, currentOrganization } = alumni
 
   const subtitle =
     currentPosition && currentOrganization
       ? `${currentPosition} · ${currentOrganization}`
       : currentPosition || currentOrganization || ""
 
-  const description =
-    currentJobDescription?.trim() ||
-    "Experiència professional actual dins del sector."
+  const description = currentJobDescription?.trim() || "Experiència professional actual dins del sector."
 
   const imageUrl = getProfileImageUrl(firstName, lastName)
 
@@ -60,7 +49,7 @@ export default function AlumniCard({ alumni, review, className }: Props) {
         )}
       >
         {/* IMAGE — slightly less tall */}
-        <div className="relative w-full aspect-[16/15] bg-gray-100">
+        <div className="relative aspect-[16/15] w-full bg-gray-100">
           <Image
             src={imageUrl}
             alt={`${firstName} ${lastName}`}
@@ -68,24 +57,20 @@ export default function AlumniCard({ alumni, review, className }: Props) {
             sizes="(max-width: 768px) 100vw, 300px" // fix sizes (your 50px was wrong)
             className="object-cover object-center"
           />
-          <div className="absolute right-3 top-3">
+          <div className="absolute top-3 right-3">
             <GenerationBadge year={generation} />
           </div>
         </div>
 
         {/* TEXT — tighter */}
         <div className="flex flex-col gap-3 p-4">
-          <p className="line-clamp-3 text-sm leading-relaxed text-gray-800">
-            {description}
-          </p>
+          <p className="line-clamp-3 text-sm leading-relaxed text-gray-800">{description}</p>
 
           <div>
             <div className="text-sm font-semibold text-black">
               {firstName} {lastName}
             </div>
-            {subtitle && (
-              <div className="text-xs text-gray-500">{subtitle}</div>
-            )}
+            {subtitle && <div className="text-xs text-gray-500">{subtitle}</div>}
           </div>
 
           {/* CTA */}
@@ -98,11 +83,9 @@ export default function AlumniCard({ alumni, review, className }: Props) {
           >
             Veure fitxa completa
           </span>
-
-          </div>
+        </div>
       </div>
       {/* TEXT — tighter */}
-
     </FullAlumniDialogTrigger>
   )
 }

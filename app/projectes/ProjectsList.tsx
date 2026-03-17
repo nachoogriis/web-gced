@@ -42,7 +42,10 @@ export default function ProjectsList({ universityProjects: projects }: Props) {
                   key={key}
                   color="var(--upc-color)"
                   variant={key === topic ? "default" : "secondary"}
-                  className={cn("cursor-pointer rounded-full uppercase text-sm h-8", key === topic && "bg-upc hover:bg-upc/90 text-white")}
+                  className={cn(
+                    "h-8 cursor-pointer rounded-full text-sm uppercase",
+                    key === topic && "bg-upc hover:bg-upc/90 text-white",
+                  )}
                   onClick={toggleTopic(key)}
                 >
                   {text}
@@ -54,7 +57,7 @@ export default function ProjectsList({ universityProjects: projects }: Props) {
       </section>
 
       {/* Grid como /estudiants (fondo gris + contenedor centrado) */}
-      <section className="flex items-start justify-center border-t bg-gray-100 pb-20 min-h-[56em]">
+      <section className="flex min-h-[56em] items-start justify-center border-t bg-gray-100 pb-20">
         <div className="w-full max-w-6xl px-4 py-10">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
             {filteredProjects.map((project, index) => (
@@ -63,7 +66,6 @@ export default function ProjectsList({ universityProjects: projects }: Props) {
           </div>
         </div>
       </section>
-
     </div>
   )
 }

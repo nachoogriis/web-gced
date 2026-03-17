@@ -115,12 +115,12 @@ export default function FullAlumniCard({ alumni, review }: Props) {
 
       {review !== undefined && (
         <AlumniReview
-                    firstName={review.firstName}
-                    lastName={review.lastName}
-                    generation={review.generation}
-                    review={review.review}
-                    id={review.id}
-                  />
+          firstName={review.firstName}
+          lastName={review.lastName}
+          generation={review.generation}
+          review={review.review}
+          id={review.id}
+        />
       )}
     </DialogContent>
   )

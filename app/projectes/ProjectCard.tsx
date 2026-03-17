@@ -34,17 +34,17 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
   return (
     <FullProjectDialog project={project}>
       <article
-  className={cn(
-    "group relative cursor-pointer overflow-hidden rounded select-none",
-    "bg-white shadow-sm ring-1 ring-black/5",
-    "transition-all duration-200",
-    "hover:-translate-y-0.5 hover:shadow-lg hover:ring-black/10",
-    "flex flex-col" // 👈 clave
-  )}
->
-  {/* Media (hero) */}
-  <div className="relative aspect-video bg-slate-100">
-    <Image
+        className={cn(
+          "group relative cursor-pointer overflow-hidden rounded select-none",
+          "bg-white shadow-sm ring-1 ring-black/5",
+          "transition-all duration-200",
+          "hover:-translate-y-0.5 hover:shadow-lg hover:ring-black/10",
+          "flex flex-col", // 👈 clave
+        )}
+      >
+        {/* Media (hero) */}
+        <div className="relative aspect-video bg-slate-100">
+          <Image
             src={image_path}
             alt={project.name}
             fill
@@ -68,39 +68,36 @@ export default function ProjectCard({ project }: { project: ProjectInfo }) {
               {project.name}
             </h2>
           </div>
-  </div>
+        </div>
 
-  {/* Content */}
-  <div className="p-5 flex flex-col flex-1"> 
-    <p className="line-clamp-3 text-sm leading-relaxed text-slate-700">
-      {project.summary}
-    </p>
+        {/* Content */}
+        <div className="flex flex-1 flex-col p-5">
+          <p className="line-clamp-3 text-sm leading-relaxed text-slate-700">{project.summary}</p>
 
-    {tags.length > 0 && (
-      <div className="m-3 flex flex-wrap gap-2">
-        {tags.map((t) => (
+          {tags.length > 0 && (
+            <div className="m-3 flex flex-wrap gap-2">
+              {tags.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full border border-slate-300 px-2.5 py-0.5 text-[11px] font-medium text-slate-600"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          )}
+
           <span
-            key={t}
-            className="rounded-full border border-slate-300 px-2.5 py-0.5 text-[11px] font-medium text-slate-600"
+            className={cn(
+              "mt-auto block text-center text-[11px] leading-tight text-gray-400",
+              "opacity-0 transition-opacity duration-200",
+              "group-hover:opacity-100",
+            )}
           >
-            {t}
+            Veure descripció completa.
           </span>
-        ))}
-      </div>
-    )}
-
-    <span
-      className={cn(
-        "mt-auto block text-[11px] text-center leading-tight text-gray-400",
-        "opacity-0 transition-opacity duration-200",
-        "group-hover:opacity-100",
-      )}
-    >
-      Veure descripció completa.
-    </span>
-  </div>
-</article>
-
+        </div>
+      </article>
     </FullProjectDialog>
   )
 }

@@ -66,7 +66,11 @@ function median(values: number[]) {
 function parseSalaryAnnualEUR(s?: string | null) {
   if (!s) return null
 
-  const cleaned = s.trim().replace(/\u00A0/g, " ").replace(/\./g, "").replace(/,/g, ".")
+  const cleaned = s
+    .trim()
+    .replace(/\u00A0/g, " ")
+    .replace(/\./g, "")
+    .replace(/,/g, ".")
   const m = cleaned.match(/(\d{2,6}(\.\d+)?)/)
   if (!m) return null
 
@@ -74,8 +78,7 @@ function parseSalaryAnnualEUR(s?: string | null) {
   if (!Number.isFinite(n) || n <= 0) return null
 
   const isMonthly =
-    /\/\s*mes|mensual|month|mo\b/i.test(cleaned) ||
-    (n > 300 && n < 12000 && !/anual|year|año|\/\s*a/i.test(cleaned))
+    /\/\s*mes|mensual|month|mo\b/i.test(cleaned) || (n > 300 && n < 12000 && !/anual|year|año|\/\s*a/i.test(cleaned))
 
   return isMonthly ? n * 12 : n
 }
@@ -112,9 +115,7 @@ export default async function StatsPage() {
     .filter((x): x is number => typeof x === "number" && x > 0)
   const salaryMedian = median(salaryValues)
 
-  const degreeScores = alumniRows
-    .map((a) => a.degreeScore)
-    .filter((x): x is number => typeof x === "number" && x > 0)
+  const degreeScores = alumniRows.map((a) => a.degreeScore).filter((x): x is number => typeof x === "number" && x > 0)
   const averageDegreeScore = avg(degreeScores)
 
   const mobilityCountryMap = new Map<string, CountItem>()
@@ -155,12 +156,8 @@ export default async function StatsPage() {
   const internshipLogos = getPublicLogos("internship_logos")
 
   const [alumniWithInternship, alumniWithMaster] = await Promise.all([
-    db.internshipAlumni
-      .findMany({ select: { alumniId: true }, distinct: ["alumniId"] })
-      .then((rows) => rows.length),
-    db.masterAlumni
-      .findMany({ select: { alumniId: true }, distinct: ["alumniId"] })
-      .then((rows) => rows.length),
+    db.internshipAlumni.findMany({ select: { alumniId: true }, distinct: ["alumniId"] }).then((rows) => rows.length),
+    db.masterAlumni.findMany({ select: { alumniId: true }, distinct: ["alumniId"] }).then((rows) => rows.length),
   ])
 
   const internshipsRate = safeRate(alumniWithInternship, alumniCount)

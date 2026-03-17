@@ -26,13 +26,7 @@ export default function TestimonisCarousel({ reviews, maxItems = 6 }: Testimonis
               "p-4 min-[1920px]:basis-1/6 min-[2320px]:basis-1/7",
             )}
           >
-            <AlumniReview
-              firstName={firstName}
-              lastName={lastName}
-              generation={generation}
-              review={review}
-              id={id}
-            />
+            <AlumniReview firstName={firstName} lastName={lastName} generation={generation} review={review} id={id} />
           </CarouselItem>
         ))}
       </CarouselContent>

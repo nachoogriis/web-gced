@@ -7,5 +7,5 @@ export default async function Home() {
   const alumniData = await dbAlumniGetAllCardsInfo()
   const alumniReviews = await dbAlumniGetAllReviews()
 
-  return <AlumniPage initialAlumniData={alumniData} alumniReviews={alumniReviews}/>
+  return <AlumniPage initialAlumniData={alumniData} alumniReviews={alumniReviews} />
 }

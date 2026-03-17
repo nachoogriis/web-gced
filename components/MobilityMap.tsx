@@ -30,13 +30,13 @@ function norm(s: string) {
 const ISO2_ALIASES: Record<string, string> = {
   "estats units": "US",
   "estados unidos": "US",
-  "eeuu": "US",
-  "usa": "US",
+  eeuu: "US",
+  usa: "US",
   "united states": "US",
   "united states of america": "US",
 
   "reino unido": "GB",
-  "uk": "GB",
+  uk: "GB",
   "u.k.": "GB",
   "united kingdom": "GB",
   "gran bretana": "GB",
@@ -44,13 +44,13 @@ const ISO2_ALIASES: Record<string, string> = {
 
   "paises bajos": "NL",
   "paisos baixos": "NL",
-  "holanda": "NL",
+  holanda: "NL",
 
   "corea del sur": "KR",
-  "korea": "KR",
+  korea: "KR",
   "south korea": "KR",
 
-  "rusia": "RU",
+  rusia: "RU",
   "russian federation": "RU",
 }
 
@@ -66,7 +66,6 @@ function toISO2(name: string) {
     null
   )
 }
-
 
 function findLatLngByISO2(iso2: string): [number, number] | null {
   const c: any = (worldCountries as any[]).find((x) => x.cca2 === iso2)
@@ -90,38 +89,33 @@ export default function MobilityMap({ points }: { points: Point[] }) {
     .filter(Boolean) as Array<{ label: string; count: number; iso2: string; latlng: [number, number]; radius: number }>
 
   return (
-      <div className="px-4 pb-4">
-        <div className="relative h-[400px] w-full overflow-hidden rounded-xl bg-white ring-1 ring-black/5 sm:h-[320px] lg:h-[480px]">
-          <MapContainer
-            center={[20, 0] as LatLngExpression}
-            zoom={2}
-            scrollWheelZoom={false}
-            className="h-full w-full"
-          >
-            <TileLayer
-              attribution='&copy; OpenStreetMap contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
+    <div className="px-4 pb-4">
+      <div className="relative h-[400px] w-full overflow-hidden rounded-xl bg-white ring-1 ring-black/5 sm:h-[320px] lg:h-[480px]">
+        <MapContainer center={[20, 0] as LatLngExpression} zoom={2} scrollWheelZoom={false} className="h-full w-full">
+          <TileLayer
+            attribution="&copy; OpenStreetMap contributors"
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
 
-            {markers.map((m) => (
-              <CircleMarker
-                key={`${m.iso2}-${m.label}`}
-                center={m.latlng}
-                radius={m.radius}
-                pathOptions={{
-                  color: "rgb(0, 86, 166)",
-                  fillColor: "rgb(0, 86, 166)",
-                  fillOpacity: 0.25,
-                  weight: 1,
-                }}
-              >
-                <Tooltip direction="top" offset={[0, -4]} opacity={1}>
-                  {m.label}: {m.count}
-                </Tooltip>
-              </CircleMarker>
-            ))}
-          </MapContainer>
-        </div>
+          {markers.map((m) => (
+            <CircleMarker
+              key={`${m.iso2}-${m.label}`}
+              center={m.latlng}
+              radius={m.radius}
+              pathOptions={{
+                color: "rgb(0, 86, 166)",
+                fillColor: "rgb(0, 86, 166)",
+                fillOpacity: 0.25,
+                weight: 1,
+              }}
+            >
+              <Tooltip direction="top" offset={[0, -4]} opacity={1}>
+                {m.label}: {m.count}
+              </Tooltip>
+            </CircleMarker>
+          ))}
+        </MapContainer>
+      </div>
     </div>
   )
 }

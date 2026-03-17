@@ -9,11 +9,7 @@ import dynamic from "next/dynamic"
 
 const MobilityMap = dynamic(() => import("@/components/MobilityMap"), {
   ssr: false,
-  loading: () => (
-    <div className="flex h-full items-center justify-center text-slate-500">
-      Carregant mapa...
-    </div>
-  ),
+  loading: () => <div className="flex h-full items-center justify-center text-slate-500">Carregant mapa...</div>,
 })
 
 type TopItem = { name: string; count: number }
@@ -34,7 +30,7 @@ function MetaPill({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="inline-flex items-center gap-2 rounded-full bg-slate-900/5 px-3 py-1 text-xs font-semibold text-slate-700 ring-1 ring-black/5">
       <span className="text-slate-500">{label}</span>
-      <span className="tabular-nums text-slate-800">{value}</span>
+      <span className="text-slate-800 tabular-nums">{value}</span>
     </div>
   )
 }
@@ -131,7 +127,7 @@ export default function StatsPageClient({
     const restOfValue = value.slice(0, -1)
 
     return (
-      <div className="text-left max-w-70 p-4">
+      <div className="max-w-70 p-4 text-left">
         <div className="flex items-start gap-2">
           {arrow && (
             <div className="mt-1">
@@ -152,33 +148,17 @@ export default function StatsPageClient({
     )
   }
 
-  function CustomBarChart({
-    label,
-    data,
-    title,
-  }: {
-    label: string
-    data: TopItem[]
-    title?: string
-  }) {
+  function CustomBarChart({ label, data, title }: { label: string; data: TopItem[]; title?: string }) {
     const chartConfig = {
       count: { label, color: "#0077BD" },
     } satisfies ChartConfig
 
     return (
       <div className="w-full p-4">
-        {title && (
-          <h3 className="mb-4 text-center text-lg font-extrabold text-slate-600">
-            {title}
-          </h3>
-        )}
+        {title && <h3 className="mb-4 text-center text-lg font-extrabold text-slate-600">{title}</h3>}
 
         <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-          <BarChart
-            layout="vertical"
-            data={data}
-            margin={{ left: 10, right: 10 }}
-          >
+          <BarChart layout="vertical" data={data} margin={{ left: 10, right: 10 }}>
             {/* Y = categorías */}
             <YAxis
               dataKey="name"
@@ -190,28 +170,16 @@ export default function StatsPageClient({
             />
 
             {/* X = valores */}
-            <XAxis
-              hide={true}
-              type="number"
-              tickLine={false}
-              axisLine={false}
-            />
+            <XAxis hide={true} type="number" tickLine={false} axisLine={false} />
 
             <Bar dataKey="count" fill="#0077BD" radius={4}>
-              <LabelList
-                dataKey="count"
-                position="right"
-                fill="#0077BD"
-                fontSize={11}
-                fontWeight="bold"
-              />
+              <LabelList dataKey="count" position="right" fill="#0077BD" fontSize={11} fontWeight="bold" />
             </Bar>
           </BarChart>
         </ChartContainer>
       </div>
     )
   }
-
 
   return (
     <main className="flex w-full flex-col items-stretch bg-white">
@@ -230,14 +198,16 @@ export default function StatsPageClient({
 
         <div className="mx-auto w-full max-w-7xl px-3 sm:px-4">
           <div className="text-center">
-            <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">
-              Algunes de les estadístiques més destacades
-            </h2>
+            <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">Algunes de les estadístiques més destacades</h2>
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-3xl bg-white/80 p-5 shadow-sm ring-1 ring-black/5 backdrop-blur">
-              <StatComponent value={pct(employedRate)} label="Dels nostres graduats tenen feina actualment" arrow="up" />
+              <StatComponent
+                value={pct(employedRate)}
+                label="Dels nostres graduats tenen feina actualment"
+                arrow="up"
+              />
             </div>
 
             <div className="rounded-3xl bg-white/80 p-5 shadow-sm ring-1 ring-black/5 backdrop-blur">
@@ -257,17 +227,22 @@ export default function StatsPageClient({
             </div>
 
             <div className="rounded-3xl bg-white/80 p-5 shadow-sm ring-1 ring-black/5 backdrop-blur">
-              <StatComponent value={pct(masterRate)} label="Dels nostres graduats han cursat un màster després del grau" arrow="up" />
+              <StatComponent
+                value={pct(masterRate)}
+                label="Dels nostres graduats han cursat un màster després del grau"
+                arrow="up"
+              />
             </div>
           </div>
         </div>
       </section>
 
-
       <div className="mx-auto w-full max-w-6xl px-3 sm:px-4">
         {averageDegreeScore !== null && (
           <section className="pt-10 text-center text-sm font-semibold md:text-base lg:text-lg">
-            <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">La valoració del grau segons els nostres graduats</h2>
+            <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">
+              La valoració del grau segons els nostres graduats
+            </h2>
             <StarRating score={averageDegreeScore} />
             <div className="mt-2 text-sm text-slate-600 tabular-nums md:text-base lg:text-lg">
               {(averageDegreeScore / 2).toFixed(1)} / 5.0
@@ -292,7 +267,7 @@ export default function StatsPageClient({
 
           <div
             id="mobilitat"
-            className="relative overflow-hidden rounded-3xl bg-white p-6 ring-1 ring-black/5 shadow-sm"
+            className="relative overflow-hidden rounded-3xl bg-white p-6 shadow-sm ring-1 ring-black/5"
           >
             <div className="relative isolate z-0 h-[480px] overflow-hidden rounded-2xl">
               <MobilityMap
@@ -306,15 +281,25 @@ export default function StatsPageClient({
         </section>
       </div>
 
-      <section id="rankings" className="mt-10 border-t bg-gray-100 -mx-3 px-3 py-10 sm:-mx-4 sm:px-4">
+      <section id="rankings" className="-mx-3 mt-10 border-t bg-gray-100 px-3 py-10 sm:-mx-4 sm:px-4">
         <div className="mx-auto w-full max-w-6xl">
           <div className="text-center text-sm font-semibold md:text-base lg:text-lg">
-            <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">Algunes de les àreas i especialitzacions dels nostres graduats</h2>
+            <h2 className="mx-auto mt-4 mb-8 max-w-3xl text-slate-600">
+              Algunes de les àreas i especialitzacions dels nostres graduats
+            </h2>
           </div>
 
           <div className="my-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <CustomBarChart label="Dominis" data={topDomains} title="Àrees i dominis on treballen els nostres graduats" />
-            <CustomBarChart label="Especialitat" data={topSpecialties} title="Especialitat de la feina dels nostres graduats" />
+            <CustomBarChart
+              label="Dominis"
+              data={topDomains}
+              title="Àrees i dominis on treballen els nostres graduats"
+            />
+            <CustomBarChart
+              label="Especialitat"
+              data={topSpecialties}
+              title="Especialitat de la feina dels nostres graduats"
+            />
           </div>
         </div>
       </section>
@@ -324,10 +309,14 @@ export default function StatsPageClient({
           <div className="bg-upc mx-auto max-w-5xl rounded-3xl px-6 py-10 text-white shadow-sm ring-1 ring-black/10 sm:px-10">
             <h2 className="text-center text-2xl font-extrabold sm:text-3xl">Vols veure exemples de projectes?</h2>
             <p className="mx-auto mt-2 max-w-3xl text-center text-white/90">
-              Descobreix projectes desenvolupats a la universitat i coneix als alumni, els seus interessos i projectes personals.
+              Descobreix projectes desenvolupats a la universitat i coneix als alumni, els seus interessos i projectes
+              personals.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <a className="text-upc inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 font-bold shadow-sm" href="/projectes">
+              <a
+                className="text-upc inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 font-bold shadow-sm"
+                href="/projectes"
+              >
                 Projectes de la universitat
               </a>
               <a
