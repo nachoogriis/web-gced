@@ -69,6 +69,8 @@ export default {
       animation: {
         scroll: "scroll 100s linear infinite",
         scroll1: "scroll1 100s linear infinite",
+        "click-cursor": "clickCursor 2s ease-in-out infinite",
+        shine: "shine 3s ease-in-out infinite",
       },
       keyframes: {
         scroll: {
@@ -78,6 +80,17 @@ export default {
         scroll1: {
           "0%": { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0)" }, // Mueve hacia la derecha
+        },
+        clickCursor: {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "20%": { transform: "translate(4px, -4px) scale(1)" },
+          "40%": { transform: "translate(-4px, 4px) scale(0.85)" },
+          "60%": { transform: "translate(4px, -4px) scale(1)" },
+          "70%": { transform: "translate(0, 0) scale(1)" },
+        },
+        shine: {
+          "0%": { backgroundPosition: "200% center" },
+          "100%": { backgroundPosition: "-200% center" },
         },
       },
       flexBasis: {

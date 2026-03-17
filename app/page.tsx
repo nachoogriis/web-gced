@@ -6,6 +6,8 @@ import StudentsCarousel from "@/components/StudentsCarousel"
 import TestimonisCarousel from "@/components/TestimonisCarousel"
 import { dbAlumniGetAllCardsInfo, dbAlumniGetAllReviews } from "@/lib/db/alumni"
 import { getHomeImages } from "@/lib/getHomeImages"
+import { MousePointer2 } from "lucide-react"
+import Link from "next/link"
 
 export default async function Home() {
   const alumniData = await dbAlumniGetAllCardsInfo()
@@ -36,10 +38,21 @@ export default async function Home() {
               className="h-full w-full"
               src="https://www.youtube.com/embed/54Yeq8OoKS8"
               title="YouTube video player"
-              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
+          </div>
+        </section>
+
+        <section className="flex flex-row justify-center">
+          <div className="animate-shine bg-upc w-fit rounded-lg bg-[linear-gradient(110deg,transparent_33%,rgba(255,255,255,0.6)_50%,transparent_66%)] bg-size-[200%_100%] p-4 px-8 text-center transition-colors">
+            <Link href="https://dse.upc.edu/ca/ingres-al-grau/calendari-jpos-1">
+              <h1 className="flex flex-row justify-between text-3xl font-bold text-white">
+                <span></span>
+                Consulta les Jornades de Portes Obertes
+                <MousePointer2 className="animate-click-cursor ml-4 h-8 w-8" />
+              </h1>
+            </Link>
           </div>
         </section>
 
