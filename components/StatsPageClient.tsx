@@ -183,7 +183,7 @@ export default function StatsPageClient({
 
   return (
     <main className="flex w-full flex-col items-stretch bg-white">
-      <PageHeading title="Estadístiques" subtitle="Dades agregades dels nostres garduats." />
+      <PageHeading title="Estadístiques" subtitle="Dades agregades dels nostres garduats quatre anys després d'acabar." />
 
       <div className="flex flex-wrap justify-center gap-2">
         <MetaPill label="Alumni" value={`${alumniCount}`} />

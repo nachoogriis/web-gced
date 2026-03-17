@@ -65,7 +65,7 @@ export default function AlumniPage({ initialAlumniData, alumniReviews }: Props) 
 
   return (
     <main className="flex w-full flex-col items-stretch">
-      <PageHeading title="Graduats" />
+      <PageHeading title="Graduats" subtitle="A on estaràs quatre anys després d'acabar el GCED?"/>
 
       {/* Buscador con ShadCN UI */}
       <div className="flex flex-col items-center py-6">
