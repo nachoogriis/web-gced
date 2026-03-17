@@ -88,7 +88,7 @@ export default async function BannerMainStats() {
       <div className="mx-auto max-w-6xl px-4 lg:w-6xl">
         <div className="grid grid-cols-2 gap-4 text-white md:grid-cols-4">
           <Stat title="Ocupabilitat" value={pct(employedRate)} />
-          <Stat title="Sou mediana" value={salaryMedian !== null ? formatEUR(salaryMedian) : "—"} />
+          <Stat title="Mediana del sou" value={salaryMedian !== null ? formatEUR(salaryMedian) : "—"} />
           <Stat title="Han fet pràctiques" value={pct(internshipsRate)} />
           <Stat title="Han fet màster" value={pct(masterRate)} />
         </div>
